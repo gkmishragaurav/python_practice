@@ -1,0 +1,37 @@
+python design patterns:
+
+1. the iterator pattern: an iterator is an object with a next() method and a done() method; the latter returns True if there are no items left in the sequence. In a programming language without built-in support for iterators, the iterator would be looped over like this:
+
+	while not iterator.done():
+		item = iterator.next()
+		# do something with the item
+		
+We can construct a core object, and then create a decorator around that core. Since the decorator object has the same interface as the core object, we can even wrap the new object in other decorators.
+
+Implementation of stack/queue/linklist come under this one.
+
+2. The Factory Method Pattern:
+	1. Factory Method is a creational design pattern used to create concrete implementations of a common interface.
+	2. It separates the process of creating an object from the code that depends on the interface of the object. 
+	for detail example look for the desing pattern folder.
+
+Recognizing Opportunities to Use Factory Method
+	Factory Method should be used in every situation where an application (client) depends on an interface (product) to perform a task and there are multiple concrete implementations of that interface. You need to provide a parameter that can identify the concrete implementation and use it in the creator to decide the concrete implementation. There is a wide range of problems that fit this description, so let’s take a look at some concrete examples.
+
+	1. Replacing complex logical code: Complex logical structures in the format if/elif/else are hard to maintain because new logical paths are needed as requirements change. Factory Method is a good replacement because you can put the body of each logical path into separate functions or classes with a common interface, and the creator can provide the concrete implementation.
+
+	2. Constructing related objects from external data: Imagine an application that needs to retrieve employee information from a database or other external source. The records represent employees with different roles or types: managers, office clerks, sales associates, and so on. The application may store an identifier representing the type of employee in the record and then use Factory Method to create each concrete Employee object from the rest of the information on the record.
+
+	3. Supporting multiple implementations of the same feature: An image processing application needs to transform a satellite image from one coordinate system to another, but there are multiple algorithms with different levels of accuracy to perform the transformation. The application can allow the user to select an option that identifies the concrete algorithm. Factory Method can provide the concrete implementation of the algorithm based on this option.
+	
+	4. Combining similar features under a common interface: Following the image processing example, an application needs to apply a filter to an image. The specific filter to use can be identified by some user input, and Factory Method can provide the concrete filter implementation.
+	
+	5. Integrating related external services: A music player application wants to integrate with multiple external services and allow users to select where their music comes from. The application can define a common interface for a music service and use Factory Method to create the correct integration based on a user preference.
+
+	enps.nsdl.com/eNPS/NationalPensionSystem.html 
+	00000020150366474
+
+Read more at:
+//economictimes.indiatimes.com/articleshow/63949847.cms?from=mdr&utm_source=contentofinterest&utm_medium=text&utm_campaign=cppst
+	
+

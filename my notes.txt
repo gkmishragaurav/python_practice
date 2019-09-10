@@ -1,0 +1,1270 @@
+checklist - 
+
+courses/certificates :
+
+https://cognitiveclass.ai/courses/accelerating-deep-learning-gpu/
+https://cognitiveclass.ai/courses/reactive-architecture-building-scalable-systems/
+https://cognitiveclass.ai/courses/reactive-architecture-cqrs/
+
+all algorithms:
+https://github.com/TheAlgorithms/Python
+
+books to read for better python - 
+Thinking In Python - this is good for understanding design patterns in python
+Addison Wesley - Text processing in python
+Beginning Python - From Novice to Professional
+Ziade_-_Expert_Python_programming
+
+Note - Python key can not be a dictionary. only a fixed object can be a key for a dictionary
+run a cmd on another machine in python - use pexpect. for same machine use subprocess.
+
+---------------------------------------------
+regular expressions: 
+for learning/practice - https://regexone.com/
+expert level - http://play.inginf.units.it
+	
+MetaCharacters
+
+	MetaCharacters - Metacharacters are characters that are interpreted in a special way by a RegEx engine. Here's a list of metacharacters:
+
+	[] . ^ $ * + ? {} () \ |
+	[] - any one charecter inside this will be matched.
+	[abc] - Here, [abc] will match if the string you are trying to match contains any of the a, b or c.
+	[a-e] - is the same as [abcde].
+	[1-4] - is the same as [1234].
+	[0-39] - is the same as [01239].
+	[^abc] means any character except a or b or c.
+	[^0-9] means any non-digit character.
+	. - Period - A period matches any single character (except newline '\n').
+	^ - Caret - used to check if a string starts with a certain character.
+	$ - Dollar - used to check if a string ends with a certain character.
+	* - Star - matches zero or more occurrences of the pattern left to it.
+	+ - Plus - matches one or more occurrences of the pattern left to it.
+	? - Question Mark - matches zero or one occurrence of the pattern left to it.
+	{} - Braces - Consider this code: {n,m}. This means at least n, and at most m repetitions of the pattern left to it. - a{2,3} - aabc daaaat	2 matches (at [aa]bc and d[aaa]at) - This RegEx [0-9]{2, 4} matches at least 2 digits but not more than 4 digits
+	| - Alternation - Vertical bar | is used for alternation (or operator).
+	() - Group - Parentheses () is used to group sub-patterns. For example, (a|b|c)xz match any string that matches either a or b or c followed by xz
+	\ - Backslash - Backlash \ is used to escape various characters including all metacharacters. For example,
+
+		\$a match if a string contains $ followed by a. Here, $ is not interpreted by a RegEx engine in a special way.
+
+		If you are unsure if a character has special meaning or not, you can put \ in front of it. This makes sure the character is not treated in a special way.
+	
+Special Sequences:
+	\A - Matches if the specified characters are at the start of a string.
+		\Athe	the sun	Match
+				In the sun	No match
+
+	\b - Matches if the specified characters are at the beginning(\bfoo) or end of a word(foo\b).
+	\B - Opposite of \b. Matches if the specified characters are not at the beginning or end of a word.
+	\d - Matches any decimal digit. Equivalent to [0-9]
+	\D - Matches any non-decimal digit. Equivalent to [^0-9]
+	\s - Matches where a string contains any whitespace character. Equivalent to [ \t\n\r\f\v]
+	\S - Matches where a string contains any non-whitespace character. Equivalent to [^ \t\n\r\f\v].
+	\w - Matches any alphanumeric character (digits and alphabets). Equivalent to [a-zA-Z0-9_]. By the way, underscore _ is also considered an alphanumeric character.
+	\W - Matches all the characters marked as letters in the Unicode database provided by the unicodedata module. Equivalent to [^a-zA-Z0-9_]
+	\Z - Matches if the specified characters are at the end of a string.
+
+Compilation Flags:
+	ASCII, A - Makes several escapes like \w, \b, \s and \d match only on ASCII characters with the respective property.
+	DOTALL, S - Make . match any character, including newlines.
+	IGNORECASE, I - Do case-insensitive matches.
+	LOCALE, L - Do a locale-aware match.
+	MULTILINE, M - Multi-line matching, affecting ^ and $.
+	VERBOSE, X (for ‘extended’) - Enable verbose REs, which can be organized more cleanly and understandably.
+
+-----------------------------------------------------
+
+Programs to be made:
+1. questions around 2d array. - list comprehension, lambda function
+2. 
+----------------------------------------------------
+copy in Python (Deep Copy and Shallow Copy)
+
+In Python, Assignment statements do not copy objects, they create bindings between a target and an object. When we use = operator user thinks that this creates a new object; well, it doesn’t. It only creates a new variable that shares the reference of the original object. Sometimes a user wants to work with mutable objects, in order to do that user looks for a way to create “real copies” or “clones” of these objects. Or, sometimes a user wants copies that user can modify without automatically modifying the original at the same time, in order to do that we create copies of objects.
+
+A copy is sometimes needed so one can change one copy without changing the other. In Python, there are two ways to create copies :
+
+    Deep copy
+    Shallow copy
+
+# importing copy module 
+import copy 
+  
+# initializing list 1  
+li1 = [1, 2, [3,5], 4] 
+
+# using copy for shallow copy   
+li2 = copy.copy(li1)  
+
+# using deepcopy for deepcopy   
+li3 = copy.deepcopy(li1)  
+
+----------------------------------------------------
+CI/CD :
+data serialization
+making helper/singleton tools - db
+----------------------------------------------------
+
+understanding basic server-client architecture code + communication
+https://www.bogotobogo.com/python/python_network_programming_server_client_file_transfer.php
+how to make a chat server. above link has this implementation too.
+sblar - send bind listen
+----------------------------------------
+Image processing with Python image library Pillow
+
+----------------------------------------
+understanding of docker
+
+https://docs.docker.com/compose/compose-file/
+
+Q. When you run docker-compose up, the following happens:
+
+    A network called myapp_default is created.
+    A container is created using web’s configuration. It joins the network myapp_default under the name web.
+    A container is created using db’s configuration. It joins the network myapp_default under the name db.
+	Each container can now look up the hostname web or db and get back the appropriate container’s IP address. For example, web’s application code could connect to the URL postgres://db:5432 and start using the Postgres database.
+	
+Q. What is Docker Machine?
+
+Docker Machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with docker-machine commands. You can use Machine to create Docker hosts on your local Mac or Windows box, on your company network, in your data center, or on cloud providers like Azure, AWS, or Digital Ocean. Docker Machine enables you to provision multiple remote Docker hosts on various flavors of Linux.
+
+Additionally, Machine allows you to run Docker on older Mac or Windows systems, as described in the previous topic.
+
+Q. Docker Vs VM (Virtual Machine)
+	1. VM need more resources, Docker uses less resources.
+	2. VM Process isolation is done at hardware level, DM Process Isolation is done at Operating System level
+	3. Operating System resources can be shared within Docker, on VM its not.
+	4. vm - Booting takes minutes, dm - Booting is done within seconds
+	
+Q. What is Docker image?
+
+Docker image can be understood as a template from which Docker containers can be created as many as we want out of that single Docker image. Having said that, to put it in layman terms, Docker containers are created out of Docker images. Docker images are created with the build command, and this produces a container that starts when it is run. Docker images are stored in the Docker registry such as the public Docker registry (registry.hub.docker.com) as these are designed to be constituted with layers of other images, enabling just the minimal amount of data over the network.
+
+Q. What is Docker container?
+
+This is a very important question so just make sure you don’t deviate from the topic and I will advise you to follow the below mentioned format:
+
+1. Docker containers include the application and all of its dependencies, but share the kernel with other containers, running as isolated processes in user space on the host operating system. Docker containers are not tied to any specific infrastructure: they run on any computer, on any infrastructure, and in any cloud.
+2. Now explain how to create a Docker container, Docker containers can be created by either creating a Docker image and then running it or you can use Docker images that are present on the Dockerhub(in our case it is harbor).
+3. Docker containers are basically runtime instances of Docker images.
+
+Q. What is Docker hub?
+
+Docker hub is a cloud-based registry service which allows you to link to code repositories, build your images and test them, stores manually pushed images, and links to Docker cloud so you can deploy images to your hosts. It provides a centralized resource for container image discovery, distribution and change management, user and team collaboration, and workflow automation throughout the development pipeline.
+
+----------------------------------------------
+Sorting:
+	The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array.
+	
+	Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
+	
+	Insertion sort is a simple sorting algorithm that works the way we sort playing cards in our hands.
+	
+----------------------------------------------
+Notes: recursion depth
+	The precise value of this limit depends upon the Python distribution, but a typical default value is 1000. If this limit is reached, the Python interpreter raises a RuntimeError with a message, maximum recursion depth exceeded .
+
+-----------------------------------------------
+Basic hadoop understanding:
+https://www.bogotobogo.com/Hadoop/BigData_hadoop_Install_on_ubuntu_single_node_cluster.php
+>>>>>>>>>> under stand python map reduce
+
+DataNode:
+
+A DataNode stores data in the [HadoopFileSystem]. A functional filesystem has more than one DataNode, with data replicated across them.
+
+On startup, a DataNode connects to the NameNode; spinning until that service comes up. It then responds to requests from the NameNode for filesystem operations.
+
+DataNode instances can talk to each other, which is what they do when they are replicating data.
+
+NameNode:
+	
+The NameNode is the centerpiece of an HDFS file system. It keeps the directory tree of all files in the file system, and tracks where across the cluster the file data is kept. It does not store the data of these files itself. 
+-----------------------------------------------
+What is RPC?
+
+RPC stands for Remote Procedure Call, which utilizes inter-processing communication technology for Windows processes within a network. RPC works on the basis of a client-server communication model, wherein client and server need not always be a different machine. RPC can also be used to set up communication between different processes on a single machine.
+
+Web services are a set of tools that let you build distributed applications on top of existing web infrastructures. These applications use the Web as a kind of "transport layer" but don't offer a direct human interface via the browser. 
+
+XML - RPC - Explained
+XML-RPC is among the simplest (and most foolproof) web service approaches, and makes it easy for computers to call procedures on other computers. XML-RPC lets you make function calls across networks. The XML-RPC protocol is a lightweight Remote Procedure Call protocol that uses XML over HTTP to encode its calls. It is often used instead of SOAP for simple client-server exchanges
+
+stateless - 
+What makes the protocol stateless is that the server is not required to track state over multiple requests, not that it cannot do so if it wants to. This simplifies the contract between client and server, and in many cases (for instance serving up static data over a CDN) minimizes the amount of data that needs to be transferred. If servers were required to maintain the state of clients' visits the structure of issuing and responding to requests would be more complex. As it is, the simplicity of the model is one of its greatest features. 
+HTTP is a stateless protocol, which means that the connection between the browser and the server is lost once the transaction ends.
+If protocol HTTP is given as State full protocol,browser window uses single connection to communicate with web server for multiple request given to web application.this gives chance to browser window to engage the connections between browser window and web servers for long time and to keep them in idle state for long time.This may create the situation of reaching to maximum connections of web server even though most of the connections in clients are idle. 
+----------------------------------------------
+Web services - are responsible for online machine-to-machine communication. 
+
+What is REST
+
+REST is an architectural style, or design pattern, for APIs. It means when a RESTful API is called, the server will transfer to the client a representation of the state of the requested resource.
+
+what is SOAP?
+
+SOAP is an acronym for Simple Object Access Protocol. It is an XML-based messaging protocol for exchanging information among computers. SOAP is an application of the XML specification.
+
+SOAP vs REST:
+- As SOAP is an official protocol, it comes with strict rules and advanced security features such as built-in ACID compliance and authorization. Higher complexity, it requires more bandwidth and resources which can lead to slower page load times. 
+
+- REST was created to address the problems of SOAP. Therefore it has a more flexible architecture. It consists of only loose guidelines and lets developers implement the recommendations in their own way. It allows different messaging formats, such as HTML, JSON, XML, and plain text, while SOAP only allows XML. 
+
+-REST is also a more lightweight architecture, so RESTful web services have a better performance. Because of that, it has become incredibly popular in the mobile era where even a few seconds matter a lot (both in page load time and revenue).
+
+----------------------------------------------
+lru python/c implementation
+
+LRU cache stand for Least Recently Used Cache. which evict least recently used entry. As Cache purpose is to provide fast and efficient way of retrieving data. it need to meet certain requirement.
+
+Some of the Requirement are
+
+    Fixed Size: Cache needs to have some bounds to limit memory usages.
+    Fast Access: Cache Insert and lookup operation should be fast , preferably O(1) time.
+    Replacement of Entry : in case , Memory Limit is reached: A cache should have efficient algorithm to evict the entry when memory is full.
+
+Concept:
+In case of LRU cache we evict least recently used entry so we have to keep track of recently used entries, entries which have not been used from long time and which have been used recently. plus lookup and insertion operation should be fast enough.
+
+When we think about O(1) lookup , obvious data structure comes in our mind is HashMap. HashMap provide O(1) insertion and lookup. but HashMap does not has mechanism of tracking which entry has been queried recently and which not.
+
+To track this we require another data-structure which provide fast insertion ,deletion and updation , in case of LRU we use Doubly Linkedlist . Reason for choosing doubly LinkList is O(1) deletion , updation and insertion if we have the address of Node on which this operation has to perform.
+
+So our Implementation of LRU cache will have HashMap and Doubly LinkedList. In Which HashMap will hold the keys and address of the Nodes of Doubly LinkedList . And Doubly LinkedList will hold the values of keys.
+
+Implementation:
+Design a data structure for LRU Cache. It should support the following operations: get and set.
+get(key) – Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
+
+set(key, value) – Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
+
+---------------------------------------------
+GIL:
+The Python Global Interpreter Lock or GIL, in simple words, is a mutex (or a lock) that allows only one thread to hold the control of the Python interpreter.
+
+>>> import sys
+>>> a = []
+>>> b = a
+>>> sys.getrefcount(a)
+3
+
+In the above example, the reference count for the empty list object [] was 3. The list object was referenced by a, b and the argument passed to sys.getrefcount().
+
+This means that only one thread can be in a state of execution at any point in time. The impact of the GIL isn’t visible to developers who execute single-threaded programs, but it can be a performance bottleneck in CPU-bound and multi-threaded code.
+
+Q. What problem did the GIL solve for Python?
+
+Python uses reference counting for memory management. It means that objects created in Python have a reference count variable that keeps track of the number of references that point to the object. When this count reaches zero, the memory occupied by the object is released.
+
+The problem was that this reference count variable needed protection from race conditions where two threads increase or decrease its value simultaneously. If this happens, it can cause either leaked memory that is never released or, even worse, incorrectly release the memory while a reference to that object still exists. This can can cause crashes or other “weird” bugs in your Python programs.
+
+The GIL is a single lock on the interpreter itself which adds a rule that execution of any Python bytecode requires acquiring the interpreter lock. This prevents deadlocks (as there is only one lock) and doesn’t introduce much performance overhead. But it effectively makes any CPU-bound Python program single-threaded.
+
+Q. How to deal with Python’s GIL
+
+If the GIL is causing you problems, here a few approaches you can try:
+
+Multi-processing vs multi-threading: The most popular way is to use a multi-processing approach where you use multiple processes instead of threads. Each Python process gets its own Python interpreter and memory space so the GIL won’t be a problem. Python has a multiprocessing module which lets us create processes easily like this:
+
+multi threading in python:
+
+1. MT programming is ideal for programming tasks that are asynchronous in nature, require multiple concurrent activities, and where the processing of each activity may be nondeterministic, i.e., random and unpredictable.
+2. 
+------------------------------------------------
+Notes:
+Exception handling
+1. try: something except abcerror : ptint "Error" else : raise EOFError
+
+What error need to raise is checked under __builtin__ baseexception - if not present there then it will fail. If a new error need to raise add builtin to this  ---- __builtins__.NewnameError = None. If a new error need to make derive it from built in.
+
+2. object oriented python:
+
+It is also valid if he can remove just character at index in the string, and the remaining characters will occur the same number of times. 
+-------------------------------------------------------
+Operation system notes:
+Q. What is OS? - resides b/w user and computer hardware, proves an environment to user in which one can execute programs.
+Task of OS:
+	process management - os decides, which task will get how much of cpu. keeps tracks for all that.
+	file management - 
+	momory management
+	device management
+	
+Q. what happens in the background from the time you press the Power button until the Linux login prompt appears?
+	1. the Basic Input/Output System (BIOS) initializes the hardware, including the screen and keyboard, and tests the main memory. This process is also called POST (Power On Self Test).The BIOS software is stored on a ROM chip on the motherboard. After this, the remainder of the boot process is completely controlled by the operating system.
+	2.  Master Boot Records (MBR) - Once the POST is completed, the system control passes from the BIOS to the boot loader.The boot loader is usually stored on one of the hard disks in the system. Thereafter, information on the date, time, and the most important peripherals are loaded from the CMOS values. A number of boot loaders exist for Linux; the most common ones are GRUB.
+	3. The boot loader has two distinct stages:
+		a. the boot loader resides at the first sector of the hard disk also known as the Master Boot Record(MBR).The size of the MBR is just 512 bytes.In this stage, the boot loader examines the partition table and finds a bootable partition. Once it finds a bootable partition, it then searches for the second stage bootloader e.g, GRUB, and loads it into RAM (Random Access Memory).
+		b. A splash screen is displayed which allows us to choose which Operating System (OS) to boot. After choosing the OS, the boot loader loads the kernel of the selected operating system into RAM and passes control to it.The boot loader loads the selected kernel image (in the case of Linux) and passes control to it. Kernels are almost always compressed, so it's first job is to uncompress itself. After this, it will check and analyze the system hardware and initialize any hardware device drivers built into the kernel.
+		
+	4. The boot loader loads both the kernel and an initial RAM–based filesystem (initramfs) into memory so it can be used directly by the kernel.
+	5. The initramfs filesystem image contains programs and binary files that perform all actions needed to mount the proper root filesystem, like providing kernel functionality for the needed file system and device drivers for mass storage controllers with a facility called udev (for User Device) which is responsible for figuring out which devices are present, locating the drivers they need to operate properly, and loading them. After the root filesystem has been found, it is checked for errors and mounted.
+	6. Once the kernel has set up all its hardware and mounted the root filesystem, the kernel runs the /sbin/init program. This then becomes the initial process, which then starts other processes to get the system running. Most other processes on the system trace their origin ultimately to init; the exceptions are kernel processes, started by the kernel directly for managing internal operating system details.
+	
+Q. Difference between BIOS and Kernel
+Kernel is one of the most important part of Operating System. We use the word kernel to mean the part of operating system that runs in the privileged mode (Sometimes even a subset of this). Kernel is closer to the hardware and often performs tasks like memory management and system calls.
+
+Q. Operating system and kernel : Same or different?
+In simple terms, one line answer will be, kernel is a part of an operating system.
+Thus, Operating System is a generic name given to all of the elements (user interface, libraries, resources) which make up the system as a whole.
+The kernel is "brain" of the operating system, which controls everything from access to the hard disk to memory management.Whenever you want to do anything, it goes though the kernel. It provides low level services like device management, process management, memory management i.e. it provides all the core system calls to accomplish any task. 
+
+Q. What's happened in the Linux System after using 'ls' command?
+Parent process forked a child process and the child process starts executing ls code while the parent process waits for the child process to die. Basically, child process calls exec Function which will destroy the current address space of the child process and new address space is built which will have code of ls command. After executing the code of ls command, child process calls exit and turns to zombie process which will be reaped by the parent process.
+
+Q. How a program executed?
+a program reside on hd, system must able to load the program into the main memory. OS provide an environment where user can run the program.
+
+Now for BIOS (Basic Input-Output System), it is the one which is responsible to provide drivers for new devices to OS. BIOS constitutes of the code that is stored in read-only memory (ROM) and some configuration data in non-volatile RAM.
+BIOS provides three primary functions:
+
+    Power on self test (POST), so it knows where to load the boot program.
+    Load and transfer control to boot program .
+    Provide drivers for all devices.
+
+The main BIOS is supplied as a chip on the motherboard. It contains everything needed to perform the above three functions. Additional BIOSes on other boards can provide access to additional devices.
+	
+Q. Diff b/w 32-bit system and 64-bit system.
+A 32-bit system can access 232 memory addresses, i.e 4 GB of RAM or physical memory max.
+A 64-bit system can access 264 memory addresses, i.e actually 18-Billion GB of RAM. In short, any amount of memory greater than 4 GB can be easily handled by it.
+
+Q. Attributes or Characteristics of a Process
+	1. Process Id:    A unique identifier assigned by the operating system
+	2. Process State: Can be ready, running, etc.
+	3. CPU registers: Like the Program Counter (CPU registers must be saved and 
+					  restored when a process is swapped in and out of CPU)
+	5. Accounts information:
+	6. I/O status information: For example, devices allocated to the process, 
+							   open files, etc
+	8. CPU scheduling information: For example, Priority (Different processes 
+								   may have different priorities, for example
+								   a short process may be assigned a low priority
+								   in the shortest job first scheduling)
+								   
+Q. What is a process and process table? What are different states of process
+A process is an instance of program in execution. For example a Web Browser is a process, a shell (or command prompt) is a process. Processes can be in one of three states: running, ready, or waiting.
+
+Q. Remote Procedure call (RPC) --- https://www.geeksforgeeks.org/operating-system-remote-procedure-call-rpc/
+
+Q. stack overflow-:
+ error can occur in a computer program due to excessive memory usage. This excessive memory usage occurs on the call stack, which is where information is stored relating to the active subroutines in the program. The call stack has a limited amount of memory available to it. Its size is determined by the programming language, the architecture, whether multi-threading is available on the CPU, and how much memory is available. 
+
+Q. What Are Threads? 
+Threads (sometimes called  lightweight processes) are similar to processes except that they all execute within the same process, thus all share the same context. They can be thought of as "mini-processes" running in parallel within a main process or "main thread."A thread has a beginning, an execution sequence, and a conclusion. It has an instruction pointer that keeps track of where within its context it is currently running. It can be pre-empted (interrupted) and temporarily put on hold (also known as  sleeping) while other threads are running—this is called yielding.
+
+Q. Types of threads
+There are two distinct types of threads:
+Kernel-level threads: Low-level threads, the user can not interact with them directly.
+User-level threads: High-level threads, we can interact with them in our code.
+
+Q. What Are Processes? 
+Computer programs are merely executables, binary (or otherwise), which reside on disk. They do not take on a life of their own until loaded into memory and invoked by the operating system. A  process (sometimes called a  heavyweight process) is a program in execution. Each process has its own address space, memory, a data stack, and other auxiliary data to keep track of execution. The operating system manages the execution of all processes on the system, dividing the time fairly between all processes. Processes can also  fork or  spawn new processes to perform other tasks, but each new process has its own memory, data stack, etc., and cannot generally share information unless interprocess communication (IPC) is employed. 
+
+Q. Virtual Memory | Operating System
+https://www.youtube.com/watch?v=ujoJ7J_l9cY
+Virtual Memory is a way of using hard drive to provide a memory for the computer . Elements of virtual memory are called pages. When a needed memory that is not in the real memory is requested a memory from virtual memory moves to real memory address. Computers have a finite amount of RAM so when many programs run at the same time memory can run out. Using virtual memory it can load larger programs at the same time and operate like it has infinite memory. However , using virtual memory can slow computers down because data must be mapped between real memory (physical ) and virtual memory which requires extra capabilities for address translations .
+
+Q. Operating System | Swap Space
+
+A computer has sufficient amount of physical memory but most of times we need more so we swap some memory on disk. Swap space is a space on hard disk which is a substitute of physical memory. It is used as virtual memory which contains process memory image. Whenever our computer run short of physical memory it uses it’s virtual memory and stores information in memory on disk. Swap space helps the computer’s operating system in pretending that it have more RAM than it actually has. It is also called as swap file.This interchange of data between virtual memory and real memory is called as swapping and space on disk as “swap space”. Virtual memory is a combination of RAM and disk space that running processes can use. Swap space is the portion of virtual memory that is on the hard disk, used when RAM is full.
+
+Q. Why Paging used - https://www.geeksforgeeks.org/operating-system-paging/
+Paging is a mechanism that allows memory virtualization, in other words, allows addressing more memory than physically exists. The memory manager will keep "most used pages" in RAM and swap out those lees frequently used. Pages are usually in the 4K boundaries. When a reference to a non existing virtual memory region is used, the CPU will emit a trap, which then the kernel will handle, by loading/replacing the page where the memory address referenced lives, fixing the trap and continuing from the same PC address. Now the program will happily access to the referenced virtual address. This concept was introduced with protected memory models, I believe by Intel with 80286.
+
+Q. What is the basic function of paging?
+
+Paging is a memory management scheme that permits the physical address space of a process to be noncontiguous. It avoids the considerable problem of having to fit varied sized memory chunks onto the backing store.
+
+Q. What are the steps involved when switching from one thread to another thread in multi threading program?
+This is also known as context switching.
+
+Context switches are usually computationally intensive, and much of the design of operating systems is to optimize the use of context switches. Switching from one process to another requires a certain amount of time for doing the administration – saving and loading registers and memory maps, updating various tables and lists, etc. What is actually involved in a context switch varies between these senses and between processors and operating systems.
+
+For example, in the Linux kernel, context switching involves switching registers, stack pointer, and program counter. In extreme cases, such as switching between goroutines in Go, a context switch is equivalent to a coroutine yield, which is more expensive than a subroutine call.
+
+Steps:
+1. In a switch, the state of process currently executing must be saved somehow, so that when it is rescheduled, this state can be restored.
+
+2. The process state includes all the registers that the process may be using, especially the program counter, plus any other operating system specific data that may be necessary. This is usually stored in a data structure called a process control block (PCB) or switch frame.
+
+3. A handle to the PCB is added to a queue of processes that are ready to run, often called the ready queue.
+
+4. Since the operating system has effectively suspended the execution of one process, it can then switch context by choosing a process from the ready queue and restoring its PCB.
+
+5. In doing so, the program counter from the PCB is loaded, and thus execution can continue in the chosen process. Process and thread priority can influence which process is chosen from the ready queue (i.e., it may be a priority queue).
+
+Q. Measure the time spent in context switch?
+A Context switch is the time spent between two processes (i.e., bringing a waiting process into execution and sending an executing process into waiting state). This happens in multitasking.The operating system must bring the state information if waiting process into memory and save the state information of the currently running process. In order to solve this problem, we would like to record the timestamps of the first and last instruction of the swapping processes.The context switch time is the difference between the two processes.
+
+Q. How to measure disk performance?
+here are three speed we need to pay attention to when we consider the disk performance:
+
+    The time it takes to find the right block or cluster
+    The time it reads data
+    The time it used to put the data in the memory.
+    The shorter the time the better the perfomance
+	
+Q. synchronization in multicore systems
+Synchronization in multi-core systems happens via a few different mechanisms, but they all involve some sort of locking mechanism. Mutexes, semaphores, and spin-locks are mechanisms used to make sure that data is synchronized over multiple CPUs.
+The general mechanism is that the first process to ask for a resource will grab a key and lock access to the resource that needs to be changed, will make the change and then release the key. Other CPUs can then try and grab the lock and first one to succeed will lock, modify, and release.
+-------------------------------------------------
+12. Python and OS:
+
+a. python sys module
+os module
+os.system(): Allows us to execute a shell command
+os.listdir(path): Returns a list with the contents of the directory passed as an argument
+os.walk(path): Navigates all the directories in the provided path directory, and returns three values: the path directory, the names for the sub directories, and a list of filenames in the current directory path.
+
+b. The platform.system() method informs us of the running operating system. Depending on the return value, we can see the ping command is different in Windows and Linux. Windows OS uses ping –n 1 to send one packet of the ICMP ECHO request, whereas Linux or another OS uses ping –c 1.
+import os
+import platform
+operating_system = platform.system()
+print operating_system
+if (operating_system == "Windows"):
+    ping_command = "ping -n 1 127.0.0.1"
+elif (operating_system == "Linux"):
+    ping_command = "ping -c 1 127.0.0.1"
+else :
+    ping_command = "ping -c 1 127.0.0.1"
+print ping_command
+
+c. subprocess module
+
+d. Working with the filesystem in Python:
+understand os.walk
+os.path.isfile("./main.py")
+os.path.exists("./not_exists.py")
+os.makedirs('my_dir')
+open a file
+read a file
+write a file
+
+e. Open file with contaxt manager.
+
+https://jeffknupp.com/blog/2016/03/07/python-with-context-managers/
+
+There are multiple ways to create files in Python, but the cleanest way to do this is by using the with keyword, in this case we are using the Context Manager Approach.
+Initially, Python provided the open statement to open files. When we are using the open statement, Python delegates into the developer the responsibility to close the file when it's no longer need to use it. This practice lead to errors since developers sometimes forgot to close it. Since Python 2.5, developers can use the with statement to handle this situation safely. The with statement automatically closes the file even if an exception is raised. In this way, we have the advantage: the file is closed automatically and we don’t need to call the close() method.
+>>> with open("somefile.txt", "r") as file:
+>>> for line in file:
+>>> print line
+--------------------------------------------------------
+
+networking:
+
+Q - udp vs tcp - when to use them?
+
+TCP (Transmission Control Protocol) is connection oriented, whereas UDP (User Datagram Protocol) is connection-less. This means that TCP tracks all data sent, requiring acknowledgment for each octet (generally). UDP does not use acknowledgments at all, and is usually used for protocols where a few lost datagrams do not matter.
+
+Because of acknowledgments, TCP is considered a reliable data transfer protocol. It ensures that no data is sent to the upper layer application that is out of order, duplicated, or has missing pieces. It can even manage transmissions to attempt to reduce congestion.
+
+Q. how dns work:
+Q. how to design my own network?
+Q. network data transfer.
+Q - What Happens When You Type in a URL?
+
+This is how I would explain it:
+
+    You enter a URL into a web browser
+    The browser looks up the IP address for the domain name via DNS
+    The browser sends a HTTP request to the server
+    The server sends back a HTTP response
+    The browser begins rendering the HTML
+    The browser sends requests for additional objects embedded in HTML (images, css, JavaScript) and repeats steps 3-5.
+    Once the page is loaded, the browser sends further async requests as needed.
+
+Q. ping works on which porotocol - ICMP
+
+Q. What are sockets?
+Sockets are the main component that allows us to take advantage of the operating system's capabilities to interact with the network. You can think of sockets as a point-to-point communication channel between a client and a server. A socket is defined by the IP address of the machine, the port on which it listens, and the protocol it uses. The goal of a socket is to communicate processes through the network.
+
+Q. Port scanner with sockets
+
+Q. openssl s_client -connect harbor.drtst.org:8001
+------------------------------------------------------
+
+unix:
+1. Cut is used to select sections of text from each line of files.
+System ID,School,Phone,Address,City,State,Zip,Type,Principal
+569,Happy Valley Elementary School,814-555-1212,332 Innovation Boulevard,State College,PA,16801,Elementary,Mr. Jenkins
+
+cat data.csv | cut -d ',' -f 1 --- ',' is delimiter 
+
+2. Sed - stream editor --- file like, searching, find and replace, insertion or deletion.
+
+a. Replacing or substituting string --- Here the “s” specifies the substitution operation
+$sed 's/unix/linux/' geekfile.txt
+
+b. Replacing the nth occurrence of a pattern in a line
+$sed 's/unix/linux/n' geekfile.txt
+
+c. Replacing all the occurrence of the pattern in a line
+$sed 's/unix/linux/g' geekfile.txt
+
+3. awk - 
+a. Default behavior of Awk ---- awk '{print}' employee.txt
+b. Print the lines which matches with the given pattern. ----- $ awk '/manager/ {print}' employee.txt 
+c. Spliting a Line Into Fields  ----- awk '{print $1,$4}' employee.txt 
+d. Use of NR built-in variables (Display Line Number) ---- awk '{print NR,$0}' employee.txt 
+e. Use of NF built-in variables (Display Last Field) ----- awk '{print $1,$NF}' employee.txt
+f. Another use of NR built-in variables (Display Line From 3 to 6) ---- awk 'NR==3, NR==6 {print NR,$0}' employee.txt 
+
+4. To kill a process in python
+ps -ef | grep -i abc | awk '{print $2}'  | xargs kill -9
+
+5. performance stats collection:
+netstat - for network related stats
+vmstat - computer system monitoring tool
+top - for cpu and mem stat.
+
+6. printenv - 
+
+7. list all the directory in a folder:
+ls -lrt | grep '^d'
+
+Q. How do you check if a particular process  is listening on a perticular port on remote host ?
+telnet host port ---- if connected then process is listening on that port.
+------------------------------------------------------
+
+sql:
+
+1. Write an SQL query to find names of employee start with ‘A’?
+
+SELECT * FROM Employees WHERE EmpName like 'A%' 
+
+2. Delete duplicate data from table only first data remains constant.
+
+DELETE M1 
+From managers M1, managers M2 
+Where M2.Name = M1.Name AND M1.Id>M2.Id; 
+
+3. Second Highest Salary in MySQL
+
+SELECT MAX(salary) FROM Employee WHERE Salary NOT IN ( SELECT Max(Salary) FROM Employee);
+SELECT MAX(Salary) From Employee WHERE Salary < ( SELECT Max(Salary) FROM Employee);
+
+Q. problems with distributed database?
+A - 1. performance 2. accessibility 3. data consistency 
+
+sqllite and python: This will make a local database with name 'example.db'
+
+import sqlite3
+conn = sqlite3.connect('example.db')
+c = conn.cursor()
+
+# Create table
+c.execute('''CREATE TABLE stocks
+             (date text, trans text, symbol text, qty real, price real)''')
+
+# Insert a row of data
+c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+
+# Save (commit) the changes
+conn.commit()
+
+# We can also close the connection if we are done with it.
+# Just be sure any changes have been committed or they will be lost.
+conn.close()
+
+# For getting data - Do this instead
+t = ('RHAT',)
+c.execute('SELECT * FROM stocks WHERE symbol=?', t)
+print(c.fetchone())
+
+# Larger example that inserts many records at a time
+purchases = [('2006-03-28', 'BUY', 'IBM', 1000, 45.00),
+             ('2006-04-05', 'BUY', 'MSFT', 1000, 72.00),
+             ('2006-04-06', 'SELL', 'IBM', 500, 53.00),
+            ]
+c.executemany('INSERT INTO stocks VALUES (?,?,?,?,?)', purchases)
+
+------------------------------------------------------
+
+security 
+
+Q. What is the least that you should have on your home network?
+
+A home network is a testing environment for experimentation. You can have an Active Directory Domain Controller, a dedicated firewall appliance, and net-attached toaster. This is the least that you can have on your computer. 
+
+A private key is another large numerical value that is mathematically linked to the public key. In asymmetric cryptography, whatever is encrypted with a public key may only be decrypted by its corresponding private key and vice versa.
+
+Q. Can you explain SSL encryption?
+
+SSL (Secure Socket Layer) enables safe conversation between two or more parties. It is designed to identify and verify the person you are talking to on the other end.
+
+HTTP combined with SSL provides you with a safer browsing experience with encryption. So, you can say it is a tricky question, but SSL wins in terms of security.
+
+Q - Explain encoding, hashing, and encryption?
+
+Encoding: Converts the data in the desired format required for exchange between different systems.
+Hashing: Maintains the integrity of a message or data. Any change done could be noticed.
+Encryption: Ensures that the data is secured and one needs a digital verification code or image to open or access it.
+
+Q - What is a DDoS attack? How is it mitigated?
+
+DDoS stands for distributed denial of service. So, when a network is flooded with a large number of requests which is not recognized to handle, making the server unavailable to the legitimate requests.
+
+For mitigating a DDoS attack you need to identify normal conditions for network traffics which is necessary for threat detection. DDoS mitigation also requires identifying incoming traffic to separate human traffic from human-like bots and hijacked web browsers.
+
+Q - How to determine the encoding of text?
+Correctly detecting the encoding all times is impossible.
+You can also use UnicodeDammit.
+
+-------------------------------------------
+
+Machine learning:
+usage:
+	anomaly detection systems
+	sequencing events - predicting new event
+	recommondation systems
+
+AI vs Machine learning:
+	mimic cognitive functions of human
+	machine learning - learn from problems to solve problems.
+
+python libraries:
+numpy
+scipy
+matplotlib
+pandas
+scikit
+
+Learning problems fall into a few categories:
+1. supervised learning, in which the data comes with additional attributes that we want to predict. This problem can be either:
+
+	1. classification: samples belong to two or more classes and we want to learn from already labeled data how to predict the class of unlabeled data.
+	2. regression: if the desired output consists of one or more continuous variables, then the task is called regression.
+		
+2. unsupervised learning, in which the training data consists of a set of input vectors x without any corresponding target values.
+	Clustering - Clustering is considered to be one of the most popular unsupervised machine learning
+techniques used for grouping data points or objects that are somehow similar.
+
+
+---------------------------------------------------
+http://hplgit.github.io/primer.html/doc/pub/class/class-bootstrap.html
+Object oriented python: 
+
+1. Composition is the act of collecting together several objects to compose a new one. Composition is usually a good choice when one object is part of another object.
+
+2. Polymorphism is the ability to treat a class differently depending on which subclass is implemented
+
+3. The one difference between methods and normal functions is that all methods have one required argument. This argument is conventionally named self; I've never seen a programmer use any other name for this variable (convention is a very powerful thing). There's nothing stopping you, however, from calling it this or even Martha.
+
+4. The self argument to a method is simply a reference to the object that the method is being invoked on. We can access attributes and methods of that object as if it were any other object. This is exactly what we do inside the reset method when we set the x and y attributes of the self object.
+
+5. Construction and Initialization:
+when I call x = SomeClass(), __init__ is not the first thing to get called. Actually, it's a method called __new__, which actually creates the instance, then passes any arguments at creation on to the initializer. At the other end of the object's lifespan, there's __del__.
+
+	1. __new__(cls, [...)
+	__new__ is the first method to get called in an object's instantiation. It takes the class, then any other arguments that it will pass along to __init__. __new__ is used fairly rarely, but it does have its purposes, particularly when subclassing an immutable type like a tuple or a string. for more details - https://www.python.org/download/releases/2.2/descrintro/#__new__
+	
+	2. __init__(self, [...)
+	The initializer for the class. It gets passed whatever the primary constructor was called with (so, for example, if we called x = SomeClass(10, 'foo'), __init__ would get passed 10 and 'foo' as arguments. in case after 'init' someone calls 'new' again then after 'new', 'init' will not be called again. 
+	
+	3. __del__(self)
+	If __new__ and __init__ formed the constructor of the object, __del__ is the destructor. It doesn't implement behavior for the statement del x (so that code would not translate to x.__del__()). Rather, it defines behavior for when an object is garbage collected. It can be quite useful for objects that might require extra cleanup upon deletion, like sockets or file objects. Be careful, however, as there is no guarantee that __del__ will be executed if the object is still alive when the interpreter exits, so __del__ can't serve as a replacement for good coding practices (like always closing a connection when you're done with it. In fact, __del__ should almost never be used because of the precarious circumstances under which it is called; use it with caution!
+	
+	4. __call__(self):
+	Computing the value of the mathematical function represented by class Y from the section Representing a function as a class, with y as the name of the instance, is performed by writing y.value(t). If we could write just y(t), the y instance would look as an ordinary function. Such a syntax is indeed possible and offered by the special method named __call__. Writing y(t) implies a call y.__call__(t) 
+
+6. Technically, every class we create uses inheritance. All Python classes are subclasses of the special class named object. This class provides very little in terms of data and behaviors (those behaviors it does provide are all double-underscore methods intended for internal use only), but it does allow Python to treat all objects in the same way.
+
+-------------------------------------------------
+
+Faking files - python 
+Sometimes we need code that provides a file-like interface but doesn't actually read from or write to any real files. Two such adapters already exist in the standard library, StringIO and BytesIO. They behave in much the same way, except that one deals with text characters and the second deals with bytes data. Both classes are available in the io package. To emulate a file open for reading, we can supply a string or bytes object to the constructor. Calls to read or readline will then parse that string as if it was a file. To emulate a file opened for writing, we simply construct a StringIO or BytesIO object and call the write or writelines methods. When writing is complete, we can discover the final contents of the written "file" using the getvalue method. It's really very simple
+
+# coding=utf-8
+from io import StringIO, BytesIO
+source_file = StringIO("an oft-repeated cliché")
+dest_file = BytesIO()
+char = source_file.read(1)
+while char:
+    dest_file.write(char.encode("ascii", "replace"))
+    char = source_file.read(1)
+print(dest_file.getvalue())
+
+------------------------------------------------------
+python pickle: Storing objects
+
+Nowadays, we take the ability to write data to a file and retrieve it at an arbitrary 
+later date for granted. As convenient as this is (imagine the state of computing if 
+we couldn't store anything!), we may often find ourselves converting data we have 
+stored in a nice object or design pattern in memory into some kind of clunky text or 
+binary format for storage.
+The Python pickle module, allows us to store objects directly in a special object 
+storage format. It essentially converts an object (and all the objects it holds as 
+attributes) into a format that can be stored in a file or file-like object or a string of 
+bytes that we can do whatever we want with.
+For basic work, the pickle module has an extremely simple interface. It is comprised 
+of four basic functions for storing and loading data; two for manipulating file-like 
+objects, and two for manipulating bytes objects (the latter are just shortcuts to the 
+file-like interface so we don't have to create a BytesIO file-like object ourselves).
+
+The dump method accepts an object to be written and a file-like object to write the 
+serialized bytes to. This object must have a write method (or it wouldn't be file-like), 
+and that method must know how to handle a bytes argument (so a file opened for 
+text output wouldn't work).
+The load method does exactly the opposite; it reads a serialized object from a file-like 
+object. This object must have the proper file-like read and readline arguments, each 
+of which must, of course, return bytes. The pickle module will load the object from 
+these bytes and the load method will return the fully reconstructed object. Here's an 
+example that stores and then loads some data in a list object:
+import pickle
+some_data = ["a list", "containing", 5,
+        "values including another list",
+        ["inner", "list"]]
+with open("pickled_list", 'wb') as file:
+    pickle.dump(some_data, file)
+with open("pickled_list", 'rb') as file:
+    loaded_data = pickle.load(file)
+print(loaded_data)
+assert loaded_data == some_data
+
+
+------------------------------------------
+Given a string, the task is to check whether a string is valid json object or not
+import json 
+  
+ini_string = "{'akshat' : 1, 'nikhil' : 2}"
+  
+# printing initial ini_string 
+print ("initial string", ini_string) 
+  
+# checking for string 
+try: 
+    json_object = json.loads(ini_string) 
+    print ("Is valid json? true") 
+except ValueError as e: 
+    print ("Is valid json? false") 
+
+----------------------------------------------
+
+Architecture details:
+Basically whole architecture is master-node.
+
+1. UI part called Cportal - admin portal: mix sportal in this only.
+	it is made of cherrypy, cherrypy is single thread so this part is also that. its light weight. mostly manual intervention is expected to be less , that is why this part is kept as light as this.
+
+2. Haproxy + Loadbancer - to direct data to multiple cloudmaster.
+
+3. Cloudmaster - Multiple cloudmasters are possible. Customerids are mapped with cloudmaster (stateful). this communication is RPC. (this is changed to REST for new cloudapps.). for REST we use gunicorn rest servers. - this is multi thread unlike cherypy. config server is only one talk to configDB. on every CM, it has db-cache for coresponding customer/devices. This cache is implemented my SQLobject cache in python. 
+
+4. Communication of CPortal with Cloudmaster - Logged-in on CPortal - Session maintained with CS.  once something reached to master, - license check, cluster check, storage.
+
+5. CS also has 2 more task. session management and task management. in session it keeps the info for node.
+
+6. Node - it is a form of cluster. every cluster has many nodes. one master is there for all of them . if want to add a node, its information should be add in session.every node has worker on it.
+
+7. Worker - Client + agent + storage - every node has 64 workers max. every worker can run 1 backup. 
+
+8. worker process - metadata - dynamodb(FS) - while real content is on S3 in form of blocks.
+
+9. Dynamodb - Qset- userinfo(Uid)/ Cset - deviceinfo(DID) / Fset(snapshot)
+
+10. S3 - Blocks for writting data with notification of cver and dver.
+at first block cver - 16, dver = infinte
+at 2 block cver - 16, dver = infinte
+goes on
+if 2nd block change 
+at 2 block cver - 16, dver = 17
+at 2 block cver - 17, dver = infinte
+
+Dedupe works on these lines.
+
+11. Backup/restore workflow.
+	
+12. how stateless REST server is going to replace stateful RPC. how to solve state related problems. for DBcache - a cache is implemented before db and every master will go through it. for task and session management - a houston service is implemented. 
+
+-------------------------------------------------------------
+API automation suit details:
+1. testrunner.py - server client 
+	Logger 
+	Testsuit
+	testcase
+	config
+	resdef/resman
+	testmodules - lib 
+	cache in testrunner - between testcase information - trcache
+	result management
+	reports
+	send mail
+	
+resman - host - server/client - servermethod - RPC/REST - data serialize and dselialize. 
+apibase - POST/GET - Third party - 
+sirialise data 
+validations
+tools 
+zip read/writer 
+log analyzer
+file handler - large file read
+hash creater
+data generator - random string, number, date/ time
+csv reader
+json handler 
+xml parser
+eml parser
+firstbackup/incremental backup 
+fsutils
+os-based
+database connector 
+RPC server/client
+sending email 
+generate report
+sending mail
+sub-process - fire cmd on diff machine.
+
+------------------------------------------
+Python Decorators
+A decorator takes in a function, adds some functionality and returns it. In this article, you will learn how you can create a decorator and why you should use it.
+
+Q.find time taken by a fuction using decorators.
+
+https://www.programiz.com/python-programming/decorator
+
+Note - We must be comfortable with the fact that, everything in Python (Yes! Even classes), are objects. Names that we define are simply identifiers bound to these objects. Functions are no exceptions, they are objects too (with attributes). Various different names can be bound to the same function object.
+
+def make_pretty(func):
+    def inner():
+        print("I got decorated")
+        func()
+    return inner
+
+def ordinary():
+    print("I am ordinary")
+
+pretty = make_pretty(ordinary)
+print(pretty())
+
+Note - make_pretty is decorator. function ordinary() got decorated.
+
+This is a common construct and for this reason, Python has a syntax to simplify this.
+
+We can use the @ symbol along with the name of the decorator function and place it above the definition of the function to be decorated. For example,
+
+@make_pretty
+def ordinary():
+    print("I am ordinary")
+	
+- The common patterns for decorators are:
+Argument checking
+Caching
+Proxy
+Context provider
+	
+-------------------------------------------------------
+How for loop actually works in python?
+So internally, the for loop creates an iterator object, iter_obj by calling iter() on the iterable.
+Inside the loop, it calls next() to get the next element and executes the body of the for loop with this value. After all the items exhaust, StopIteration is raised which is internally caught and the loop ends. Note that any other kind of exception will pass through.
+enumerate - This gives index and value both.
+-------------------------------------------------------
+Comprehensions in Python:
+Note: A list comprehension is better method. It uses wired features that automate parts of the previous syntax:
+list Comprehensions:
+output_list = [var for var in input_list if (var condition)]
+[x*x for x in range(1,10)]  ----- generator expressions or genexp
+
+	Q. Count number of charecters in j, that are present in s as well.
+
+	j = "aA"
+	s = "aAAbbbb"
+
+	def fun(s,j):
+		return sum(1 for x in s if x in set(j))
+
+	print fun (s,j)
+	
+	Q. a=[3,1,2,4]
+	#O/P - [first even num then all odd number.]
+	def func(a):
+		return [num for num in a if num%2==0]+[num for num in a if num%2!=0]
+
+	print func(a)
+	
+	Q.flipAndInvertImage
+	I/P = [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+	O/P = [[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 0, 1], [1, 0, 1, 0]]
+	a=[[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+
+	def flipAndInvertImage(a):
+		"""
+		:type A: List[List[int]]
+		:rtype: List[List[int]]
+		"""
+		res = []
+		for row in a:
+			res.append([1 - x for x in reversed(row)])
+		return res
+
+	print flipAndInvertImage(a)
+
+Dictionary Comprehensions:
+output_dict = {key:value for (key, value) in iterable if (key, value satisfy this condition)}
+EX-1: {key:key*key for key in range(1,6) if key%2==0}
+Ex-2:
+state = ['Gujarat', 'Maharashtra', 'Rajasthan'] 
+capital = ['Gandhinagar', 'Mumbai', 'Jaipur'] 
+  
+dict_using_comp = {key:value for (key, value) in zip(state, capital)} 
+
+python map:
+map(fun, iter)
+
+filter(fun, list)
+fun can be a lambda or a function
+lambda arguments: expression
+https://www.bogotobogo.com/python/python_functions_lambda.php
+>>> (lambda x,y : x+y)(2,3)
+5
+>>> x = lambda x,y : x+y
+>>> x(2,3)
+5
+
+>>> (lambda x:
+... (x % 2 and 'odd' or 'even'))(3)
+'odd'
+
+-----------------------------------------------------
+advance collections in python:
+name tuple
+defaultdict - a default value will be assigned. 
+ordereddict - insertion order will be preserved.
+deque object
+counters - in collections module.
+
+------------------------------------------------------
+
+Local Symbol Table – stores information related to the local scope of the program. We can get this details using locals() function.
+Global Symbol Table – stores information related to global scope of the program. We can get this details using globals() function.
+
+-----------------------------------------------------------
+use of python sorted function:
+teams = [
+    ('royals', (18, 12)),
+('royals1', (34, 12)),
+('royals2', (24, 12)),
+('royals3', (12, 12)),
+('royals4', (56, 12)),
+('royals5', (13, 12)),
+]
+
+sorted_teams = sorted(teams, key=lambda team:team[1][0], reverse=True)
+print sorted_teams
+here consider team as on team's stats.
+-----------------------------------------------------------
+
+Encapsulation
+To start a car engine, you only need to turn a key or press a button. You don’t need to connect wires under the hood, rotate
+the crankshaft and cylinders, and initiate the power cycle of the engine. These details are hidden under the hood of the
+car. You have only a simple interface: a start switch, a steering wheel and some pedals. This illustrates how each object has
+an interface—a public part of an object, open to interactions with other objects.
+
+class Car:
+
+    def __init__(self):
+        self.__updateSoftware()
+
+    def drive(self):
+        print('driving')
+
+    def __updateSoftware(self):
+        print('updating software')
+
+redcar = Car()
+redcar.drive()
+#redcar.__updateSoftware()  not accesible from object.
+
+--------------------------------------------------------------
+Private variables:
+class Car:
+
+    __maxspeed = 0
+    __name = ""
+    
+    def __init__(self):
+        self.__maxspeed = 200
+        self.__name = "Supercar"
+    
+    def drive(self):
+        print('driving. maxspeed ' + str(self.__maxspeed))
+
+    def setMaxSpeed(self,speed):
+        self.__maxspeed = speed
+
+redcar = Car()
+redcar.drive()
+redcar.setMaxSpeed(320)
+redcar.drive()
+--------------------------------------------------------------
+Composition:
+
+Composition is a way of aggregating objects together by making some objects attributes of other objects. following example covering the concept in details.
+
+class Student:
+    def __init__(self, name, student_number):
+        self.name = name
+        self.student_number = student_number
+        self.classes = []
+
+    def enrol(self, course_running):
+        self.classes.append(course_running)
+        course_running.add_student(self)
+
+class Department:
+    def __init__(self, name, department_code):
+        self.name = name
+        self.department_code = department_code
+        self.courses = {}
+
+    def add_course(self, description, course_code, credits):
+        self.courses[course_code] = Course(description, course_code, credits, self)
+        return self.courses[course_code]
+
+class Course:
+    def __init__(self, description, course_code, credits, department):
+        self.description = description
+        self.course_code = course_code
+        self.credits = credits
+        self.department = department
+        self.department.add_course(self)
+
+        self.runnings = []
+
+    def add_running(self, year):
+        self.runnings.append(CourseRunning(self, year))
+        return self.runnings[-1]
+
+class CourseRunning:
+    def __init__(self, course, year):
+        self.course = course
+        self.year = year
+        self.students = []
+
+    def add_student(self, student):
+        self.students.append(student)
+
+maths_dept = Department("Mathematics and Applied Mathematics", "MAM")
+mam1000w = maths_dept.add_course("Mathematics 1000", "MAM1000W", 1)
+mam1000w_2013 = mam1000w.add_running(2013)
+bob = Student("Bob", "Smith")
+bob.enrol(mam1000w_2013)
+------------------------------------------------
+Inheritance and super:
+https://rhettinger.wordpress.com/2011/05/26/super-considered-super/
+The __init__ method of the base class initialises all the instance variables that are common to all subclasses. In each subclass we override the __init__ method so that we can use it to initialise that class’s attributes – but we want the parent class’s attributes to be initialised as well, so we need to call the parent’s __init__ method from ours. To find the right method, we use the super function – when we pass in the current class and object as parameters, The super() builtin returns a proxy object, a substitute object that has ability to call method of the base class via delegation. This is called indirection (ability to reference base object with super())
+
+class Mammal(object):
+  def __init__(self, mammalName):
+    print(mammalName, 'is a warm-blooded animal.')
+    
+class Dog(Mammal):
+  def __init__(self):
+    print('Dog has four legs.')
+    super().__init__('Dog')
+    
+d1 = Dog()  
+
+Example 2: super() with Multiple Inheritance
+
+    class Animal:
+      def __init__(self, animalName):
+        print(animalName, 'is an animal.')
+		
+    class Mammal(Animal):
+      def __init__(self, mammalName):
+        print(mammalName, 'is a warm-blooded animal.')
+        super().__init__(mammalName)
+        
+    class NonWingedMammal(Mammal):
+      def __init__(self, NonWingedMammalName):
+        print(NonWingedMammalName, "can't fly.")
+        super().__init__(NonWingedMammalName)
+    class NonMarineMammal(Mammal):
+      def __init__(self, NonMarineMammalName):
+        print(NonMarineMammalName, "can't swim.")
+        super().__init__(NonMarineMammalName)
+    class Dog(NonMarineMammal, NonWingedMammal):
+      def __init__(self):
+        print('Dog has 4 legs.');
+        super().__init__('Dog')
+        
+    d = Dog()
+    print('')
+    bat = NonMarineMammal('Bat') 
+		
+>>>>> When you run the program, the output will be:
+
+Dog has 4 legs.
+Dog can't swim.
+Dog can't fly.
+Dog is a warm-blooded animal.
+Dog is an animal.
+
+Bat can't swim.
+Bat is a warm-blooded animal.
+Bat is an animal.
+
+MRO(Method Resolution Order) in python:
+
+In the multiple inheritance scenario, any specified attribute is searched first in the current class. If not found, the search continues into parent classes in depth-first, left-right fashion without searching same class twice.
+
+So, in the above example of MultiDerived class the search order is [MultiDerived, Base1, Base2, object]. This order is also called linearization of MultiDerived class and the set of rules used to find this order is called Method Resolution Order (MRO).
+
+MRO must prevent local precedence ordering and also provide monotonicity. It ensures that a class always appears before its parents and in case of multiple parents, the order is same as tuple of base classes.
+
+MRO of a class can be viewed as the __mro__ attribute or mro() method. The former returns a tuple while latter returns a list.
+
+class Base1:
+    pass
+
+class Base2:
+    pass
+
+class MultiDerived(Base1, Base2):
+    pass
+	
+In above example MRO is as following
+>>> Dog.__mro__
+(<class 'Dog'>, 
+<class 'NonMarineMammal'>, 
+<class 'NonWingedMammal'>, 
+<class 'Mammal'>, 
+<class 'Animal'>, 
+<class 'object'>)
+
+Here is how MRO is calculated in Python:
+
+    A method in the derived calls is always called before the method of the base class.
+    In our example, Dog class is called before NonMarineMammal or NoneWingedMammal. These two classes are called before Mammal which is called before Animal, and Animal class is called before object.
+    If there are multiple parents like Dog(NonMarineMammal, NonWingedMammal), method of NonMarineMammal is invoked first because it appears first.
+
+---------------------------------------------------------------
+Class decorators:(static method)
+
+@classmethod
+
+A class method is a method that is bound to a class rather than its object. It doesn't require creation of a class instance, much like staticmethod.
+
+The difference between a static method and a class method is:
+
+    Static method knows nothing about the class and just deals with the parameters
+    Class method works with the class since its parameter is always the class itself.
+
+--------------------------------------------------------------
+Writting unit test for a lambda function:
+
+import unittest
+
+addtwo = lambda x: x + 2
+
+class LambdaTest(unittest.TestCase):
+    def test_add_two(self):
+        self.assertEqual(addtwo(2), 4)
+
+    def test_add_two_point_two(self):
+        self.assertEqual(addtwo(2.2), 4.2)
+
+    def test_add_three(self):
+        # Should fail
+        self.assertEqual(addtwo(3), 6)
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
+-------------------------------------------------------------------
+XPath in Selenium WebDriver
+xpath and different XPath expression are used to find the complex or dynamic elements, whose attributes changes dynamically on refresh or any operations.
+
+Syntax for XPath:  Xpath=//tagname[@attribute='value']
+
+details - https://www.guru99.com/xpath-selenium.html#1
+
+--------------------------------------------------------------------
+Iterators and Generators:
+i = iter('a')
+i.next()
+'a'
+
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration ---- once all is done.
+
+Generator functions:
+A function or method which uses the yield statement is called a generator function. Such a function, when called, always returns an iterator object which can be used to execute the body of the function: calling the iterator’s iterator.__next__() method will cause the function to execute until it provides a value using the yield statement. When the function executes a return statement or falls off the end, a StopIteration exception is raised and the iterator will have reached the end of the set of values to be returned.
+
+-------------------------------------------------------------------------
+
+# When To Use __repr__ vs __str__?
+# Emulate what the std lib does:
+>>> import datetime
+>>> today = datetime.date.today()
+
+# Result of __str__ should be readable:
+>>> str(today)
+'2017-02-02'
+
+# Result of __repr__ should be unambiguous:
+>>> repr(today)
+'datetime.date(2017, 2, 2)'
+
+# Python interpreter sessions use 
+# __repr__ to inspect objects:
+>>> today
+datetime.date(2017, 2, 2)
+
+-------------------------------------------------------------------
+
+git commands:
+
+git config –global user.name "gkmishragaurav"
+git config –global user.email "gkmishragaurav@gmail.com"
+git init demo
+git clone <url>
+git add [file]
+git add *
+git commit -m "[ Type in the commit message]"
+
+-----------------------------------------------------------------
+
+#curl http://wttr.in/pune
+echo "Welcome, Gaurav"
+alias dm='docker-machine'
+alias dc='docker-compose'
+alias d='docker'
+alias settag='export TAG=`cat TAG`'
+alias seteval='eval $(docker-machine env default)'
+alias de='docker exec -it'
+alias trunk='cd C:/Users/gaurav/trunk'
+alias compose='trunk && cd contrib/docker-compose'
+alias dockerup='compose && settag && seteval && dc up'
+alias dockersetup="cd contrib/docker-compose && settag && seteval && dc up -d"
+alias winpm="winpty docker exec -it master bash"
+alias winpn="winpty docker exec -it node bash"
+
+--------------------------------------------------------------------------
+Data Model:
+https://docs.python.org/3/reference/index.html
+
+magic function:
+https://rszalski.github.io/magicmethods/#context
+
+meta class
+https://www.python-course.eu/python3_metaclasses.php
+
+-----------------------------------------------------------------------
+How import works in python?
+First, you need to know that the import keyword is actually a wrapper around a function named __import__.
+
+import itertools >>> same as >>> itertools = __import__("itertools")
+
+------------------------------------------------------------------------
+difference b/w 'is' and '==':
+
+The ‘is’ operator compares the identity of two objects; the id() function returns an integer representing its identity. if two objects are same then id for both of these objects will be same. '==' checks if value of two objects is same.
+---------------------------------------------------------------------------
+
+Q. A for loop is faster then a list comprehension.
+in python(in C as well) when a function call made a new frame get created and then call past which takes type. list comprehension works same as a function does. means data frame creation. a simple for loop works in one frame. so it will save some time on these lines.
+
+------------------------------------------------------------------------
