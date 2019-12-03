@@ -1,14 +1,20 @@
 python design patterns:
+https://www.djangospin.com/design-patterns-python/
+Creational Design Patterns: Patterns which offer best ways to instantiate classes.
+Structural Design Patterns: Patterns which offer best ways to organize class hierarchy.
+Behavioural Design Patterns: Patterns which offer best ways for handling communication between objects.
 
-1. the iterator pattern: an iterator is an object with a next() method and a done() method; the latter returns True if there are no items left in the sequence. In a programming language without built-in support for iterators, the iterator would be looped over like this:
+1. Singelton:
+Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance. Just like a global variable, the Singleton pattern lets you access some object from anywhere in the program. However, it also protects that instance from being overwritten by other code.All implementations of the Singleton have these two steps in common:
 
-	while not iterator.done():
-		item = iterator.next()
-		# do something with the item
-		
-We can construct a core object, and then create a decorator around that core. Since the decorator object has the same interface as the core object, we can even wrap the new object in other decorators.
-
-Implementation of stack/queue/linklist come under this one.
+    a. Make the default constructor private, to prevent other objects from using the new operator with the Singleton class.
+	
+    b. Create a static creation method that acts as a constructor. Under the hood, this method calls the private constructor to create an object and saves it in a static field. All following calls to this method return the cached object.
+	
+Applicability:
+	a. Use the Singleton pattern when a class in your program should have just a single instance available to all clients; for example, a single database object shared by different parts of the program. The Singleton pattern disables all other means of creating objects of a class except for the special creation method. This method either creates a new object or returns an existing one if it has already been created.
+	
+	b. Use the Singleton pattern when you need stricter control over global variables. Unlike global variables, the Singleton pattern guarantees that there’s just one instance of a class. Nothing, except for the Singleton class itself, can replace the cached instance.
 
 2. The Factory Method Pattern:
 	1. Factory Method is a creational design pattern used to create concrete implementations of a common interface.
@@ -27,11 +33,23 @@ Recognizing Opportunities to Use Factory Method
 	4. Combining similar features under a common interface: Following the image processing example, an application needs to apply a filter to an image. The specific filter to use can be identified by some user input, and Factory Method can provide the concrete filter implementation.
 	
 	5. Integrating related external services: A music player application wants to integrate with multiple external services and allow users to select where their music comes from. The application can define a common interface for a music service and use Factory Method to create the correct integration based on a user preference.
-
-	enps.nsdl.com/eNPS/NationalPensionSystem.html 
-	00000020150366474
-
-Read more at:
-//economictimes.indiatimes.com/articleshow/63949847.cms?from=mdr&utm_source=contentofinterest&utm_medium=text&utm_campaign=cppst
 	
+Structural Design Patterns:
+1. Decorator:
+The Decorator Design Pattern gives us a method to add new functionality to an object, dynamically. Python makes implementing this pattern relatively easier as compared to other languages, due to its builtin feature called decorators. It is a Structural Design Pattern as it eases the application design by identifying a simple way to add features to an existing object dynamically.
+
+Decorator function: The decorator function takes an object, manipulates it using its own object and returns this latter object. 
+
+Behavioural Design Patterns:
+1. the iterator pattern: an iterator is an object with a next() method and a done() method; the latter returns True if there are no items left in the sequence. In a programming language without built-in support for iterators, the iterator would be looped over like this:
+
+	while not iterator.done():
+		item = iterator.next()
+		# do something with the item
+		
+We can construct a core object, and then create a decorator around that core. Since the decorator object has the same interface as the core object, we can even wrap the new object in other decorators.
+
+Implementation of stack/queue/linklist come under this one.
+
+
 

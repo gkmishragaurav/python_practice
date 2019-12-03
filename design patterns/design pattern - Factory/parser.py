@@ -37,7 +37,6 @@ def extract_data_from(filepath):
     return factory_obj
 
 def main():
-    sqlite_factory = extract_data_from('data/person.sq3')
     json_factory = extract_data_from('movie.json')
     json_data = json_factory.parsed_data
     print('Found:', {len(json_data)} )

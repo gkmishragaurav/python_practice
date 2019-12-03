@@ -25,8 +25,8 @@ def palindrome(s, start, end):
         else:
             break
 
-# s = 'cabbacxyzpqrstsrqppqrstsrqpzyxcabbac'
-s = 'abb'
+s = 'cabbacxyzpqstsrqppqrstsrqpzyxcabbac'
+#s = 'abb'
 n = len(s)
 for i in range(n):
     # for odd

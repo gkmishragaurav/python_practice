@@ -19,6 +19,17 @@ Note - Python key can not be a dictionary. only a fixed object can be a key for 
 run a cmd on another machine in python - use pexpect. for same machine use subprocess.
 
 ---------------------------------------------
+Q. How python code compiled?
+Q. depth of a dictionary in python ?
+
+---------------------------------------------
+Python data types:
+
+
+---------------------------------------------
+Recursion and Memory:
+Each recursive call makes a new copy of that method (actually only the variables) in memory. Once a method ends (that is, returns some data), the copy of that returning method is removed from memory. The recursive solutions look simple but visualization and tracing takes time.
+---------------------------------------------
 regular expressions: 
 for learning/practice - https://regexone.com/
 expert level - http://play.inginf.units.it
@@ -483,7 +494,6 @@ Q. Port scanner with sockets
 
 Q. openssl s_client -connect harbor.drtst.org:8001
 ------------------------------------------------------
-
 unix:
 1. Cut is used to select sections of text from each line of files.
 System ID,School,Phone,Address,City,State,Zip,Type,Principal
@@ -852,7 +862,27 @@ Argument checking
 Caching
 Proxy
 Context provider
+
+Making a class that act as decorater:
+To decorate a function, we need to return an object that can be used as a function. The classic implementation of the decorator pattern uses the fact that the way Pythonimplements regular procedural functions these functions can be seen as classes with some kind of execution method. In Python, everything is an object; functions are objects with a special __call__() method. If our decorator returns an object with a __call__() method, the result can be used as a function.
+
+class ProfilingDecorator(object):
+	def __init__(self, f):
+		print("Profiling decorator initiated")
+		self.f = f
+	def __call__(self, *args):
+		start_time = time.time()
+		result = self.f(*args)
+		end_time = time.time()
+		print("[Time elapsed for n = {}] {}".format(n, end_time -
+		start_time))
+		return result
+		
+@ProfilingDecorator
+def func(a):
+	print a
 	
+In the class definition, we see that the decorated function is saved as an attribute of the object during initialization. Then, in the call function, the actual running of the function being decorated is wrapped in time requests. Just before returning, the profile value is printed to the console. When the compiler comes across the _@ProfilingDecorator_, it initiates an object and passes in the function being wrapped as an argument to the constructor. The returned object has the __call__() function as a method, and as such duck typing will allow this object to be used as a function. Also, note how we used *args in the __call__() method’s parameters to pass in arguments. *args allows us to handle multiple arguments coming in. This is called packing, as all the parameters coming in are packed into the args variable. Then, when we call the stored function in the f attribute of the decorating object, we once again use *args. This is called unpacking, and it turns all the elements of the collection in args into individual arguments that are passed on to the function in question.
 -------------------------------------------------------
 How for loop actually works in python?
 So internally, the for loop creates an iterator object, iter_obj by calling iter() on the iterable.
@@ -1050,10 +1080,25 @@ mam1000w_2013 = mam1000w.add_running(2013)
 bob = Student("Bob", "Smith")
 bob.enrol(mam1000w_2013)
 ------------------------------------------------
+Working with the Python Super Function
+
+	Python 2.2 saw the introduction of a built-in function called “super,” which returns a proxy object to delegate method calls to a class – which can be either parent or sibling in nature.
+
+	In other words, the super function can be used to gain access to inherited methods – from a parent or sibling class – that has been overwritten in a class object.
+
+How Is the Super Function Used?
+
+	The super function is somewhat versatile, and can be used in a couple of ways.
+
+	Use Case 1: Super can be called upon in a single inheritance, in order to refer to the parent class or multiple classes without explicitly naming them. It’s somewhat of a shortcut, but more importantly, it helps keep your code maintainable for the foreseeable future.
+
+	Use Case 2: Super can be called upon in a dynamic execution environment for multiple or collaborative inheritance. This use is considered exclusive to Python, because it’s not possible with languages that only support single inheritance or are statically compiled.
+
+------------------------------------------------
 Inheritance and super:
 https://rhettinger.wordpress.com/2011/05/26/super-considered-super/
 The __init__ method of the base class initialises all the instance variables that are common to all subclasses. In each subclass we override the __init__ method so that we can use it to initialise that class’s attributes – but we want the parent class’s attributes to be initialised as well, so we need to call the parent’s __init__ method from ours. To find the right method, we use the super function – when we pass in the current class and object as parameters, The super() builtin returns a proxy object, a substitute object that has ability to call method of the base class via delegation. This is called indirection (ability to reference base object with super())
-
+MRO - https://makina-corpus.com/blog/metier/2014/python-tutorial-understanding-python-mro-class-search-path
 class Mammal(object):
   def __init__(self, mammalName):
     print(mammalName, 'is a warm-blooded animal.')
@@ -1094,7 +1139,6 @@ Example 2: super() with Multiple Inheritance
     bat = NonMarineMammal('Bat') 
 		
 >>>>> When you run the program, the output will be:
-
 Dog has 4 legs.
 Dog can't swim.
 Dog can't fly.
@@ -1268,3 +1312,94 @@ Q. A for loop is faster then a list comprehension.
 in python(in C as well) when a function call made a new frame get created and then call past which takes type. list comprehension works same as a function does. means data frame creation. a simple for loop works in one frame. so it will save some time on these lines.
 
 ------------------------------------------------------------------------
+Q. abstract class: 
+Link:- https://www.python-course.eu/python3_abstract_classes.php
+Abstract classes are classes that contain one or more abstract methods. An abstract method is a method that is declared, but contains no implementation. Abstract classes may not be instantiated, and require subclasses to provide implementations for the abstract methods. Subclasses of an abstract class in Python are not required to implement abstract methods of the parent class.
+
+from abc import ABC, abstractmethod
+ 
+class AbstractClassExample(ABC):
+ 
+    def __init__(self, value):
+        self.value = value
+        super().__init__()
+    
+    @abstractmethod
+    def do_something(self):
+        pass
+		
+class DoAdd42(AbstractClassExample):
+    def do_something(self):
+        return self.value + 42
+    
+class DoMul42(AbstractClassExample):
+   
+    def do_something(self):
+        return self.value * 42
+    
+x = DoAdd42(10)
+y = DoMul42(10)
+print(x.do_something())
+print(y.do_something())
+
+if do_something is not defined in sub class then following error will be raised.
+TypeError: Can't instantiate abstract class DoAdd42 with abstract methods do_something
+---------------------------------------------
+python polimorphism:
+there is two type of polymorphism in python - read both.
+In literal sense, Polymorphism means the ability to take various forms. In Python, Polymorphism allows us to define methods in the child class with the same name as defined in their parent class.
+
+As we know, a child class inherits all the methods from the parent class. However, you will encounter situations where the method inherited from the parent class doesn’t quite fit into the child class. In such cases, you will have to re-implement method in the child class. This process is known as Method Overriding.
+
+If you have overridden a method in the child class, then the version of the method will be called based upon the type of the object used to call it. If a child class object is used to call an overridden method then the child class version of the method is called. On the other hand, if parent class object is used to call an overridden method, then the parent class version of the method is called.
+----------------------------------------------
+
+'__main__' is the name of the scope in which top-level code executes. A module’s __name__ is set equal to '__main__' when read from standard input, a script, or from an interactive prompt. A module can discover whether or not it is running in the main scope by checking its own __name__, which allows a common idiom for conditionally executing code in a module when it is run as a script or with python -m but not when it is imported:
+
+-----------------------------------------------
+Gherkin Syntax: BDD - behaviour development
+Feature: Title of the Scenario
+Given [Preconditions or Initial Context]
+When [Event or Trigger]
+Then [Expected output]
+
+Gherkin Example:
+Feature:  Login functionality of social networking site Facebook. 
+Given:  I am a facebook user. 
+When: I enter username as username. 
+And I enter the password as the password 
+Then I should be redirected to the home page of facebook 
+
+Example 2:
+Feature: User Authentication Background:
+Given the user is already registered to the website Scenario:
+Given the user is on the login page
+When the user inputs the correct email address
+And the user inputs the correct password
+And the user clicks the Login button
+Then the user should be authenticated
+And the user should be redirected to their dashboard
+And the user should be presented with a success message 
+
+-----------------------------------------------------------
+understanding of behave python framework.
+What is BDD?
+
+Behavioral Driven Development (BDD) is a software development approach that has evolved from TDD (Test Driven Development). It differs by being written in a shared language, which improves communication between tech and non-tech teams and stakeholders.In both development approaches, tests are written ahead of the code, but in BDD, tests are more user-focused and based on the system’s behavior.
+
+https://blog.testlodge.com/what-is-bdd/
+
+------------------------------------------------------------
+Test Driven Development (TDD):
+https://www.guru99.com/test-driven-development.html
+
+-------------------------------------------------------------
+pip show <module name> --- to see module is installed or not.
+pip install abc==2.0.0
+
+-----------------------------------------------------------
+what is diff b/w text file and binary file?
+
+
+
+
