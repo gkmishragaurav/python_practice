@@ -13,22 +13,33 @@ class Graph:
             self.vertices.append(new_vertex)
 
     def setVertex(self, id):
-        pass
+        if id < self.num_of_vertices:
+            new_vertex = Vertex(id)
+            self.vertices.append(new_vertex)
 
     def getVetex(self, id):
-        pass
+        for i in range(self.num_of_vertices):
+            if id == self.vertices[i]:
+                return i
+        return -1
 
     def addEdge(self, frm, to):
-        pass
+        self.matrix[frm][to] = 1
 
-    def getEdge(self):
-        pass
+    def getEdge(self, frm, to):
+        return self.matrix[frm][to]
 
     def deleteEdge(self, frm, to):
-        pass
+        self.matrix[frm][to] = 0
 
     def printGraph(self):
-        pass
+        print self.matrix
+
+    def __str__(self):
+        return str(self.matrix)
 
 
+g=Graph(5)
+g.setVertex(1)
+print str(g)
 

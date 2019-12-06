@@ -1,0 +1,104 @@
+system design basics
+https://hackernoon.com/fundamentals-of-system-design-part-0-b3e2fe45daec
+https://www.youtube.com/watch?v=xpDnVSmNFX0
+https://www.youtube.com/watch?v=UzLMhqg3_Wc
+https://www.youtube.com/watch?v=LcuT0ynb_ks
+https://www.youtube.com/watch?v=quLrc3PbuIw
+
+
+Key Characteristics of Distributed Systems
+https://medium.com/system-design-blog/key-characteristics-of-distributed-systems-781c4d92cce3
+
+general understanding:
+https://www.freecodecamp.org/news/how-to-system-design-dda63ed27e26/
+https://medium.com/ios-expert-series-or-interview-series/software-architectural-patterns-design-structures-c5692fe8affc
+
+Consistent Hashing
+https://www.youtube.com/watch?v=zaRkONvyGr8
+
+CAP Theorem
+https://towardsdatascience.com/cap-theorem-and-distributed-database-management-systems-5c2be977950e
+
+SQL vs. NoSQL
+https://www.thegeekstuff.com/2014/01/sql-vs-nosql-db
+
+Redundancy and Replication
+https://medium.com/baseds/redundancy-and-replication-duplicating-in-a-distributed-system-7ab4322d7378
+
+system design github link
+https://github.com/DreamOfTheRedChamber/system-design
+
+Load Balancing
+https://www.educative.io/courses/grokking-the-system-design-interview/3jEwl04BL7Q
+
+Caching
+https://www.educative.io/courses/grokking-the-system-design-interview/3j6NnJrpp5p
+
+Long-Polling vs WebSockets vs Server-Sent Events
+https://www.educative.io/courses/grokking-the-system-design-interview/gx7wZzWn5Vj
+
+Data Partitioning
+https://docs.microsoft.com/en-us/azure/architecture/best-practices/data-partitioning
+
+indexing
+https://docs.microsoft.com/en-us/sql/relational-databases/sql-server-index-design-guide?view=sql-server-ver15
+https://medium.com/@nishantnitb/system-design-chapter-5-indexes-in-databases-beb90295dbcf
+
+Designing Pastebin
+https://massivetechinterview.blogspot.com/2016/07/design-pastebin.html
+
+Designing Instagram
+https://www.educative.io/courses/grokking-the-system-design-interview/m2yDVZnQ8lG
+
+Designing Twitter
+https://medium.com/@narengowda/system-design-for-twitter-e737284afc95
+
+Designing Dropbox
+https://www.youtube.com/watch?v=U0xTu6E2CT8
+https://medium.com/@narengowda/system-design-dropbox-or-google-drive-8fd5da0ce55b
+
+Designing a URL Shortening service like TinyURL
+https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR
+
+Designing Facebook Messenger/whatsapp
+https://www.youtube.com/watch?v=zKPNUMkwOJE
+
+actual architecture: https://developers.facebook.com/docs/messenger-platform/introduction/general-best-practices/
+
+Designing Youtube or Netflix
+https://hackernoon.com/how-not-to-design-netflix-in-your-45-minute-system-design-interview-64953391a054
+https://medium.com/@narengowda/netflix-system-design-dbec30fede8d
+https://www.youtube.com/watch?v=psQzyFfsUGU
+https://www.geeksforgeeks.org/design-video-sharing-system-like-youtube/
+
+
+Designing Typeahead Suggestion
+https://www.youtube.com/watch?v=us0qySiUsGU
+https://www.youtube.com/watch?v=xrYTjaK5QVM
+https://medium.com/@prefixyteam/how-we-built-prefixy-a-scalable-prefix-search-service-for-powering-autocomplete-c20f98e2eff1
+https://dzone.com/articles/how-to-design-a-autocomplete-system
+
+Design Ticketmaster
+https://www.youtube.com/watch?v=lBAwJgoO3Ek
+https://www.interviewcake.com/question/java/ticket-sales-site
+
+
+Designing Uber backend
+https://medium.com/@narengowda/uber-system-design-8b2bc95e2cfe
+https://www.quora.com/Systems-design-What-is-the-software-design-of-the-Uber-App
+https://tianpan.co/notes/120-designing-uber
+
+Designing Yelp or Nearby Friends
+https://www.youtube.com/watch?v=tu6QKpV7GiI
+https://vaspaeantechzone.blogspot.com/2019/06/designing-yelp-or-nearby-friends.html
+https://medium.com/swlh/how-to-develop-a-yelp-like-application-8224e8a86828
+
+Designing Facebook’s Newsfeed
+http://blog.gainlo.co/index.php/2016/03/29/design-news-feed-system-part-1-system-design-interview-questions/
+
+Designing a Web Crawler
+https://www.youtube.com/watch?v=BKZxZwUgL3Y
+https://github.com/donnemartin/system-design-primer/tree/master/solutions/system_design/web_crawler
+
+mix
+https://github.com/checkcheckzz/system-design-interview
