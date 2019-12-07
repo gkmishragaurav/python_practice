@@ -42,9 +42,39 @@ class Graph:
 
         return None
 
-
     def __str__(self):
         return str(self._graph_dict)
+
+    def get_connection(self, key):
+        return self._graph_dict(key)
+
+    def dfs(self, start):
+        stack=[start]
+        visited=[]
+        while stack:
+            temp=stack.pop() # one difference from BFS is to pop last element here instead of first one
+            if temp not in visited:
+                visited.append(temp)
+
+                for nbr in self._graph_dict[temp]:
+                    if nbr not in visited:
+                        stack.append(nbr)
+
+        return visited
+
+    def bfs(self, start):
+        stack=[start]
+        visited=[]
+        while stack:
+            temp=stack.pop(0)
+            if temp not in visited:
+                visited.append(temp)
+
+                for nbr in self._graph_dict[temp]:
+                    if nbr not in visited:
+                        stack.append(nbr)
+
+        return visited
 
 g = { "a" : ["d", "f"],
       "b" : ["c"],
@@ -56,4 +86,6 @@ g = { "a" : ["d", "f"],
 graph = Graph(g)
 print str(graph)
 print graph.find_path('a', 'b')
+print graph.dfs('a')
+print graph.bfs('a')
 

@@ -40,6 +40,9 @@ https://www.educative.io/courses/grokking-the-system-design-interview/gx7wZzWn5V
 Data Partitioning
 https://docs.microsoft.com/en-us/azure/architecture/best-practices/data-partitioning
 
+dns architecture
+http://dtsden.eu/article/DNSArchitecture
+
 indexing
 https://docs.microsoft.com/en-us/sql/relational-databases/sql-server-index-design-guide?view=sql-server-ver15
 https://medium.com/@nishantnitb/system-design-chapter-5-indexes-in-databases-beb90295dbcf
