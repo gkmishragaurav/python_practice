@@ -9,6 +9,12 @@ https://cognitiveclass.ai/courses/reactive-architecture-cqrs/
 all algorithms:
 https://github.com/TheAlgorithms/Python
 
+python design understanding:
+https://docs.python.org/2/faq/design.html#why-are-python-strings-immutable
+
+python dictionary implementation 
+https://www.laurentluce.com/posts/python-dictionary-implementation/
+
 books to read for better python - 
 Thinking In Python - this is good for understanding design patterns in python
 Addison Wesley - Text processing in python
