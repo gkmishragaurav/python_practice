@@ -12,27 +12,27 @@ class Graph:
             new_vertex=Vertex(i)
             self.vertices.append(new_vertex)
 
-    def setVertex(self, id):
+    def set_Vertex(self, id):
         if id < self.num_of_vertices:
             new_vertex = Vertex(id)
             self.vertices.append(new_vertex)
 
-    def getVetex(self, id):
+    def get_Vetex(self, id):
         for i in range(self.num_of_vertices):
             if id == self.vertices[i]:
                 return i
         return -1
 
-    def addEdge(self, frm, to):
-        self.matrix[frm][to] = 1
+    def add_edge(self, frm, to):
+        self.matrix[frm-1][to-1] = 1
 
-    def getEdge(self, frm, to):
-        return self.matrix[frm][to]
+    def get_edge(self, frm, to):
+        return self.matrix[frm-1][to-1]
 
-    def deleteEdge(self, frm, to):
-        self.matrix[frm][to] = 0
+    def delete_Edge(self, frm, to):
+        self.matrix[frm-1][to-1] = 0
 
-    def printGraph(self):
+    def print_Graph(self):
         print self.matrix
 
     def __str__(self):
@@ -40,6 +40,11 @@ class Graph:
 
 
 g=Graph(5)
-g.setVertex(1)
+g.add_edge(1, 4)
+g.add_edge(4, 2)
+g.add_edge(4, 5)
+g.add_edge(2, 5)
+g.add_edge(5, 3)
+
 print str(g)
 
