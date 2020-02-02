@@ -622,7 +622,7 @@ For mitigating a DDoS attack you need to identify normal conditions for network 
 
 Q - How to determine the encoding of text?
 Correctly detecting the encoding all times is impossible.
-You can also use UnicodeDammit.
+You can also use UnicodeDammit. 
 
 -------------------------------------------
 
