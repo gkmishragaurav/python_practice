@@ -1,3 +1,5 @@
+import copy
+
 class Graph:
     def __init__(self, graph_dict=None):
         self._graph_dict = graph_dict
@@ -20,6 +22,18 @@ class Graph:
         if self._graph_dict[name]:
             if edge not in self._graph_dict[name].keys():
                 self._graph_dict[name].append(edge)
+
+    def degree(self):
+        '''This denotes number of incoming connections to a node'''
+        dg={}
+        for item in self._graph_dict.keys():
+            dg[item] = 0
+            for key in self._graph_dict.keys():
+                if item != key:
+                    if item in self._graph_dict[key]:
+                        dg[item]=dg[item]+1
+
+        return dg
 
     def find_path(self, start, end, path=None):
         '''This will find the path from start vertes to end vertex if present'''
@@ -76,16 +90,21 @@ class Graph:
 
         return visited
 
-g = { "a" : ["d", "f"],
-      "b" : ["c"],
-      "c" : ["b", "c", "d", "e"],
-      "d" : ["a", "c"],
-      "e" : ["c"],
-      "f" : ["d"]
-    }
+    def topological_sort(self):
+        pass
+    
+g = { "a" : ["c", "b", "d"],
+      "b" : ["d", "c"],
+      "c" : ["e"],
+      "d" : ["e"],
+      "e" : []
+      }
 graph = Graph(g)
 print str(graph)
-print graph.find_path('a', 'b')
-print graph.dfs('a')
-print graph.bfs('a')
+# print graph.find_path('a', 'b')
+# print graph.dfs('a')
+# print graph.bfs('a')
+print graph.degree()
+
+print graph.topological_sort()
 
