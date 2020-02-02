@@ -9,12 +9,6 @@ https://cognitiveclass.ai/courses/reactive-architecture-cqrs/
 all algorithms:
 https://github.com/TheAlgorithms/Python
 
-python design understanding:
-https://docs.python.org/2/faq/design.html#why-are-python-strings-immutable
-
-python dictionary implementation 
-https://www.laurentluce.com/posts/python-dictionary-implementation/
-
 books to read for better python - 
 Thinking In Python - this is good for understanding design patterns in python
 Addison Wesley - Text processing in python
@@ -317,6 +311,9 @@ Q. what happens in the background from the time you press the Power button until
 	4. The boot loader loads both the kernel and an initial RAM–based filesystem (initramfs) into memory so it can be used directly by the kernel.
 	5. The initramfs filesystem image contains programs and binary files that perform all actions needed to mount the proper root filesystem, like providing kernel functionality for the needed file system and device drivers for mass storage controllers with a facility called udev (for User Device) which is responsible for figuring out which devices are present, locating the drivers they need to operate properly, and loading them. After the root filesystem has been found, it is checked for errors and mounted.
 	6. Once the kernel has set up all its hardware and mounted the root filesystem, the kernel runs the /sbin/init program. This then becomes the initial process, which then starts other processes to get the system running. Most other processes on the system trace their origin ultimately to init; the exceptions are kernel processes, started by the kernel directly for managing internal operating system details.
+	
+Q. What Is a BIOS?
+BIOS is short for Basic Input-Output system. It’s low-level software that resides in a chip on your computer’s motherboard. The BIOS loads when your computer starts up, and the BIOS is responsible for waking up your computer’s hardware components, ensures they’re functioning properly, and then runs the bootloader that boots Windows or whatever other operating system you have installed.
 	
 Q. Difference between BIOS and Kernel
 Kernel is one of the most important part of Operating System. We use the word kernel to mean the part of operating system that runs in the privileged mode (Sometimes even a subset of this). Kernel is closer to the hardware and often performs tasks like memory management and system calls.
@@ -1403,8 +1400,61 @@ https://www.guru99.com/test-driven-development.html
 pip show <module name> --- to see module is installed or not.
 pip install abc==2.0.0
 
+-------------------------------------------------------------
+Python-tesseract is an optical character recognition (OCR) tool for python. That is, it will recognize and “read” the text embedded in images. Python-tesseract is a wrapper for Google’s Tesseract-OCR Engine. It is also useful as a stand-alone invocation script to tesseract, as it can read all image types supported by the Pillow and Leptonica imaging libraries, including jpeg, png, gif, bmp, tiff, and others. Additionally, if used as a script, Python-tesseract will print the recognized text instead of writing it to a file.
+
 -----------------------------------------------------------
 what is diff b/w text file and binary file?
+
+-----------------------------------------------------------
+
+what is hashing?
+	- assosiative array
+	- indexed with other ways like 'string'
+	- used to retrive information quickly.
+	- serch - worst case -- O(n), best case -- O(1)
+	- 4 key component --- Hash table, Hash Function, collisions, collision resolution Techniques
+	
+Hashing:
+Hashing is a technique to convert a range of key values into a range of indexes of an array. We're going to use modulo operator to get a range of key values. 
+
+Hash Table/Hash map:
+Hash table is a generalization of array. with an array, we store the element whose key k at a position k of the array. that means , given a key k, we find the element whose key by just looking in the kth position of the array. This is called direct addressing. Direct addressing is applicable when we can afford to allocate an array with one position for every possible key. but if we do not have enough space to allocate then this will not work. (means need to come up with nother idea.)	
+
+Charecterstics of good hash function:
+	- Minimize collision
+	- Be easy and quick to compares
+	- Distribute key values evenly in the hash table
+	- have a high load factor for given set of keys
+	
+load factor = no of element in the hash table/hash table size.
+
+Collision resolution techniques:
+	- separate chaining --- in hash table all same keys will be at same spot in LL form.this called clustering.
+	- open addressing
+		- linear proabing 
+		- quadratic probing
+		- double hashing - interval b/w the probes is calculated by another hash function.
+
+Linear Probing
+As we can see, it may happen that the hashing technique is used to create an already used index of the array. In such a case, we can search the next empty location in the array by looking into the next cell until we find an empty cell. This technique is called linear probing.
+
+Search Operation
+Whenever an element is to be searched, compute the hash code of the key passed and locate the element using that hash code as index in the array. Use linear probing to get the element ahead if the element is not found at the computed hash code.
+
+Insert Operation
+Whenever an element is to be inserted, compute the hash code of the key passed and locate the index using that hash code as an index in the array. Use linear probing for empty location, if an element is found at the computed hash code.
+
+Delete Operation
+Whenever an element is to be deleted, compute the hash code of the key passed and locate the index using that hash code as an index in the array. Use linear probing to get the element ahead if an element is not found at the computed hash code. When found, store a dummy item there to keep the performance of the hash table intact.
+-------------------------------------
+
+websocket vs long polling ---- https://dev.to/moz5691/websocket-vs-long-polling-http-412f
+
+-----------------------------------------------
+- ASCII Charecters understanding:
+
+-----------------------------------------------
 
 
 

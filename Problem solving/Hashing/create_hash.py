@@ -17,4 +17,3 @@ class HastTable:
     def delete(self, key):
         '''For deleting a key in hash table'''
         pass
-    
