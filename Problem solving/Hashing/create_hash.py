@@ -18,13 +18,14 @@ class HashTable():
     def resize(self):
         self.bucket_size+=1
         self.capacity = self.bucket_size*self.total_buckets
-        print(self.bucket_size, self.capacity)
+        # print(self.bucket_size, self.capacity)
 
     def set(self, key, value):
         hash_key = self.hash_Function(key)
         bucket = self.bucket[hash_key]
         if not bucket:
             self.bucket[hash_key] = [(key, value)]
+            self.size+=1
         else:
             found = self.search_in_bucket(bucket, key)
             if found[1]:
@@ -64,6 +65,9 @@ class HashTable():
     def __str__(self):
         return str(self.bucket)
 
+    def __len__(self):
+        return self.size
+
 h = HashTable()
 h[12] = 'fwgwe'
 h[2] = "rgrg"
@@ -71,5 +75,6 @@ h[22] = 'rgrger'
 h[32] = "rgrg"
 h[42] = "rgrg"
 h[52] = "rgrg"
+print(len(h))
 print(h[22])
 print(h.size, h.capacity, h)
