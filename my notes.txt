@@ -622,7 +622,7 @@ For mitigating a DDoS attack you need to identify normal conditions for network 
 
 Q - How to determine the encoding of text?
 Correctly detecting the encoding all times is impossible.
-You can also use UnicodeDammit. 
+You can also use UnicodeDammit.
 
 -------------------------------------------
 
@@ -1408,14 +1408,14 @@ what is diff b/w text file and binary file?
 
 -----------------------------------------------------------
 
-what is hashing?
+Hashing?
 	- assosiative array
 	- indexed with other ways like 'string'
 	- used to retrive information quickly.
 	- serch - worst case -- O(n), best case -- O(1)
 	- 4 key component --- Hash table, Hash Function, collisions, collision resolution Techniques
 	
-Hashing:
+What is Hashing:
 Hashing is a technique to convert a range of key values into a range of indexes of an array. We're going to use modulo operator to get a range of key values. 
 
 Hash Table/Hash map:
