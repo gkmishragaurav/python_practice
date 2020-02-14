@@ -4,7 +4,7 @@
 # features:
 # resize the hash when bucket is full.
 
-class Employee():
+class HashTable():
     bucket_size = 4
     total_buckets = 5
     size=0
@@ -64,12 +64,12 @@ class Employee():
     def __str__(self):
         return str(self.bucket)
 
-emp = Employee()
-emp[12] = 'fwgwe'
-emp[2] = "rgrg"
-emp[22] = 'rgrger'
-emp[32] = "rgrg"
-emp[42] = "rgrg"
-emp[52] = "rgrg"
-print(emp[22])
-print(emp.size, emp.capacity, emp)
+h = HashTable()
+h[12] = 'fwgwe'
+h[2] = "rgrg"
+h[22] = 'rgrger'
+h[32] = "rgrg"
+h[42] = "rgrg"
+h[52] = "rgrg"
+print(h[22])
+print(h.size, h.capacity, h)
