@@ -13,15 +13,15 @@ def check_repeat(s, start, end):
 
     return False
 
-def slid_substring(s):
+def slide_substring(s):
     window=len(s)
     while(window>1):
         start = 0
         while(start+window <= len(s)):
             if not check_repeat(s, start, start+window):
-                return s[start:start+window+1]
+                return s[start:start+window]
             start+=1
         window -= 1
+    return s[0]
 
-
-print slid_substring(s)
+print(slide_substring(s))
