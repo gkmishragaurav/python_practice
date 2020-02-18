@@ -6,16 +6,14 @@
 
 def insertion_sort(a):
     for i in range(1, len(a)):
-        j=i
-        current=a[i]
-        while(j>0 and a[j-1]>current):
-            a[j] = a[j-1]
-            j-=1
-            print(a)
-        a[j]=current
+        current = a[i]
+        j=i-1
+        while(j>=0 and a[j] > current):
+            a[j+1]=a[j]
+            j=j-1
+        a[j+1]=current
 
-a=[4, 2, 7, 3, 9, 1, 12, 6, 13, 8, 10]
+# a=[4, 2, 7, 3, 9, 1, 12, 6, 13, 8, 10]
+a=[12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 insertion_sort(a)
 print(a)
-
-
