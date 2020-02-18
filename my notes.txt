@@ -172,6 +172,14 @@ Sorting:
 	
 	Insertion sort is a simple sorting algorithm that works the way we sort playing cards in our hands.
 	
+	Bubble sort takes n^2/2 comparisons and n^2/2 swaps in both avg case and in worst case.
+	
+	Selection sort takes n^2/2 comparisons and n swaps 
+	
+	Insertion sort takes n^2/4 comparisons and n^2/8 swaps in avg case and in worst case, they are double.
+	
+	Insertion sort is almost for partially sorted input.
+	
 ----------------------------------------------
 Notes: recursion depth
 	The precise value of this limit depends upon the Python distribution, but a typical default value is 1000. If this limit is reached, the Python interpreter raises a RuntimeError with a message, maximum recursion depth exceeded .
