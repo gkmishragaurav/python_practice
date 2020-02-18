@@ -1,57 +1,50 @@
-class Employee():
-    bucket_size = 4
-    total_buckets = 5
-    size=0
-    def __init__(self, capacity=bucket_size*total_buckets):
-        self.capacity = capacity
-        self.bucket=[[]]*self.total_buckets
+class MyHashMap(object):
 
-    def hash_Function(self, key):
-        return key%5
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.size = 10000
+        self.bucket = [[]] * self.size
 
-    def set(self, key, value):
-        hash_key = self.hash_Function(key)
-        bucket = self.bucket[hash_key]
-        if not bucket:
-            self.bucket[hash_key] = [(key, value)]
-        else:
-            found = self.search_in_bucket(bucket, key)
-            if found[1]:
-                if found[1] != value:
-                    self.bucket[hash_key].remove((key, value))
-                else:
-                    return
-            self.bucket[hash_key].append((key, value))
-        return 0
+    def hash_function(self, key):
+        return key % 10000
 
-    def search_in_bucket(self, bucket, key):
-        found=False
-        for n, item in enumerate(bucket):
-            if item[0] == key:
-                return item
-        return found, None
+    def put(self, key, value):
+        """
+        value will always be non-negative.
+        :type key: int
+        :type value: int
+        :rtype: None
+        """
+        hash_key = self.hash_function(key)
+        self.bucket[hash_key] = [key, value]
 
-    def get(self, item):
-        hash_key = self.hash_Function(item)
-        bucket = self.bucket[hash_key]
-        if bucket:
-            found = self.search_in_bucket(bucket, item)
-            if found[0]:
-                return found[1]
-        return False
+    def get(self, key):
+        """
+        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
+        :type key: int
+        :rtype: int
+        """
+        hash_key = self.hash_function(key)
+        if self.bucket[hash_key]:
+            if self.bucket[hash_key][0] == key:
+                return self.bucket[hash_key][1]
+        return -1
 
-    def __setitem__(self, key, value):
-        self.set(key, value)
+    def remove(self, key):
+        """
+        Removes the mapping of the specified value key if this map contains a mapping for the key
+        :type key: int
+        :rtype: None
+        """
+        hash_key = self.hash_function(key)
+        if self.bucket[hash_key]:
+            if self.bucket[hash_key][0] == key:
+                self.bucket[key] = []
 
-    def __getitem__(self, item):
-        return self.get(item)
-
-    def __str__(self):
-        return str(self.bucket)
-
-emp = Employee()
-emp[12] = 'fwgwe'
-emp[13] = "rgrg"
-emp[22] = 'rgrger'
-print(emp[22])
-print(emp)
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
