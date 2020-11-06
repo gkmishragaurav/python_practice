@@ -1,0 +1,31 @@
+networking:
+
+Q - udp vs tcp - when to use them?
+
+TCP (Transmission Control Protocol) is connection oriented, whereas UDP (User Datagram Protocol) is connection-less. This means that TCP tracks all data sent, requiring acknowledgment for each octet (generally). UDP does not use acknowledgments at all, and is usually used for protocols where a few lost datagrams do not matter.
+
+Because of acknowledgments, TCP is considered a reliable data transfer protocol. It ensures that no data is sent to the upper layer application that is out of order, duplicated, or has missing pieces. It can even manage transmissions to attempt to reduce congestion.
+
+Q. how dns work:
+Q. how to design my own network?
+Q. network data transfer.
+Q - What Happens When You Type in a URL?
+
+This is how I would explain it:
+
+    You enter a URL into a web browser
+    The browser looks up the IP address for the domain name via DNS
+    The browser sends a HTTP request to the server
+    The server sends back a HTTP response
+    The browser begins rendering the HTML
+    The browser sends requests for additional objects embedded in HTML (images, css, JavaScript) and repeats steps 3-5.
+    Once the page is loaded, the browser sends further async requests as needed.
+
+Q. ping works on which porotocol - ICMP
+
+Q. What are sockets?
+Sockets are the main component that allows us to take advantage of the operating system's capabilities to interact with the network. You can think of sockets as a point-to-point communication channel between a client and a server. A socket is defined by the IP address of the machine, the port on which it listens, and the protocol it uses. The goal of a socket is to communicate processes through the network.
+
+Q. Port scanner with sockets
+
+Q. openssl s_client -connect harbor.drtst.org:8001
