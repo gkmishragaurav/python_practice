@@ -1,0 +1,131 @@
+Operation system notes:
+Q. What is OS? - resides b/w user and computer hardware, proves an environment to user in which one can execute programs.
+Task of OS:
+	process management - os decides, which task will get how much of cpu. keeps tracks for all that.
+	file management -
+	momory management
+	device management
+
+Q. what happens in the background from the time you press the Power button until the Linux login prompt appears?
+	1. the Basic Input/Output System (BIOS) initializes the hardware, including the screen and keyboard, and tests the main memory. This process is also called POST (Power On Self Test).The BIOS software is stored on a ROM chip on the motherboard. After this, the remainder of the boot process is completely controlled by the operating system.
+	2.  Master Boot Records (MBR) - Once the POST is completed, the system control passes from the BIOS to the boot loader.The boot loader is usually stored on one of the hard disks in the system. Thereafter, information on the date, time, and the most important peripherals are loaded from the CMOS values. A number of boot loaders exist for Linux; the most common ones are GRUB.
+	3. The boot loader has two distinct stages:
+		a. the boot loader resides at the first sector of the hard disk also known as the Master Boot Record(MBR).The size of the MBR is just 512 bytes.In this stage, the boot loader examines the partition table and finds a bootable partition. Once it finds a bootable partition, it then searches for the second stage bootloader e.g, GRUB, and loads it into RAM (Random Access Memory).
+		b. A splash screen is displayed which allows us to choose which Operating System (OS) to boot. After choosing the OS, the boot loader loads the kernel of the selected operating system into RAM and passes control to it.The boot loader loads the selected kernel image (in the case of Linux) and passes control to it. Kernels are almost always compressed, so it's first job is to uncompress itself. After this, it will check and analyze the system hardware and initialize any hardware device drivers built into the kernel.
+
+	4. The boot loader loads both the kernel and an initial RAM–based filesystem (initramfs) into memory so it can be used directly by the kernel.
+	5. The initramfs filesystem image contains programs and binary files that perform all actions needed to mount the proper root filesystem, like providing kernel functionality for the needed file system and device drivers for mass storage controllers with a facility called udev (for User Device) which is responsible for figuring out which devices are present, locating the drivers they need to operate properly, and loading them. After the root filesystem has been found, it is checked for errors and mounted.
+	6. Once the kernel has set up all its hardware and mounted the root filesystem, the kernel runs the /sbin/init program. This then becomes the initial process, which then starts other processes to get the system running. Most other processes on the system trace their origin ultimately to init; the exceptions are kernel processes, started by the kernel directly for managing internal operating system details.
+
+Q. What Is a BIOS?
+BIOS is short for Basic Input-Output system. It’s low-level software that resides in a chip on your computer’s motherboard. The BIOS loads when your computer starts up, and the BIOS is responsible for waking up your computer’s hardware components, ensures they’re functioning properly, and then runs the bootloader that boots Windows or whatever other operating system you have installed.
+
+Q. Difference between BIOS and Kernel
+Kernel is one of the most important part of Operating System. We use the word kernel to mean the part of operating system that runs in the privileged mode (Sometimes even a subset of this). Kernel is closer to the hardware and often performs tasks like memory management and system calls.
+
+Q. Operating system and kernel : Same or different?
+In simple terms, one line answer will be, kernel is a part of an operating system.
+Thus, Operating System is a generic name given to all of the elements (user interface, libraries, resources) which make up the system as a whole.
+The kernel is "brain" of the operating system, which controls everything from access to the hard disk to memory management.Whenever you want to do anything, it goes though the kernel. It provides low level services like device management, process management, memory management i.e. it provides all the core system calls to accomplish any task.
+
+Q. What is Processor register?
+A processor register is a quickly accessible location available to a computer's processor. Registers usually consist of a small amount of fast storage, although some registers have specific hardware functions, and may be read-only or write-only. Processor registers are normally at the top of the memory hierarchy, and provide the fastest way to access data. Hardware registers are similar, but occur outside CPUs. Though accessing instructions from RAM is comparatively faster with hard drive, it still isn’t enough for CPU. For even better processing, there are memories in CPU which can get data from RAM which are about to be executed beforehand. Above registers we have cache memory, which are even faster than registers.
+
+Q. What's happened in the Linux System after using 'ls' command?
+Parent process forked a child process and the child process starts executing ls code while the parent process waits for the child process to die. Basically, child process calls exec Function which will destroy the current address space of the child process and new address space is built which will have code of ls command. After executing the code of ls command, child process calls exit and turns to zombie process which will be reaped by the parent process.
+
+Q. How a program executed?
+a program reside on hd, system must able to load the program into the main memory. OS provide an environment where user can run the program.
+
+Now for BIOS (Basic Input-Output System), it is the one which is responsible to provide drivers for new devices to OS. BIOS constitutes of the code that is stored in read-only memory (ROM) and some configuration data in non-volatile RAM.
+BIOS provides three primary functions:
+
+    Power on self test (POST), so it knows where to load the boot program.
+    Load and transfer control to boot program .
+    Provide drivers for all devices.
+
+The main BIOS is supplied as a chip on the motherboard. It contains everything needed to perform the above three functions. Additional BIOSes on other boards can provide access to additional devices.
+
+Q. Diff b/w 32-bit system and 64-bit system.
+A 32-bit system can access 232 memory addresses, i.e 4 GB of RAM or physical memory max.
+A 64-bit system can access 264 memory addresses, i.e actually 18-Billion GB of RAM. In short, any amount of memory greater than 4 GB can be easily handled by it.
+
+Q. Attributes or Characteristics of a Process
+	1. Process Id:    A unique identifier assigned by the operating system
+	2. Process State: Can be ready, running, etc.
+	3. CPU registers: Like the Program Counter (CPU registers must be saved and
+					  restored when a process is swapped in and out of CPU)
+	5. Accounts information:
+	6. I/O status information: For example, devices allocated to the process,
+							   open files, etc
+	8. CPU scheduling information: For example, Priority (Different processes
+								   may have different priorities, for example
+								   a short process may be assigned a low priority
+								   in the shortest job first scheduling)
+
+Q. What is a process and process table? What are different states of process
+A process is an instance of program in execution. For example a Web Browser is a process, a shell (or command prompt) is a process. Processes can be in one of three states: running, ready, or waiting.
+
+Q. Remote Procedure call (RPC) --- https://www.geeksforgeeks.org/operating-system-remote-procedure-call-rpc/
+
+Q. stack overflow-:
+ error can occur in a computer program due to excessive memory usage. This excessive memory usage occurs on the call stack, which is where information is stored relating to the active subroutines in the program. The call stack has a limited amount of memory available to it. Its size is determined by the programming language, the architecture, whether multi-threading is available on the CPU, and how much memory is available.
+
+Q. What Are Threads?
+Threads (sometimes called  lightweight processes) are similar to processes except that they all execute within the same process, thus all share the same context. They can be thought of as "mini-processes" running in parallel within a main process or "main thread."A thread has a beginning, an execution sequence, and a conclusion. It has an instruction pointer that keeps track of where within its context it is currently running. It can be pre-empted (interrupted) and temporarily put on hold (also known as  sleeping) while other threads are running—this is called yielding.
+
+Q. Types of threads
+There are two distinct types of threads:
+Kernel-level threads: Low-level threads, the user can not interact with them directly.
+User-level threads: High-level threads, we can interact with them in our code.
+
+Q. What Are Processes?
+Computer programs are merely executables, binary (or otherwise), which reside on disk. They do not take on a life of their own until loaded into memory and invoked by the operating system. A  process (sometimes called a  heavyweight process) is a program in execution. Each process has its own address space, memory, a data stack, and other auxiliary data to keep track of execution. The operating system manages the execution of all processes on the system, dividing the time fairly between all processes. Processes can also  fork or  spawn new processes to perform other tasks, but each new process has its own memory, data stack, etc., and cannot generally share information unless interprocess communication (IPC) is employed.
+
+Q. Virtual Memory | Operating System
+https://www.youtube.com/watch?v=ujoJ7J_l9cY
+Virtual Memory is a way of using hard drive to provide a memory for the computer . Elements of virtual memory are called pages. When a needed memory that is not in the real memory is requested a memory from virtual memory moves to real memory address. Computers have a finite amount of RAM so when many programs run at the same time memory can run out. Using virtual memory it can load larger programs at the same time and operate like it has infinite memory. However , using virtual memory can slow computers down because data must be mapped between real memory (physical ) and virtual memory which requires extra capabilities for address translations .
+
+Q. Operating System | Swap Space
+
+A computer has sufficient amount of physical memory but most of times we need more so we swap some memory on disk. Swap space is a space on hard disk which is a substitute of physical memory. It is used as virtual memory which contains process memory image. Whenever our computer run short of physical memory it uses it’s virtual memory and stores information in memory on disk. Swap space helps the computer’s operating system in pretending that it have more RAM than it actually has. It is also called as swap file.This interchange of data between virtual memory and real memory is called as swapping and space on disk as “swap space”. Virtual memory is a combination of RAM and disk space that running processes can use. Swap space is the portion of virtual memory that is on the hard disk, used when RAM is full.
+
+Q. Why Paging used - https://www.geeksforgeeks.org/operating-system-paging/
+Paging is a mechanism that allows memory virtualization, in other words, allows addressing more memory than physically exists. The memory manager will keep "most used pages" in RAM and swap out those lees frequently used. Pages are usually in the 4K boundaries. When a reference to a non existing virtual memory region is used, the CPU will emit a trap, which then the kernel will handle, by loading/replacing the page where the memory address referenced lives, fixing the trap and continuing from the same PC address. Now the program will happily access to the referenced virtual address. This concept was introduced with protected memory models, I believe by Intel with 80286.
+
+Q. What is the basic function of paging?
+
+Paging is a memory management scheme that permits the physical address space of a process to be noncontiguous. It avoids the considerable problem of having to fit varied sized memory chunks onto the backing store.
+
+Q. What are the steps involved when switching from one thread to another thread in multi threading program?
+This is also known as context switching.
+
+Context switches are usually computationally intensive, and much of the design of operating systems is to optimize the use of context switches. Switching from one process to another requires a certain amount of time for doing the administration – saving and loading registers and memory maps, updating various tables and lists, etc. What is actually involved in a context switch varies between these senses and between processors and operating systems.
+
+For example, in the Linux kernel, context switching involves switching registers, stack pointer, and program counter. In extreme cases, such as switching between goroutines in Go, a context switch is equivalent to a coroutine yield, which is more expensive than a subroutine call.
+
+Steps:
+1. In a switch, the state of process currently executing must be saved somehow, so that when it is rescheduled, this state can be restored.
+
+2. The process state includes all the registers that the process may be using, especially the program counter, plus any other operating system specific data that may be necessary. This is usually stored in a data structure called a process control block (PCB) or switch frame.
+
+3. A handle to the PCB is added to a queue of processes that are ready to run, often called the ready queue.
+
+4. Since the operating system has effectively suspended the execution of one process, it can then switch context by choosing a process from the ready queue and restoring its PCB.
+
+5. In doing so, the program counter from the PCB is loaded, and thus execution can continue in the chosen process. Process and thread priority can influence which process is chosen from the ready queue (i.e., it may be a priority queue).
+
+Q. Measure the time spent in context switch?
+A Context switch is the time spent between two processes (i.e., bringing a waiting process into execution and sending an executing process into waiting state). This happens in multitasking.The operating system must bring the state information if waiting process into memory and save the state information of the currently running process. In order to solve this problem, we would like to record the timestamps of the first and last instruction of the swapping processes.The context switch time is the difference between the two processes.
+
+Q. How to measure disk performance?
+here are three speed we need to pay attention to when we consider the disk performance:
+
+    The time it takes to find the right block or cluster
+    The time it reads data
+    The time it used to put the data in the memory.
+    The shorter the time the better the perfomance
+
+Q. synchronization in multicore systems
+Synchronization in multi-core systems happens via a few different mechanisms, but they all involve some sort of locking mechanism. Mutexes, semaphores, and spin-locks are mechanisms used to make sure that data is synchronized over multiple CPUs.
+The general mechanism is that the first process to ask for a resource will grab a key and lock access to the resource that needs to be changed, will make the change and then release the key. Other CPUs can then try and grab the lock and first one to succeed will lock, modify, and release.
