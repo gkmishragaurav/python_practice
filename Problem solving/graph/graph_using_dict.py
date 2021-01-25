@@ -1,5 +1,3 @@
-import copy
-
 class Graph:
     def __init__(self, graph_dict=None):
         self._graph_dict = graph_dict
@@ -12,16 +10,23 @@ class Graph:
         for key in self._graph_dict.keys():
             for item in self._graph_dict[key]:
                 _edges.append((key, item))
-        print _edges
+        print(_edges)
 
     def add_vertex(self, name):
         if not self._graph_dict[name]:
             self._graph_dict[name] = []
 
-    def add_edges(self, name, edge):
+    def add_edges(self, name, edge, wt):
         if self._graph_dict[name]:
             if edge not in self._graph_dict[name].keys():
                 self._graph_dict[name].append(edge)
+
+    def delete_nbr_edge(self, name, all_nbr):
+        # This will delete the edge to the nbr for a given node.
+        if self._graph_dict[name]:
+            for nbr in all_nbr:
+                if nbr in self._graph_dict[name]:
+                    self._graph_dict[name].remove(nbr)
 
     def degree(self):
         '''This denotes number of incoming connections to a node'''
@@ -36,7 +41,7 @@ class Graph:
         return dg
 
     def find_path(self, start, end, path=None):
-        '''This will find the path from start vertes to end vertex if present'''
+        '''This will find the path from start vertex to end vertex if present'''
         if not path:
             path = []
 
@@ -92,7 +97,49 @@ class Graph:
 
     def topological_sort(self):
         pass
-    
+
+    def is_cycle_in_graph(self, start):
+        '''Given a directed graph, check whether the graph contains a cycle or not.
+        Your function should return true if the given graph contains at least one cycle, else return false.'''
+        stack = [start]
+        visited = []
+        while stack:
+            temp=stack.pop()
+            if temp not in visited:
+                visited.append(temp)
+
+                for nbr in self._graph_dict[temp]:
+                    if nbr not in visited:
+                        stack.append(nbr)
+            else:
+                return False
+        return True
+
+    def cyclic_to_acyclic(self, start):
+        '''To make a cyclic graph to acyclic.'''
+        if not self.is_cycle_in_graph(start):
+            stack = [start]
+            visited = []
+            delete_nbr = []
+            while stack:
+                temp = stack.pop()
+                if temp not in visited:
+                    visited.append(temp)
+                    for nbr in self._graph_dict[temp]:
+                        if nbr not in visited:
+                            stack.append(nbr)
+
+                        else:
+                            delete_nbr.append(nbr)
+
+                    if delete_nbr:
+                        self.delete_nbr_edge(temp, delete_nbr)
+                    delete_nbr=[]
+
+        else:
+            return True
+
+
 g = { "a" : ["c", "b", "d"],
       "b" : ["d", "c"],
       "c" : ["e"],
@@ -100,11 +147,12 @@ g = { "a" : ["c", "b", "d"],
       "e" : []
       }
 graph = Graph(g)
-print str(graph)
-# print graph.find_path('a', 'b')
-# print graph.dfs('a')
-# print graph.bfs('a')
-print graph.degree()
+print(str(graph))
+# print(graph.find_path('a', 'b'))
+# print(graph.dfs('a'))
+# print(graph.bfs('a'))
+# print(graph.degree())
 
-print graph.topological_sort()
+print(graph.cyclic_to_acyclic('a'))
+print(str(graph))
 
