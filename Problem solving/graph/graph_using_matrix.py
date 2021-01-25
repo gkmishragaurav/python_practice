@@ -1,92 +1,110 @@
 class Vertex:
+    '''This class will define the vertex of the Graph.'''
     def __init__(self, id):
-        self.id=id
-        self.visited=False
+        self.id = id
 
 class Graph:
-    def __init__(self, num_of_vertices):
-        self.matrix = [[0]*num_of_vertices for _ in range(num_of_vertices)]
-        self.num_of_vertices=num_of_vertices
-        self.vertices=[]
-        for i in range(num_of_vertices):
-            new_vertex=Vertex(i)
+    '''This class will define the graph it self.'''
+    def __init__(self, size):
+        self.matrix = [[0]*size for _ in range(size)]
+        self.size = size
+        self.vertices = []
+        for i in range(self.size):
+            new_vertex = Vertex(i)
             self.vertices.append(new_vertex)
 
-    def set_Vertex(self, id):
-        if id < self.num_of_vertices:
-            new_vertex = Vertex(id)
-            self.vertices.append(new_vertex)
+    def set_vertex(self, vtx_position, id):
+        '''
+        1. Vertex id to be added in vertices
+        2. add id to matrix
+        :return:
+        '''
+        self.vertices[vtx_position] = Vertex(id)
 
-    def get_Vetex(self, id):
-        for i in range(self.num_of_vertices):
-            if id == self.vertices[i]:
-                return i
-        return -1
+    def get_vertex_from_index(self, index):
+        return self.vertices[index].id
 
-    def get_connected(self, id):
-        '''Return all non zero index'''
-        nbr=[]
-        for index in range(len(self.matrix[id-1])):
-            if self.matrix[index]:
-                nbr.append(index+1)
+    def _get_index(self, id):
+        vp = None
+        for x in self.vertices:
+            if x.id == id:
+                vp = self.vertices.index(x)
+        return vp
+
+    def add_edge(self, id1, id2, wt):
+        vp1 = self._get_index(id1)
+        vp2 = self._get_index(id2)
+        self.matrix[vp1][vp2] = wt
+
+    def delete_edge(self, id1, id2):
+        vp1 = self._get_index(id1)
+        vp2 = self._get_index(id2)
+        self.matrix[vp1][vp2] = 0
+
+    def get_nbr(self, node):
+        nbr = []
+        vp = self._get_index(node)
+        for element in self.matrix[vp]:
+            if element:
+                index = self.matrix[vp].index(element)
+                nbr.append(self.vertices[index].id)
 
         return nbr
 
-    def add_edge(self, frm, to):
-        self.matrix[frm-1][to-1] = 1
-
-    def get_edge(self, frm, to):
-        return self.matrix[frm-1][to-1]
-
-    def delete_Edge(self, frm, to):
-        self.matrix[frm-1][to-1] = 0
-
-    def print_Graph(self):
-        print self.matrix
-
-    def __str__(self):
-        return str(self.matrix)
+    def is_cycle_in_graph(self):
+        '''Given a directed graph, check whether the graph contains a cycle or not.
+        Your function should return true if the given graph contains at least one cycle, else return false.'''
+        pass
 
     def dfs(self, start):
-        stack=[start]
-        visited=[]
+        stack = [start]
+        visited = []
         while stack:
-            temp=stack.pop() # one difference from BFS is to pop last element here instead of first one
+            temp = stack.pop()
             if temp not in visited:
                 visited.append(temp)
 
-                for nbr in self.get_connected(temp):
-                    if nbr not in visited:
-                        stack.append(nbr)
+            for nbr in self.get_nbr(temp):
+                if nbr not in visited:
+                    stack.append(nbr)
 
         return visited
 
     def bfs(self, start):
-        stack=[start]
-        visited=[]
+        stack = [start]
+        visited = []
         while stack:
-            temp=stack.pop(0)
+            temp = stack.pop(0)
             if temp not in visited:
                 visited.append(temp)
 
-                for nbr in self.get_connected(temp):
-                    if nbr not in visited:
-                        stack.append(nbr)
+            for nbr in self.get_nbr(temp):
+                if nbr not in visited:
+                    stack.append(nbr)
 
         return visited
 
+    def print_graph(self):
+        print("Printing matrix-")
+        for row in range(0, self.size):
+            print(self.matrix[row])
 
 g=Graph(5)
-g.add_edge(1, 4)
-g.add_edge(1, 3)
-g.add_edge(1, 5)
-g.add_edge(4, 2)
-g.add_edge(4, 5)
-g.add_edge(2, 5)
-g.add_edge(5, 3)
+# Add vertexes
+g.set_vertex(0, 'a')
+g.set_vertex(1, 'b')
+g.set_vertex(2, 'c')
+g.set_vertex(3, 'd')
+g.set_vertex(4, 'e')
 
-print str(g)
-print g.get_connected(1)
-print "dfs", g.dfs(1)
-print "bfs",g.bfs(1)
+# Add edges
+g.add_edge('a', 'b', 12)
+g.add_edge('b', 'c', 9)
+g.add_edge('c', 'd', 6)
+g.add_edge('d', 'e', 9)
+g.add_edge('a', 'c', 6)
+
+g.print_graph()
+print(g.dfs('a'))
+print(g.bfs('a'))
 
