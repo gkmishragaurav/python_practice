@@ -1,0 +1,10 @@
+SOAP
+SOAP is a protocol specification for XML-based information that distributed applications can use to exchange information and hence interoperate. It is most often accompanied by a set of SOA middleware interoperability standards and compliant implementations, referred to (collectively) as WS. SOAP and WS together define many standards, including the following:
+
+An infrastructure for service composition. SOAP can employ the Business Process Execution Language (BPEL) as a way to let developers express business processes that are implemented as WS * services.
+
+Transactions. There are several web-service standards for ensuring that transactions are properly managed: WS-AT, WS-BA, WS-CAF, and WS-Transaction.
+
+Service discovery. The Universal Description, Discovery and Integration (UDDI) language enables business.
+
+Reliability. SOAP, by itself, does not ensure reliable message delivery. Applications that require such guarantees must use services compliant with SOAP's reliability standard: WS-Reliability.
