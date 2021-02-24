@@ -14,10 +14,10 @@ class LinkedList:
         self.length = id
 
     def print_list(self):
-        print "\nPrinting List-\n"
+        print ("\nPrinting List-\n")
         temp=self.head
         while(temp):
-          print temp.data,
+          print (temp.data)
           temp = temp.next
 
     def push(self, data):
@@ -32,7 +32,7 @@ class LinkedList:
 
     def delete(self, key):
         if self.head is None:
-            print "Empty list, can't delete"
+            print ("Empty list, can't delete")
             return
         prev = self.head
         while prev.next:
@@ -73,7 +73,7 @@ class LinkedList:
             i=i+1
             if i >= k:
                 temp = temp.next
-        print '-',temp.data
+        print ('-',temp.data)
 
     def size(self):
         curr = self.head
@@ -320,7 +320,7 @@ def remove_duplicates(l1):
     return l1
 
 def remove_all_duplicates(l1):
-    print duplicates
+    print (duplicates)
 
     for x in duplicates:
 
@@ -337,7 +337,7 @@ def mearge_linklist2(head1, head2):
             head2=head2.next
             temp.next = head1
             head1=temp
-            print head1.data
+            print (head1.data)
 
         elif head1.data < head2.data:
             head1 = head1.next
@@ -364,7 +364,7 @@ def rotate_linklist(ll, k):
         count+=1
 
     k=k%count
-    print k, count
+    print (k, count)
     if k:
         second = ll.head
         first = ll.head
@@ -390,28 +390,68 @@ def rotate_linklist(ll, k):
     return ll
 
 
+def remove_nth_node_from_last(ll, k):
+    # Remove Nth Node From End of List
+    mark = ll.head
+    temp = ll.head
+    temp1 = None
+    i=0
+    while mark:
+        mark=mark.next
+        i=i+1
+        if i > k:
+            temp1 = temp
+            temp = temp.next
+
+    if temp1: # here delete temp
+        temp1.next = temp.next
+        temp.next = None
+
+    elif temp == ll.head: # head to be deleted
+        temp = ll.head.next
+        ll.head = temp
+
+def swapping_nodes_in_ll(ll, k):
+    # Swapping Nodes in a Linked List
+    # You are given the head of a linked list, and an integer k.
+    # Return the head of the linked list after swapping the values of
+    # the kth node from the beginning and the kth node from the end (the list is 1-indexed).
+    mark = ll.head
+    temp = ll.head
+    temp1 = ll.head
+    i=0
+    while mark:
+        mark=mark.next
+        i=i+1
+        if i < k:
+            temp1 = temp1.next
+
+        if i > k:
+            temp = temp.next
+
+    temp.data, temp1.data = temp1.data, temp.data
+
+    print (temp.data, temp1.data)
+
+
+
 if __name__ == '__main__':
     # Start with the empty list
     # pdb.set_trace()
     l1 = LinkedList()
-    arr = [3, 2]
+    arr = [1,2, 3, 4, 5]
     while(arr):
         l1.push(arr.pop(0))
 
-    l1 = rotate_linklist(l1, 1)
+    swapping_nodes_in_ll(l1, 2)
     l1.print_list()
-    print 'length',l1.length
-
-
-
-
-
-
-
+    # remove_nth_node_from_last(l1, 2)
+    # l1 = rotate_linklist(l1, 1)
+    # l1.print_list()
+    # print ('length',l1.length)
 
     # l1 = mearge_linklist2(l1.head, l2.head)
     # l1.print_list()
-
 
     ##### list_intersection_point
 
@@ -452,11 +492,6 @@ if __name__ == '__main__':
     # print detect_loop(ll)
     # remove_loop(ll)
     # ll.print_list()
-
-
-
-
-
     # print is_Palendrom(ll)
     # ll.print_list()
     # reverse_linklist(ll)
