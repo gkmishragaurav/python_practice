@@ -432,6 +432,35 @@ def swapping_nodes_in_ll(ll, k):
     temp.data, temp1.data = temp1.data, temp.data
 
     print (temp.data, temp1.data)
+    
+def smallest(ll):
+    m=None
+    i=0
+    p=0
+    while(i<len(ll)):
+        if ll[i] and ll[i].head:
+            if not m:
+                m = ll[i].head.data
+
+            elif m > ll[i].head.data:
+                m = ll[i].head.data
+                p = i
+        i=i+1
+
+    return m, p
+
+def mergeKLists(ll=[]):
+    #You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+    #Merge all the linked-lists into one sorted linked-list and return it.
+    l = LinkedList()
+    while(1):
+        m, p = smallest(ll)
+        if not m: break
+        l.push(m) # smallest of all
+        if ll[p].head:
+            ll[p].head = ll[p].head.next
+
+    return l
 
 
 
