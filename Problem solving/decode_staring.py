@@ -1,4 +1,4 @@
-s='a30b4c3'
+s='a3b4c3'
 # aaabbbbccc
 
 stack=''
