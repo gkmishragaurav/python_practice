@@ -1,0 +1,36 @@
+Internal working of Python:
+
+	Python doesn’t convert its code into machine code, something that hardware can understand.
+	It actually converts it into something called byte code, which is stored with a .pyc or .pyo format.
+	So within python, compilation happens, but it’s just not into a machine language.
+	It is into byte code and this byte code can’t be understood by CPU.
+	This bytecode is a low-level set of instructions that can be executed by an interpreter. 
+	So we need actually an interpreter called the python virtual machine. 
+	The python virtual machine executes the byte codes.
+
+The Python interpreter performs following tasks to execute a Python program :
+
+	Step 1: The interpreter reads a python code or instruction. 
+			Then it verifies that the instruction is well formatted, i.e. it checks the syntax of each line.
+			If it encounters any error, it immediately halts the translation and shows an error message.
+	
+	Step 2: If there is no error, i.e. if the python instruction or code is well formatted then the interpreter translates it into its equivalent form in intermediate language called “Byte code”.
+			Thus, after successful execution of Python script or code, it is completely translated into Byte code.
+	
+	Step 3: Byte code is sent to the Python Virtual Machine(PVM).
+			Here again the byte code is executed on PVM.
+			If an error occurs during this execution then the execution is halted with an error message.
+			
+Why Interpreted?
+	One popular advantage of interpreted languages is that they are platform-independent. 
+	As long as the Python bytecode and the Virtual Machine have the same version, Python bytecode can be executed on any platform (Windows, MacOS, etc).
+			
+What is __pycache__ ?
+Many times in your personal project or on GitHub, you might have seen a folder named __pycache__ being created automatically.
+As you can see, the filename is the same as the one outside __pycache__ folder. 
+The .pyc extension tells us that the file contains bytecode for preprocess.py. 
+The names cpython denotes the type of interpreter. CPython means that the interpreter was implemented in C language. 
+Similarly, JPython is a Python interpreter implemented in Java.
+
+But why is the folder created in the first place? Well, it slightly increases the speed of the Python program. 
+Unless you change your Python code, recompilation to bytecode is avoided, thereby saving time.
