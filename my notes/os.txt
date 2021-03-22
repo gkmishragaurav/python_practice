@@ -159,4 +159,48 @@ Interrupts are used to signal events external to the program (timers, serial por
 
 DEtails - http://www.it.uu.se/education/course/homepage/os/vt18/module-1/system-call-design/
 
+-----------------------------------------------------------------------------------------------------------
+
+unix:
+1. Cut is used to select sections of text from each line of files.
+System ID,School,Phone,Address,City,State,Zip,Type,Principal
+569,Happy Valley Elementary School,814-555-1212,332 Innovation Boulevard,State College,PA,16801,Elementary,Mr. Jenkins
+
+cat data.csv | cut -d ',' -f 1 --- ',' is delimiter 
+
+2. Sed - stream editor --- file like, searching, find and replace, insertion or deletion.
+
+a. Replacing or substituting string --- Here the “s” specifies the substitution operation
+$sed 's/unix/linux/' geekfile.txt
+
+b. Replacing the nth occurrence of a pattern in a line
+$sed 's/unix/linux/n' geekfile.txt
+
+c. Replacing all the occurrence of the pattern in a line
+$sed 's/unix/linux/g' geekfile.txt
+
+3. awk - 
+a. Default behavior of Awk ---- awk '{print}' employee.txt
+b. Print the lines which matches with the given pattern. ----- $ awk '/manager/ {print}' employee.txt 
+c. Spliting a Line Into Fields  ----- awk '{print $1,$4}' employee.txt 
+d. Use of NR built-in variables (Display Line Number) ---- awk '{print NR,$0}' employee.txt 
+e. Use of NF built-in variables (Display Last Field) ----- awk '{print $1,$NF}' employee.txt
+f. Another use of NR built-in variables (Display Line From 3 to 6) ---- awk 'NR==3, NR==6 {print NR,$0}' employee.txt 
+
+4. To kill a process in python
+ps -ef | grep -i abc | awk '{print $2}'  | xargs kill -9
+
+5. performance stats collection:
+netstat - for network related stats
+vmstat - computer system monitoring tool
+top - for cpu and mem stat.
+
+6. printenv - 
+
+7. list all the directory in a folder:
+ls -lrt | grep '^d'
+
+Q. How do you check if a particular process  is listening on a perticular port on remote host ?
+telnet host port ---- if connected then process is listening on that port.
+
 
