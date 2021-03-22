@@ -28,32 +28,33 @@ run a cmd on another machine in python - use pexpect. for same machine use subpr
 Difference between Compiled and Interpreted Language:
 
 Compiled Language:
-A compiled language is a programming language which are generally compiled and not interpreted. 
-It is one where the program, once compiled, is expressed in the instructions of the target machine; 
-this machine code is undecipherable by humans. Types of compiled language – C, C++, C#, CLEO, COBOL, etc.
-In this language, compiled programs run faster than interpreted programs.
-This language delivers better performance.
+	Compiled languages are converted directly into machine code that the processor can execute. 
+	It is one where the program, once compiled, is expressed in the instructions of the target machine - machine language; 
+	this machine code is undecipherable by humans. Types of compiled language – C, C++, C#, CLEO, COBOL, etc.
+	In this language, compiled programs run faster than interpreted programs.
+	This language delivers better performance.
+	It also gives the developer more control over hardware aspects, like memory management and CPU usage.
+	Compiled languages need a “build” step – they need to be manually compiled first. You need to “rebuild” the program every time you need to make a change.
 
 Interpreted Language:
-An interpreted language is a programming language which are generally interpreted, 
-without compiling a program into machine instructions. 
-It is one where the instructions are not directly executed by the target machine, 
-but instead read and executed by some other program. Interpreted language ranges – JavaScript, Perl, Python, BASIC, etc.
-While in this language, interpreted programs can be modified while the program is running.
-This languages delivers relatively slower performance.
+	Interpreters run through a program line by line and execute each command.
+	It is one where the instructions are not directly executed by the target machine, 
+	but instead read and executed by some other program. Interpreted language ranges – JavaScript, Perl, Python, BASIC, etc.
+	While in this language, interpreted programs can be modified while the program is running.
+	This languages delivers relatively slower performance.
 
 Okay… but what does that actually mean?
-Imagine you have a hummus recipe that you want to make, but it's written in ancient Greek. 
-There are two ways you, a non-ancient-Greek speaker, could follow its directions.
+	Imagine you have a hummus recipe that you want to make, but it's written in ancient Greek. 
+	There are two ways you, a non-ancient-Greek speaker, could follow its directions.
 
-The first is if someone had already translated it into English for you. 
-You (and anyone else who can speak English) could read the English version of the recipe and make hummus. 
-Think of this translated recipe as the compiled version.
+	The first is if someone had already translated it into English for you. 
+	You (and anyone else who can speak English) could read the English version of the recipe and make hummus. 
+	Think of this translated recipe as the compiled version.
 
-The second way is if you have a friend who knows ancient Greek. 
-When you're ready to make hummus, your friend sits next to you and translates 
-the recipe into English as you go, line by line. 
-In this case, your friend is the interpreter for the interpreted version of the recipe.
+	The second way is if you have a friend who knows ancient Greek. 
+	When you're ready to make hummus, your friend sits next to you and translates 
+	the recipe into English as you go, line by line. 
+	In this case, your friend is the interpreter for the interpreted version of the recipe.
 
 -----------------------------------------------------------------------------
 
