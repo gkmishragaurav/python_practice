@@ -127,3 +127,47 @@ Multi-processing vs multi-threading: The most popular way is to use a multi-proc
 multi threading in python:
 
 1. MT programming is ideal for programming tasks that are asynchronous in nature, require multiple concurrent activities, and where the processing of each activity may be nondeterministic, i.e., random and unpredictable.
+
+----------------------------------------------------------------------------------------------------------
+
+Python and OS:
+
+a. python sys module
+os module
+os.system(): Allows us to execute a shell command
+os.listdir(path): Returns a list with the contents of the directory passed as an argument
+os.walk(path): Navigates all the directories in the provided path directory, and returns three values: the path directory, the names for the sub directories, and a list of filenames in the current directory path.
+
+b. The platform.system() method informs us of the running operating system. Depending on the return value, we can see the ping command is different in Windows and Linux. Windows OS uses ping –n 1 to send one packet of the ICMP ECHO request, whereas Linux or another OS uses ping –c 1.
+import os
+import platform
+operating_system = platform.system()
+print operating_system
+if (operating_system == "Windows"):
+    ping_command = "ping -n 1 127.0.0.1"
+elif (operating_system == "Linux"):
+    ping_command = "ping -c 1 127.0.0.1"
+else :
+    ping_command = "ping -c 1 127.0.0.1"
+print ping_command
+
+c. subprocess module
+
+d. Working with the filesystem in Python:
+understand os.walk
+os.path.isfile("./main.py")
+os.path.exists("./not_exists.py")
+os.makedirs('my_dir')
+open a file
+read a file
+write a file
+
+e. Open file with contaxt manager.
+
+https://jeffknupp.com/blog/2016/03/07/python-with-context-managers/
+
+There are multiple ways to create files in Python, but the cleanest way to do this is by using the with keyword, in this case we are using the Context Manager Approach.
+Initially, Python provided the open statement to open files. When we are using the open statement, Python delegates into the developer the responsibility to close the file when it's no longer need to use it. This practice lead to errors since developers sometimes forgot to close it. Since Python 2.5, developers can use the with statement to handle this situation safely. The with statement automatically closes the file even if an exception is raised. In this way, we have the advantage: the file is closed automatically and we don’t need to call the close() method.
+>>> with open("somefile.txt", "r") as file:
+>>> for line in file:
+>>> print line
