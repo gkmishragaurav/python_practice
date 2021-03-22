@@ -77,7 +77,10 @@ Unless you change your Python code, recompilation to bytecode is avoided, thereb
 
 copy in Python (Deep Copy and Shallow Copy)
 
-In Python, Assignment statements do not copy objects, they create bindings between a target and an object. When we use = operator user thinks that this creates a new object; well, it doesn’t. It only creates a new variable that shares the reference of the original object. Sometimes a user wants to work with mutable objects, in order to do that user looks for a way to create “real copies” or “clones” of these objects. Or, sometimes a user wants copies that user can modify without automatically modifying the original at the same time, in order to do that we create copies of objects.
+In Python, Assignment statements do not copy objects, they create bindings between a target and an object. When we use = operator user thinks that this creates a new object; 
+well, it doesn’t. It only creates a new variable that shares the reference of the original object. Sometimes a user wants to work with mutable objects, in order to do 
+that user looks for a way to create “real copies” or “clones” of these objects. Or, sometimes a user wants copies that user can modify without automatically modifying 
+the original at the same time, in order to do that we create copies of objects.
 
 A copy is sometimes needed so one can change one copy without changing the other. In Python, there are two ways to create copies :
 
@@ -108,25 +111,32 @@ The Python Global Interpreter Lock or GIL, in simple words, is a mutex (or a loc
 
 In the above example, the reference count for the empty list object [] was 3. The list object was referenced by a, b and the argument passed to sys.getrefcount().
 
-This means that only one thread can be in a state of execution at any point in time. The impact of the GIL isn’t visible to developers who execute single-threaded programs, but it can be a performance bottleneck in CPU-bound and multi-threaded code.
+This means that only one thread can be in a state of execution at any point in time. The impact of the GIL isn’t visible to developers who execute single-threaded programs, 
+but it can be a performance bottleneck in CPU-bound and multi-threaded code.
 
 Q. What problem did the GIL solve for Python?
 
-Python uses reference counting for memory management. It means that objects created in Python have a reference count variable that keeps track of the number of references that point to the object. When this count reaches zero, the memory occupied by the object is released.
+Python uses reference counting for memory management. It means that objects created in Python have a reference count variable that keeps track of the number of references 
+that point to the object. When this count reaches zero, the memory occupied by the object is released.
 
-The problem was that this reference count variable needed protection from race conditions where two threads increase or decrease its value simultaneously. If this happens, it can cause either leaked memory that is never released or, even worse, incorrectly release the memory while a reference to that object still exists. This can can cause crashes or other “weird” bugs in your Python programs.
+The problem was that this reference count variable needed protection from race conditions where two threads increase or decrease its value simultaneously. If this happens, 
+it can cause either leaked memory that is never released or, even worse, incorrectly release the memory while a reference to that object still exists. This can can cause 
+crashes or other “weird” bugs in your Python programs.
 
-The GIL is a single lock on the interpreter itself which adds a rule that execution of any Python bytecode requires acquiring the interpreter lock. This prevents deadlocks (as there is only one lock) and doesn’t introduce much performance overhead. But it effectively makes any CPU-bound Python program single-threaded.
+The GIL is a single lock on the interpreter itself which adds a rule that execution of any Python bytecode requires acquiring the interpreter lock. This prevents deadlocks 
+(as there is only one lock) and doesn’t introduce much performance overhead. But it effectively makes any CPU-bound Python program single-threaded.
 
 Q. How to deal with Python’s GIL
 
 If the GIL is causing you problems, here a few approaches you can try:
 
-Multi-processing vs multi-threading: The most popular way is to use a multi-processing approach where you use multiple processes instead of threads. Each Python process gets its own Python interpreter and memory space so the GIL won’t be a problem. Python has a multiprocessing module which lets us create processes easily like this:
+Multi-processing vs multi-threading: The most popular way is to use a multi-processing approach where you use multiple processes instead of threads. Each Python process 
+gets its own Python interpreter and memory space so the GIL won’t be a problem. Python has a multiprocessing module which lets us create processes easily like this:
 
 multi threading in python:
 
-1. MT programming is ideal for programming tasks that are asynchronous in nature, require multiple concurrent activities, and where the processing of each activity may be nondeterministic, i.e., random and unpredictable.
+1. MT programming is ideal for programming tasks that are asynchronous in nature, require multiple concurrent activities, and where the processing of each activity may 
+be nondeterministic, i.e., random and unpredictable.
 
 ----------------------------------------------------------------------------------------------------------
 
@@ -136,9 +146,12 @@ a. python sys module
 os module
 os.system(): Allows us to execute a shell command
 os.listdir(path): Returns a list with the contents of the directory passed as an argument
-os.walk(path): Navigates all the directories in the provided path directory, and returns three values: the path directory, the names for the sub directories, and a list of filenames in the current directory path.
+os.walk(path): Navigates all the directories in the provided path directory, and returns three values: the path directory, the names for the sub directories, and a list 
+of filenames in the current directory path.
 
-b. The platform.system() method informs us of the running operating system. Depending on the return value, we can see the ping command is different in Windows and Linux. Windows OS uses ping –n 1 to send one packet of the ICMP ECHO request, whereas Linux or another OS uses ping –c 1.
+b. The platform.system() method informs us of the running operating system. Depending on the return value, we can see the ping command is different in Windows and Linux. 
+Windows OS uses ping –n 1 to send one packet of the ICMP ECHO request, whereas Linux or another OS uses ping –c 1.
+
 import os
 import platform
 operating_system = platform.system()
@@ -181,31 +194,49 @@ Object oriented python:
 
 2. Polymorphism is the ability to treat a class differently depending on which subclass is implemented
 
-3. The one difference between methods and normal functions is that all methods have one required argument. This argument is conventionally named self; I've never seen a programmer use any other name for this variable (convention is a very powerful thing). There's nothing stopping you, however, from calling it this or even Martha.
+3. The one difference between methods and normal functions is that all methods have one required argument. This argument is conventionally named self; I've never seen a 
+programmer use any other name for this variable (convention is a very powerful thing). There's nothing stopping you, however, from calling it this or even Martha.
 
-4. The self argument to a method is simply a reference to the object that the method is being invoked on. We can access attributes and methods of that object as if it were any other object. This is exactly what we do inside the reset method when we set the x and y attributes of the self object.
+4. The self argument to a method is simply a reference to the object that the method is being invoked on. We can access attributes and methods of that object as if it 
+were any other object. This is exactly what we do inside the reset method when we set the x and y attributes of the self object.
 
 5. Construction and Initialization:
-when I call x = SomeClass(), __init__ is not the first thing to get called. Actually, it's a method called __new__, which actually creates the instance, then passes any arguments at creation on to the initializer. At the other end of the object's lifespan, there's __del__.
+when I call x = SomeClass(), __init__ is not the first thing to get called. Actually, it's a method called __new__, which actually creates the instance, then passes any 
+arguments at creation on to the initializer. At the other end of the object's lifespan, there's __del__.
 
 	1. __new__(cls, [...)
-	__new__ is the first method to get called in an object's instantiation. It takes the class, then any other arguments that it will pass along to __init__. __new__ is used fairly rarely, but it does have its purposes, particularly when subclassing an immutable type like a tuple or a string. for more details - https://www.python.org/download/releases/2.2/descrintro/#__new__
+	__new__ is the first method to get called in an object's instantiation. It takes the class, then any other arguments that it will pass along to __init__. 
+	__new__ is used fairly rarely, but it does have its purposes, particularly when subclassing an immutable type like a tuple or a string. for more details - 
+	https://www.python.org/download/releases/2.2/descrintro/#__new__
 	
 	2. __init__(self, [...)
-	The initializer for the class. It gets passed whatever the primary constructor was called with (so, for example, if we called x = SomeClass(10, 'foo'), __init__ would get passed 10 and 'foo' as arguments. in case after 'init' someone calls 'new' again then after 'new', 'init' will not be called again. 
+	The initializer for the class. It gets passed whatever the primary constructor was called with (so, for example, if we called x = SomeClass(10, 'foo'), 
+	__init__ would get passed 10 and 'foo' as arguments. in case after 'init' someone calls 'new' again then after 'new', 'init' will not be called again. 
 	
 	3. __del__(self)
-	If __new__ and __init__ formed the constructor of the object, __del__ is the destructor. It doesn't implement behavior for the statement del x (so that code would not translate to x.__del__()). Rather, it defines behavior for when an object is garbage collected. It can be quite useful for objects that might require extra cleanup upon deletion, like sockets or file objects. Be careful, however, as there is no guarantee that __del__ will be executed if the object is still alive when the interpreter exits, so __del__ can't serve as a replacement for good coding practices (like always closing a connection when you're done with it. In fact, __del__ should almost never be used because of the precarious circumstances under which it is called; use it with caution!
+	If __new__ and __init__ formed the constructor of the object, __del__ is the destructor. It doesn't implement behavior for the statement del x (so that code would not 
+	translate to x.__del__()). Rather, it defines behavior for when an object is garbage collected. It can be quite useful for objects that might require extra cleanup 
+	upon deletion, like sockets or file objects. Be careful, however, as there is no guarantee that __del__ will be executed if the object is still alive when the 
+	interpreter exits, so __del__ can't serve as a replacement for good coding practices (like always closing a connection when you're done with it. In fact, __del__ 
+	should almost never be used because of the precarious circumstances under which it is called; use it with caution!
 	
 	4. __call__(self):
-	Computing the value of the mathematical function represented by class Y from the section Representing a function as a class, with y as the name of the instance, is performed by writing y.value(t). If we could write just y(t), the y instance would look as an ordinary function. Such a syntax is indeed possible and offered by the special method named __call__. Writing y(t) implies a call y.__call__(t) 
+	Computing the value of the mathematical function represented by class Y from the section Representing a function as a class, with y as the name of the instance, 
+	is performed by writing y.value(t). If we could write just y(t), the y instance would look as an ordinary function. Such a syntax is indeed possible and offered 
+	by the special method named __call__. Writing y(t) implies a call y.__call__(t) 
 
-6. Technically, every class we create uses inheritance. All Python classes are subclasses of the special class named object. This class provides very little in terms of data and behaviors (those behaviors it does provide are all double-underscore methods intended for internal use only), but it does allow Python to treat all objects in the same way.
+6. Technically, every class we create uses inheritance. All Python classes are subclasses of the special class named object. This class provides very little in terms of 
+data and behaviors (those behaviors it does provide are all double-underscore methods intended for internal use only), but it does allow Python to treat all objects in 
+the same way.
 
 -------------------------------------------------
 
 Faking files - python 
-Sometimes we need code that provides a file-like interface but doesn't actually read from or write to any real files. Two such adapters already exist in the standard library, StringIO and BytesIO. They behave in much the same way, except that one deals with text characters and the second deals with bytes data. Both classes are available in the io package. To emulate a file open for reading, we can supply a string or bytes object to the constructor. Calls to read or readline will then parse that string as if it was a file. To emulate a file opened for writing, we simply construct a StringIO or BytesIO object and call the write or writelines methods. When writing is complete, we can discover the final contents of the written "file" using the getvalue method. It's really very simple
+Sometimes we need code that provides a file-like interface but doesn't actually read from or write to any real files. Two such adapters already exist in the standard library,
+StringIO and BytesIO. They behave in much the same way, except that one deals with text characters and the second deals with bytes data. Both classes are available in the 
+io package. To emulate a file open for reading, we can supply a string or bytes object to the constructor. Calls to read or readline will then parse that string as if 
+it was a file. To emulate a file opened for writing, we simply construct a StringIO or BytesIO object and call the write or writelines methods. When writing is complete, 
+we can discover the final contents of the written "file" using the getvalue method. It's really very simple
 
 # coding=utf-8
 from io import StringIO, BytesIO
@@ -280,7 +311,8 @@ Q.find time taken by a fuction using decorators.
 
 https://www.programiz.com/python-programming/decorator
 
-Note - We must be comfortable with the fact that, everything in Python (Yes! Even classes), are objects. Names that we define are simply identifiers bound to these objects. Functions are no exceptions, they are objects too (with attributes). Various different names can be bound to the same function object.
+Note - We must be comfortable with the fact that, everything in Python (Yes! Even classes), are objects. Names that we define are simply identifiers bound to these objects.
+Functions are no exceptions, they are objects too (with attributes). Various different names can be bound to the same function object.
 
 def make_pretty(func):
     def inner():
@@ -311,7 +343,9 @@ Proxy
 Context provider
 
 Making a class that act as decorater:
-To decorate a function, we need to return an object that can be used as a function. The classic implementation of the decorator pattern uses the fact that the way Pythonimplements regular procedural functions these functions can be seen as classes with some kind of execution method. In Python, everything is an object; functions are objects with a special __call__() method. If our decorator returns an object with a __call__() method, the result can be used as a function.
+To decorate a function, we need to return an object that can be used as a function. The classic implementation of the decorator pattern uses the fact that the way 
+Pythonimplements regular procedural functions these functions can be seen as classes with some kind of execution method. In Python, everything is an object; functions are 
+objects with a special __call__() method. If our decorator returns an object with a __call__() method, the result can be used as a function.
 
 class ProfilingDecorator(object):
 	def __init__(self, f):
@@ -329,11 +363,18 @@ class ProfilingDecorator(object):
 def func(a):
 	print a
 	
-In the class definition, we see that the decorated function is saved as an attribute of the object during initialization. Then, in the call function, the actual running of the function being decorated is wrapped in time requests. Just before returning, the profile value is printed to the console. When the compiler comes across the _@ProfilingDecorator_, it initiates an object and passes in the function being wrapped as an argument to the constructor. The returned object has the __call__() function as a method, and as such duck typing will allow this object to be used as a function. Also, note how we used *args in the __call__() method’s parameters to pass in arguments. *args allows us to handle multiple arguments coming in. This is called packing, as all the parameters coming in are packed into the args variable. Then, when we call the stored function in the f attribute of the decorating object, we once again use *args. This is called unpacking, and it turns all the elements of the collection in args into individual arguments that are passed on to the function in question.
+In the class definition, we see that the decorated function is saved as an attribute of the object during initialization. Then, in the call function, the actual running 
+of the function being decorated is wrapped in time requests. Just before returning, the profile value is printed to the console. When the compiler comes across the 
+_@ProfilingDecorator_, it initiates an object and passes in the function being wrapped as an argument to the constructor. The returned object has the __call__() function as 
+a method, and as such duck typing will allow this object to be used as a function. Also, note how we used *args in the __call__() method’s parameters to pass in arguments. 
+*args allows us to handle multiple arguments coming in. This is called packing, as all the parameters coming in are packed into the args variable. Then, when we call the 
+stored function in the f attribute of the decorating object, we once again use *args. This is called unpacking, and it turns all the elements of the collection in args into 
+individual arguments that are passed on to the function in question.
 -------------------------------------------------------
 How for loop actually works in python?
 So internally, the for loop creates an iterator object, iter_obj by calling iter() on the iterable.
-Inside the loop, it calls next() to get the next element and executes the body of the for loop with this value. After all the items exhaust, StopIteration is raised which is internally caught and the loop ends. Note that any other kind of exception will pass through.
+Inside the loop, it calls next() to get the next element and executes the body of the for loop with this value. After all the items exhaust, StopIteration is raised which is 
+internally caught and the loop ends. Note that any other kind of exception will pass through.
 enumerate - This gives index and value both.
 -------------------------------------------------------
 Comprehensions in Python:
@@ -529,7 +570,8 @@ bob.enrol(mam1000w_2013)
 ------------------------------------------------
 Working with the Python Super Function
 
-	Python 2.2 saw the introduction of a built-in function called “super,” which returns a proxy object to delegate method calls to a class – which can be either parent or sibling in nature.
+	Python 2.2 saw the introduction of a built-in function called “super,” which returns a proxy object to delegate method calls to a class – which can be either parent 
+	or sibling in nature.
 
 	In other words, the super function can be used to gain access to inherited methods – from a parent or sibling class – that has been overwritten in a class object.
 
@@ -537,14 +579,20 @@ How Is the Super Function Used?
 
 	The super function is somewhat versatile, and can be used in a couple of ways.
 
-	Use Case 1: Super can be called upon in a single inheritance, in order to refer to the parent class or multiple classes without explicitly naming them. It’s somewhat of a shortcut, but more importantly, it helps keep your code maintainable for the foreseeable future.
+	Use Case 1: Super can be called upon in a single inheritance, in order to refer to the parent class or multiple classes without explicitly naming them. It’s somewhat 
+	of a shortcut, but more importantly, it helps keep your code maintainable for the foreseeable future.
 
-	Use Case 2: Super can be called upon in a dynamic execution environment for multiple or collaborative inheritance. This use is considered exclusive to Python, because it’s not possible with languages that only support single inheritance or are statically compiled.
+	Use Case 2: Super can be called upon in a dynamic execution environment for multiple or collaborative inheritance. This use is considered exclusive to Python, 
+	because it’s not possible with languages that only support single inheritance or are statically compiled.
 
 ------------------------------------------------
 Inheritance and super:
 https://rhettinger.wordpress.com/2011/05/26/super-considered-super/
-The __init__ method of the base class initialises all the instance variables that are common to all subclasses. In each subclass we override the __init__ method so that we can use it to initialise that class’s attributes – but we want the parent class’s attributes to be initialised as well, so we need to call the parent’s __init__ method from ours. To find the right method, we use the super function – when we pass in the current class and object as parameters, The super() builtin returns a proxy object, a substitute object that has ability to call method of the base class via delegation. This is called indirection (ability to reference base object with super())
+The __init__ method of the base class initialises all the instance variables that are common to all subclasses. In each subclass we override the __init__ method so that 
+we can use it to initialise that class’s attributes – but we want the parent class’s attributes to be initialised as well, so we need to call the parent’s __init__ method 
+from ours. To find the right method, we use the super function – when we pass in the current class and object as parameters, The super() builtin returns a proxy object, 
+a substitute object that has ability to call method of the base class via delegation. This is called indirection (ability to reference base object with super())
+
 MRO - https://makina-corpus.com/blog/metier/2014/python-tutorial-understanding-python-mro-class-search-path
 class Mammal(object):
   def __init__(self, mammalName):
@@ -598,11 +646,14 @@ Bat is an animal.
 
 MRO(Method Resolution Order) in python:
 
-In the multiple inheritance scenario, any specified attribute is searched first in the current class. If not found, the search continues into parent classes in depth-first, left-right fashion without searching same class twice.
+In the multiple inheritance scenario, any specified attribute is searched first in the current class. If not found, the search continues into parent classes in depth-first,
+left-right fashion without searching same class twice.
 
-So, in the above example of MultiDerived class the search order is [MultiDerived, Base1, Base2, object]. This order is also called linearization of MultiDerived class and the set of rules used to find this order is called Method Resolution Order (MRO).
+So, in the above example of MultiDerived class the search order is [MultiDerived, Base1, Base2, object]. This order is also called linearization of MultiDerived class and 
+the set of rules used to find this order is called Method Resolution Order (MRO).
 
-MRO must prevent local precedence ordering and also provide monotonicity. It ensures that a class always appears before its parents and in case of multiple parents, the order is same as tuple of base classes.
+MRO must prevent local precedence ordering and also provide monotonicity. It ensures that a class always appears before its parents and in case of multiple parents, 
+the order is same as tuple of base classes.
 
 MRO of a class can be viewed as the __mro__ attribute or mro() method. The former returns a tuple while latter returns a list.
 
@@ -627,7 +678,8 @@ In above example MRO is as following
 Here is how MRO is calculated in Python:
 
     A method in the derived calls is always called before the method of the base class.
-    In our example, Dog class is called before NonMarineMammal or NoneWingedMammal. These two classes are called before Mammal which is called before Animal, and Animal class is called before object.
+    In our example, Dog class is called before NonMarineMammal or NoneWingedMammal. These two classes are called before Mammal which is called before Animal, 
+    and Animal class is called before object.
     If there are multiple parents like Dog(NonMarineMammal, NonWingedMammal), method of NonMarineMammal is invoked first because it appears first.
 
 ---------------------------------------------------------------
@@ -682,7 +734,10 @@ Traceback (most recent call last):
 StopIteration ---- once all is done.
 
 Generator functions:
-A function or method which uses the yield statement is called a generator function. Such a function, when called, always returns an iterator object which can be used to execute the body of the function: calling the iterator’s iterator.__next__() method will cause the function to execute until it provides a value using the yield statement. When the function executes a return statement or falls off the end, a StopIteration exception is raised and the iterator will have reached the end of the set of values to be returned.
+A function or method which uses the yield statement is called a generator function. Such a function, when called, always returns an iterator object which can be used to 
+execute the body of the function: calling the iterator’s iterator.__next__() method will cause the function to execute until it provides a value using the yield statement.
+When the function executes a return statement or falls off the end, a StopIteration exception is raised and the iterator will have reached the end of the set of values to 
+be returned.
 
 -------------------------------------------------------------------------
 
@@ -725,16 +780,20 @@ import itertools >>> same as >>> itertools = __import__("itertools")
 ------------------------------------------------------------------------
 difference b/w 'is' and '==':
 
-The ‘is’ operator compares the identity of two objects; the id() function returns an integer representing its identity. if two objects are same then id for both of these objects will be same. '==' checks if value of two objects is same.
+The ‘is’ operator compares the identity of two objects; the id() function returns an integer representing its identity. if two objects are same then id for both of these 
+objects will be same. '==' checks if value of two objects is same.
 ---------------------------------------------------------------------------
 
 Q. A for loop is faster then a list comprehension.
-in python(in C as well) when a function call made a new frame get created and then call past which takes type. list comprehension works same as a function does. means data frame creation. a simple for loop works in one frame. so it will save some time on these lines.
+in python(in C as well) when a function call made a new frame get created and then call past which takes type. list comprehension works same as a function does. 
+means data frame creation. a simple for loop works in one frame. so it will save some time on these lines.
 
 ------------------------------------------------------------------------
 Q. abstract class: 
 Link:- https://www.python-course.eu/python3_abstract_classes.php
-Abstract classes are classes that contain one or more abstract methods. An abstract method is a method that is declared, but contains no implementation. Abstract classes may not be instantiated, and require subclasses to provide implementations for the abstract methods. Subclasses of an abstract class in Python are not required to implement abstract methods of the parent class.
+Abstract classes are classes that contain one or more abstract methods. An abstract method is a method that is declared, but contains no implementation. 
+Abstract classes may not be instantiated, and require subclasses to provide implementations for the abstract methods. Subclasses of an abstract class in Python are not 
+required to implement abstract methods of the parent class.
 
 from abc import ABC, abstractmethod
  
@@ -767,14 +826,20 @@ TypeError: Can't instantiate abstract class DoAdd42 with abstract methods do_som
 ---------------------------------------------
 python polimorphism:
 there is two type of polymorphism in python - read both.
-In literal sense, Polymorphism means the ability to take various forms. In Python, Polymorphism allows us to define methods in the child class with the same name as defined in their parent class.
+In literal sense, Polymorphism means the ability to take various forms. In Python, Polymorphism allows us to define methods in the child class with the same name as 
+defined in their parent class.
 
-As we know, a child class inherits all the methods from the parent class. However, you will encounter situations where the method inherited from the parent class doesn’t quite fit into the child class. In such cases, you will have to re-implement method in the child class. This process is known as Method Overriding.
+As we know, a child class inherits all the methods from the parent class. However, you will encounter situations where the method inherited from the parent class doesn’t 
+quite fit into the child class. In such cases, you will have to re-implement method in the child class. This process is known as Method Overriding.
 
-If you have overridden a method in the child class, then the version of the method will be called based upon the type of the object used to call it. If a child class object is used to call an overridden method then the child class version of the method is called. On the other hand, if parent class object is used to call an overridden method, then the parent class version of the method is called.
+If you have overridden a method in the child class, then the version of the method will be called based upon the type of the object used to call it. If a child class 
+object is used to call an overridden method then the child class version of the method is called. On the other hand, if parent class object is used to call an overridden 
+method, then the parent class version of the method is called.
 ----------------------------------------------
 
-'__main__' is the name of the scope in which top-level code executes. A module’s __name__ is set equal to '__main__' when read from standard input, a script, or from an interactive prompt. A module can discover whether or not it is running in the main scope by checking its own __name__, which allows a common idiom for conditionally executing code in a module when it is run as a script or with python -m but not when it is imported:
+'__main__' is the name of the scope in which top-level code executes. A module’s __name__ is set equal to '__main__' when read from standard input, a script, or from an 
+interactive prompt. A module can discover whether or not it is running in the main scope by checking its own __name__, which allows a common idiom for conditionally 
+executing code in a module when it is run as a script or with python -m but not when it is imported:
 
 -----------------------------------------------
 Gherkin Syntax: BDD - behaviour development
@@ -805,7 +870,9 @@ And the user should be presented with a success message
 understanding of behave python framework.
 What is BDD?
 
-Behavioral Driven Development (BDD) is a software development approach that has evolved from TDD (Test Driven Development). It differs by being written in a shared language, which improves communication between tech and non-tech teams and stakeholders.In both development approaches, tests are written ahead of the code, but in BDD, tests are more user-focused and based on the system’s behavior.
+Behavioral Driven Development (BDD) is a software development approach that has evolved from TDD (Test Driven Development). It differs by being written in a shared 
+language, which improves communication between tech and non-tech teams and stakeholders.In both development approaches, tests are written ahead of the code, but in BDD, 
+tests are more user-focused and based on the system’s behavior.
 
 https://blog.testlodge.com/what-is-bdd/
 
@@ -818,4 +885,7 @@ pip show <module name> --- to see module is installed or not.
 pip install abc==2.0.0
 
 -------------------------------------------------------------
-Python-tesseract is an optical character recognition (OCR) tool for python. That is, it will recognize and “read” the text embedded in images. Python-tesseract is a wrapper for Google’s Tesseract-OCR Engine. It is also useful as a stand-alone invocation script to tesseract, as it can read all image types supported by the Pillow and Leptonica imaging libraries, including jpeg, png, gif, bmp, tiff, and others. Additionally, if used as a script, Python-tesseract will print the recognized text instead of writing it to a file.
+Python-tesseract is an optical character recognition (OCR) tool for python. That is, it will recognize and “read” the text embedded in images. Python-tesseract is a 
+wrapper for Google’s Tesseract-OCR Engine. It is also useful as a stand-alone invocation script to tesseract, as it can read all image types supported by the Pillow and 
+Leptonica imaging libraries, including jpeg, png, gif, bmp, tiff, and others. Additionally, if used as a script, Python-tesseract will print the recognized text instead 
+of writing it to a file.
