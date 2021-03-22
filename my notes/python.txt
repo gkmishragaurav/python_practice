@@ -1,3 +1,41 @@
+Note - Python key can not be a dictionary. only a fixed object can be a key for a dictionary
+run a cmd on another machine in python - use pexpect. for same machine use subprocess.
+
+------------------------------------------------------------------------------------------------------
+
+Difference between Compiled and Interpreted Language:
+
+Compiled Language:
+	Compiled languages are converted directly into machine code that the processor can execute. 
+	It is one where the program, once compiled, is expressed in the instructions of the target machine - machine language; 
+	this machine code is undecipherable by humans. Types of compiled language – C, C++, C#, CLEO, COBOL, etc.
+	In this language, compiled programs run faster than interpreted programs.
+	This language delivers better performance.
+	It also gives the developer more control over hardware aspects, like memory management and CPU usage.
+	Compiled languages need a “build” step – they need to be manually compiled first. You need to “rebuild” the program every time you need to make a change.
+
+Interpreted Language:
+	Interpreters run through a program line by line and execute each command.
+	It is one where the instructions are not directly executed by the target machine, 
+	but instead read and executed by some other program. Interpreted language ranges – JavaScript, Perl, Python, BASIC, etc.
+	While in this language, interpreted programs can be modified while the program is running.
+	This languages delivers relatively slower performance.
+
+Okay… but what does that actually mean?
+	Imagine you have a hummus recipe that you want to make, but it's written in ancient Greek. 
+	There are two ways you, a non-ancient-Greek speaker, could follow its directions.
+
+	The first is if someone had already translated it into English for you. 
+	You (and anyone else who can speak English) could read the English version of the recipe and make hummus. 
+	Think of this translated recipe as the compiled version.
+
+	The second way is if you have a friend who knows ancient Greek. 
+	When you're ready to make hummus, your friend sits next to you and translates 
+	the recipe into English as you go, line by line. 
+	In this case, your friend is the interpreter for the interpreted version of the recipe.
+
+-----------------------------------------------------------------------------
+
 Internal working of Python:
 
 	Python doesn’t convert its code into machine code, something that hardware can understand.
@@ -34,3 +72,58 @@ Similarly, JPython is a Python interpreter implemented in Java.
 
 But why is the folder created in the first place? Well, it slightly increases the speed of the Python program. 
 Unless you change your Python code, recompilation to bytecode is avoided, thereby saving time.
+
+--------------------------------------------------------------------------------------------------------------
+
+copy in Python (Deep Copy and Shallow Copy)
+
+In Python, Assignment statements do not copy objects, they create bindings between a target and an object. When we use = operator user thinks that this creates a new object; well, it doesn’t. It only creates a new variable that shares the reference of the original object. Sometimes a user wants to work with mutable objects, in order to do that user looks for a way to create “real copies” or “clones” of these objects. Or, sometimes a user wants copies that user can modify without automatically modifying the original at the same time, in order to do that we create copies of objects.
+
+A copy is sometimes needed so one can change one copy without changing the other. In Python, there are two ways to create copies :
+
+    Deep copy
+    Shallow copy
+
+# importing copy module 
+import copy 
+  
+# initializing list 1  
+li1 = [1, 2, [3,5], 4] 
+
+# using copy for shallow copy   
+li2 = copy.copy(li1)  
+
+# using deepcopy for deepcopy   
+li3 = copy.deepcopy(li1)  
+
+----------------------------------------------------------------------------------------
+GIL:
+The Python Global Interpreter Lock or GIL, in simple words, is a mutex (or a lock) that allows only one thread to hold the control of the Python interpreter.
+
+>>> import sys
+>>> a = []
+>>> b = a
+>>> sys.getrefcount(a)
+3
+
+In the above example, the reference count for the empty list object [] was 3. The list object was referenced by a, b and the argument passed to sys.getrefcount().
+
+This means that only one thread can be in a state of execution at any point in time. The impact of the GIL isn’t visible to developers who execute single-threaded programs, but it can be a performance bottleneck in CPU-bound and multi-threaded code.
+
+Q. What problem did the GIL solve for Python?
+
+Python uses reference counting for memory management. It means that objects created in Python have a reference count variable that keeps track of the number of references that point to the object. When this count reaches zero, the memory occupied by the object is released.
+
+The problem was that this reference count variable needed protection from race conditions where two threads increase or decrease its value simultaneously. If this happens, it can cause either leaked memory that is never released or, even worse, incorrectly release the memory while a reference to that object still exists. This can can cause crashes or other “weird” bugs in your Python programs.
+
+The GIL is a single lock on the interpreter itself which adds a rule that execution of any Python bytecode requires acquiring the interpreter lock. This prevents deadlocks (as there is only one lock) and doesn’t introduce much performance overhead. But it effectively makes any CPU-bound Python program single-threaded.
+
+Q. How to deal with Python’s GIL
+
+If the GIL is causing you problems, here a few approaches you can try:
+
+Multi-processing vs multi-threading: The most popular way is to use a multi-processing approach where you use multiple processes instead of threads. Each Python process gets its own Python interpreter and memory space so the GIL won’t be a problem. Python has a multiprocessing module which lets us create processes easily like this:
+
+multi threading in python:
+
+1. MT programming is ideal for programming tasks that are asynchronous in nature, require multiple concurrent activities, and where the processing of each activity may be nondeterministic, i.e., random and unpredictable.
