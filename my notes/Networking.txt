@@ -2,15 +2,47 @@ networking:
 
 Q - udp vs tcp - when to use them?
 
-TCP (Transmission Control Protocol) is connection oriented, whereas UDP (User Datagram Protocol) is connection-less. This means that TCP tracks all data sent, 
-requiring acknowledgment for each octet (generally). UDP does not use acknowledgments at all, and is usually used for protocols where a few lost datagrams do not matter.
+    TCP (Transmission Control Protocol) is connection oriented, whereas UDP (User Datagram Protocol) is connection-less. This means that TCP tracks all data sent, 
+    requiring acknowledgment for each octet (generally). UDP does not use acknowledgments at all, and is usually used for protocols where a few lost datagrams do not matter.
 
-Because of acknowledgments, TCP is considered a reliable data transfer protocol. It ensures that no data is sent to the upper layer application that is out of order, 
-duplicated, or has missing pieces. It can even manage transmissions to attempt to reduce congestion.
+    Because of acknowledgments, TCP is considered a reliable data transfer protocol. It ensures that no data is sent to the upper layer application that is out of order, 
+    duplicated, or has missing pieces. It can even manage transmissions to attempt to reduce congestion.
 
-Q. how dns work:
+    TCP provides extensive error checking mechanisms. It is because it provides flow control and acknowledgment of data. UDP has only the basic error checking mechanism using checksums.
+
+    TCP is comparatively slower than UDP. UDP is faster, simpler, and more efficient than TCP.
+    
+    TCP is used by HTTP, HTTPs, FTP, SMTP and Telnet. UDP is used by DNS, DHCP, TFTP, SNMP, RIP, and VoIP.
+
+Q. how dns work?
+
+    Ans: https://www.verisign.com/en_IN/website-presence/online/how-dns-works/index.xhtml
+    Domain Names:
+        A domain name is a human-readable name—like amazon.com—that we type in a web browser URL field. The Internet Corporation for Assigned Names and Numbers (ICANN) manages  these domain names.
+        
+    Top Level Domain (TLD):
+        TLD refers to the last part of a domain name. For example, the .com in amazon.com is the Top Level Domain. The most common TLDs include .com, .net, org, and .info. Country code TLDs represent specific geographic locations. For example: .in represents India. Here are some more examples:
+
+        com – Commercial businesses.
+        gov – U.S. government agencies.
+        edu – Educational institutions such as universities.
+    
+    Second Level Domain:
+        This is the part of a domain name which comes right before the TLD—amazon.com—for example.
+        
+    Sub Domain:
+        A subdomain can be created to identify unique content areas of a web site. For example, the aws of aws.amazon.com.
+        
+   How DNS Works?
+    When a user types a human-readable address into the browser, the operating system’s DNS client will check for information in a local cache. If the requested address isn’t there, it will look for a Domain Name System server in the local area network (LAN). When the local DNS server receives the query, and the requested domain name is found, it will return the result.
+    
+    If the name is not found, the local server will forward the query to a DNS cache server, often provided by the Internet Service Provider (ISP). Since the DNS server’s cache contains a temporary store of DNS records, it will quickly respond to requests. These DNS cache servers are called not authoritative DNS servers as they provide request resolution based in a cached value acquired from authoritative DNS servers.
+    
+    An Authoritative Root Name Server maintains and provides a list of authoritative name servers for each of the top-level domains (.com, .org, etc.).
+
+    An Authoritative Top Level Domain Name Server maintains and provides a list of authoritative name servers for all domains (gmail.com, wikipedia.org, etc.). Its job is to query name servers to find and return the authoritative name server for the requested domain.
+
 Q. how to design my own network?
-Q. network data transfer.
 
 Q - What Happens When You Type in a URL?
 This is how I would explain it:
