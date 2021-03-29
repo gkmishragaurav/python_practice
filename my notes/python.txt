@@ -880,6 +880,11 @@ https://blog.testlodge.com/what-is-bdd/
 Test Driven Development (TDD):
 https://www.guru99.com/test-driven-development.html
 
+------------------------------------------------------------
+
+Behavior-Driven Development(BDD):
+https://www.guru99.com/bdd-testing-rest-api-behave.html
+
 -------------------------------------------------------------
 pip show <module name> --- to see module is installed or not.
 pip install abc==2.0.0
