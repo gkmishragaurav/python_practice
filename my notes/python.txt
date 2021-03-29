@@ -825,7 +825,19 @@ if do_something is not defined in sub class then following error will be raised.
 TypeError: Can't instantiate abstract class DoAdd42 with abstract methods do_something
 ---------------------------------------------
 python polimorphism:
-there is two type of polymorphism in python - read both.
+
+Polymorphism means same function name (but different signatures) being uses for different types. For example
+
+# Python program to demonstrate in-built poly-
+# morphic functions
+  
+# len() being used for a string
+print(len("geeks"))
+  
+# len() being used for a list
+print(len([10, 20, 30]))
+
+Polymorphism with class methods:
 In literal sense, Polymorphism means the ability to take various forms. In Python, Polymorphism allows us to define methods in the child class with the same name as 
 defined in their parent class.
 
