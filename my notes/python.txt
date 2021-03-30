@@ -177,7 +177,7 @@ write a file
 
 e. Open file with contaxt manager.
 
-https://jeffknupp.com/blog/2016/03/07/python-with-context-managers/
+https://www.geeksforgeeks.org/context-manager-in-python/
 
 There are multiple ways to create files in Python, but the cleanest way to do this is by using the with keyword, in this case we are using the Context Manager Approach.
 Initially, Python provided the open statement to open files. When we are using the open statement, Python delegates into the developer the responsibility to close the file when it's no longer need to use it. This practice lead to errors since developers sometimes forgot to close it. Since Python 2.5, developers can use the with statement to handle this situation safely. The with statement automatically closes the file even if an exception is raised. In this way, we have the advantage: the file is closed automatically and we don’t need to call the close() method.
