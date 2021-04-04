@@ -168,21 +168,26 @@ def find_level_with_max_sum(root):
             queue.append((temp.right, level+1))
 
     return max_level, max_sum
-def root_to_leaf_path(root, paths):
+def branchSums(root):
     '''This will give all root to leaf paths, return will be a list'''
+    sums=[]
+    root_to_leaf_path(root, 0, sums)
+    return sums
+def root_to_leaf_path(root, path_sum, sums):
     if not root:
         return 0
 
-    paths.append(root.value)
+    path_sum = path_sum+root.value
 
     if not root.left and not root.right:
-        print (paths)
+        sums.append(path_sum)
+        return
 
     if root.left:
-        root_to_leaf_path(root.left, paths)
+        root_to_leaf_path(root.left, path_sum, sums)
     if root.right:
-        root_to_leaf_path(root.right, paths)
-    paths.pop()
+        root_to_leaf_path(root.right, path_sum, sums)
+    path_sum = path_sum-root.value
 def max_root_to_leaf_path(root, current_sum, max_sum):
     if not root:
         return
