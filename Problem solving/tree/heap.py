@@ -38,7 +38,7 @@ a = [3, 8, 2, 5, 6, 1, 9]
 def heap_sort(a):
     last = len(a)
     while last:
-        max_heapfy(a, 0, last-1, last-1)
+        max_heapfy(a, 0, int(last/2)-1, last-1)
         a[0], a[last-1] = a[last-1], a[0]
         last=last-1
 
