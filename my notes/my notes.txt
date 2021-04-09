@@ -592,3 +592,27 @@ Agile process - scrum model
 	
 	Sprint Retrospective: 
 	It occurs after sprint review and before sprint planning to get to know what went well in the previous sprint and what could be improved.
+	
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+basic encryption understanding:
+
+Symmetric Key Encryption
+
+The encryption process where same keys are used for encrypting and decrypting the information is known as Symmetric Key Encryption.
+This means one key between sender and receiver will be shared.
+example - DES/aes
+
+
+Asymmetric Key Encryption
+The encryption process where different keys are used for encrypting and decrypting the information is known as Asymmetric Key Encryption. Though the keys are different, they are mathematically related and hence, retrieving the plaintext by decrypting ciphertext is feasible.
+
+
+AES encryption
+
+How AES encryption works?
+AES includes three block ciphers: AES-128, AES-192 and AES-256.
+
+AES-128 uses a 128-bit key length to encrypt and decrypt a block of messages, while AES-192 uses a 192-bit key length and AES-256 a 256-bit key length to encrypt and decrypt messages. 
+
+Each cipher encrypts and decrypts data in blocks of 128 bits using cryptographic keys of 128, 192 and 256 bits, respectively.
