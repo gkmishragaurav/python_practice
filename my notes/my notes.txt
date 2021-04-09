@@ -515,6 +515,80 @@ websocket vs long polling ---- https://dev.to/moz5691/websocket-vs-long-polling-
 
 -----------------------------------------------
 
+sdlc Notes:
 
+	SDLC specifies the task(s) to be performed at various stages by a software engineer/developer. 
+	It ensures that the end product is able to meet the customer’s expectations and fits in the overall budget. 
+	Hence, it’s vital for a software developer to have prior knowledge of this software development process. 
+	
+These 6 stages are discussed below. 
 
+	Stage-1: Planning And Requirement Analysis:
+		Planning is the crucial step in everything and so as in software development. 
+		In this same stage, requirement analysis is also performed by the developers of the organization. 
+		This is attained from the inputs from the customers, sales department/market surveys. 
+		
+	Stage-2: Defining Requirements:
+		In this stage, all the requirements for the target software are specified. 
+		These requirements get approval from the customers, market analysts, and stakeholders. 
+		This is fulfilled by utilizing SRS (Software Requirement Specification). 
+		This is a sort of document that specifies all those things that need to be defined and created during the entire project cycle. 
+	
+	Stage-3: Designing Architecture:
+		SRS is a reference for software designers to come out with the best architecture for the software. 
+		Hence, with the requirements defined in SRS, multiple designs for the product architecture are present in the Design Document Specification (DDS). 
+	
+	Stage-4: Developing Product:
+		At this stage, the fundamental development of the product starts. 
+		For this, developers use a specific programming code as per the design in the DDS. 
+		Hence, it is important for the coders to follow the protocols set by the association.
+		
+	Stage-5: Product Testing and Integration:
+		After the development of the product, testing of the software is necessary to ensure its smooth execution. 
+		Although, minimal testing is conducted at every stage of SDLC. 
+		Therefore, at this stage, all the probable flaws are tracked, fixed, and retested. 
+		This ensures that the product confronts the quality requirements of SRS. 
+	
+	Stage 6: Deployment and Maintenance Of Product: 
+		After detailed testing, the conclusive product is released in phases as per the organization’s strategy. 
+		Then it is tested in a real industrial environment. Because it is important to ensure its smooth performance. 
+		If it performs well, the organization sends out the product as a whole. 
+		
+diffrent models:
+	Classical Waterfall Model
+	Iterative Waterfall Model
+	Spiral Model
+	Agile model
+	
+Explain Phases of the waterfall model:
+	The five-main phase of waterfall model are:
+		Requirements gathering
+		Design
+		Development
+		Testing
+		Implementation & Maintenance
+	
+Agile process - scrum model
+	This agile methodology involves Scrum framework which is used to manage complex software development employing various processes and techniques.
+	
+	There are 3 roles in scrum framework:
 
+		Scrum Master: He/ She ensures the process is followed by removing impediments and supporting development team.
+		Product Owner: He/ She works with stakeholders and business.
+		Development Team: Self-organizing team who do the requirement analysis, design, implementation and testing, etc.
+		
+	Sprint: 
+	It is a time-box of 1 month or less consistent duration, new sprint starts immediately after the conclusion of previous sprint. 
+	No changes are to be made once the sprint starts and scope of the project can be re-negotiated with Product owner and development team.
+	
+	Sprint Planning: 
+	It is time-box of maximum 8 hours for a month sprint, it gives an overview of what are the requirements which are to be delivered in sprint.
+	
+	Daily Scrum: 
+	It is a 15 min time box event for the development team to discuss and create a plan for the next 24 hours to reduce complexity.
+	
+	Sprint Review: 
+	It is held at the end of each sprint to inspect Increment and adapt Product Backlog.
+	
+	Sprint Retrospective: 
+	It occurs after sprint review and before sprint planning to get to know what went well in the previous sprint and what could be improved.
