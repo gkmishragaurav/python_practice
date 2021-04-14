@@ -242,8 +242,29 @@ What error need to raise is checked under __builtin__ baseexception - if not pre
 It is also valid if he can remove just character at index in the string, and the remaining characters will occur the same number of times. 
 -------------------------------------------------------
 
-sql:
+sql/database:
 
+What are ACID properties?
+
+ACID properties stands for Atomicity, Consistency, Isolation, Durability. ACID properties are followed by DBMS in transaction management. In order to ensure that the transaction is correct, the following things must be taken care:
+
+Atomicity :- This ensures that a transaction in done in atomic parts. Either it is completed or not. There is not partial state. However, a transaction may consist of sub-transactions, but for a transaction to achieve atomicty all the sub-transactions must be completed successfully. If any of them fails, rollback happens.
+
+Consistency - Imagine an amount Rs.500 to be transferred from one account to another. The steps followed are :
+Amount of Rs 500 will be deducted from account A. 
+Amount of Rs. 500 will be added to account B.
+           If after step 1, the transaction is stopped due to some reasons. The database will be in-consistent, or it no longer reflects the real state of the world. So the transaction must be not lead the database to in-consistent state. The consistency here requires that the sum of A and B is unchanged after the transaction is completed.
+
+Isolation - In an system multiple transactions may execute concurrently but each transaction must be unaware of other transaction executing concurrently. This is achieved by conflict serializabiliity.
+
+Durability - After a transaction completes, the changes it has made to the database persist, evern if there are system failures.
+In real world system , 
+
+Atomicity is ensured by recovery systems. 
+Consistency is ensured by application programmer who codes the transaction. This may be facilitated by automatic testing of integrity constraints.
+Isolation is ensured by database component called concurreny-control system.
+Durability is ensured by guarantee that either the updates carried out by the transaction have been written to disk before the transaction completes or by ensuring that the information about he updates carried out by the transaction and written to disk is sufficient to enable the databaes to reconstruct the updates when the database system is restarted after the failure
+------------------------
 1. Write an SQL query to find names of employee start with ‘A’?
 
 SELECT * FROM Employees WHERE EmpName like 'A%' 
