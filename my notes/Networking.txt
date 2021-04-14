@@ -99,3 +99,27 @@ Layer 1 - Link Layer / Network Access Layer (Lower most Layer) - The link layer 
 1. Address Resolution Protocol (ARP) - used to convert an IP address into a physical address
 
 2. Neighbor Discovery Protocol (NDP) - protocol in the Internet protocol suite used with Internet Protocol Version 6 (IPv6)
+
+---------------------------------------------------------------
+
+What is DHCP, how does it work?
+
+DHCP is at the heart of assigning you (and everyone) their IP address. The key word in DHCP is protocol—the guiding rules and process for Internet connections for everyone, everywhere. DHCP is consistent, accurate and works the same for every computer. Remember that without an IP address, you would not be able to receive the information you requested. As you've learned (by reading IP: 101), your IP address tells the Internet to send the information that you requested (Web page, email, data, etc.) right to the computer that requested it.
+
+How DHCP works?
+
+The key word in DHCP is "dynamic." Because instead of having just one fixed and specific IP address, most computers will be assigned one that is available from a subnet or "pool" that is assigned to the network. The Internet isn't one big computer in one big location. It's an interconnected network of networks, all created to make one-on-one connections between any two clients that want to exchange information.
+
+One of the features of DHCP is that it provides IP addresses that "expire." When DHCP assigns an IP address, it actually leases that connection identifier to the user's computer for a specific amount of time. The default lease is five days.
+
+Here is how the DHCP process works when you go online:
+
+Your go on your computer to connect to the Internet.
+The network requests an IP address (this is actually referred to as a DHCP discover message).
+On behalf of your computer's request, the DHCP server allocates (leases) to your computer an IP address. This is referred to as the DHCP offer message.
+Your computer (remember—you're the DHCP client) takes the first IP address offer that comes along. It then responds with a DHCP request message that verifies the IP address that's been offered and accepted.
+DHCP then updates the appropriate network servers with the IP address and other configuration information for your computer.
+Your computer (or whatever network device you're using) accepts the IP address for the lease term.
+Typically, a DHCP server renews your lease automatically, without you (or even a network administrator) having to do anything. However, if that IP address's lease expires, you'll be assigned a new IP address using the same DHCP protocols.
+
+Here's the best part: You wouldn't even be aware of it unless you happened to check your IP address. Your Internet usage would continue as before. DHCP takes place rather instantly, and entirely behind the scenes. We, as everyday, ordinary computer users, never have to think twice about it. We just get to enjoy this amazing and instantaneous technology that brings the Internet to our fingertips when we open our browsers. I guess you could say DHCP stands for "darn handy computer process"...or something like that.
