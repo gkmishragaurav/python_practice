@@ -65,3 +65,37 @@ the port on which it listens, and the protocol it uses. The goal of a socket is 
 Q. Port scanner with sockets
 
 Q. openssl s_client -connect harbor.drtst.org:8001
+
+-------------------------------------------------------------------------------
+Q. Explain TCP/IP model. Protocols used in respective layers with their functionalities
+
+TCP / IP (Transmission Control Protocol / Internet Protocol) model is a four layered architecture which provides end to end communication, specifying how data should be formed in packets, addressed, transmitted, routed and received. 
+
+The four layers are organized as :
+
+Layer 4 - Application Layer (Topmost Layer) - The application layer of the TCP/IP model is used to handle all process-to-process communication functions. The basic functions which are carried out by this layer are session establishment, maintenance and termination, data conversion, compression, encryption etc.Some of the common protocols used here are :
+
+TELNET - a two-way communication protocol which allows connecting to a remote machine and run applications on it.
+FTP(File Transfer Protocol) - allows file transfer among computer users connected over a network. 
+SMTP(Simple Mail Transport Protocol) - used to transport electronic mails between a source and destination.
+DNS(Domain Name Server) - resolves an IP address into a textual address for hosts connected over a network.
+
+Layer 3 - Transport Layer - The purpose of transport layer is to permit devices on the source and destination hosts for conversation. It defines the level of status of the connection used when transporting data.The main protocols included at Transport layer are 
+
+1. Transmission Control Protocol (TCP) -  TCP is a connection-oriented protocol that guarantees delivery of data and in the same order in which they were sent.
+
+2. User Datagram Protocol (UDP) - UDP is connectionless sending packets in chunks.
+
+Layer 2 - Internet Layer - This layer packs data into data packets known as datagrams, which contain source and destination address information that is used to forward the datagrams between hosts and across networks. This layer is also responsible for routing of these datagrams, along with functions like traffic routing, traffic control, fragmentation. The main protocols included at Transport layer are :
+
+1. Internet Protocol (IP) - used for relaying datagrams across network boundaries.
+
+2. Internet Control Message Protocol (ICMP) - used by network devices to send error messages and operational information indication
+
+3. Internet Group Management Protocol (IGMP) - used to establish multi cast group membership
+
+Layer 1 - Link Layer / Network Access Layer (Lower most Layer) - The link layer combines the physical and data link layer functions into a single layer. This includes frame physical network functions like modulation, line coding and bit synchronization, frame synchronization and error detection. Common protocols include the following:
+
+1. Address Resolution Protocol (ARP) - used to convert an IP address into a physical address
+
+2. Neighbor Discovery Protocol (NDP) - protocol in the Internet protocol suite used with Internet Protocol Version 6 (IPv6)
