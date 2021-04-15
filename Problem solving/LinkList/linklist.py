@@ -148,7 +148,7 @@ def is_same_linklist(ll1, ll2):
         top2=top2.next
     return True
 
-def is_Palendrom(ll):
+def is_Palindrome(ll):
     # This function will check if a link list is palendrom or not.
     ll1, ll2 = break_linklist_from_mid(ll)
     ll1.print_list()
