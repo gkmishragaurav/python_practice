@@ -2,6 +2,18 @@ Note - Python key can not be a dictionary. only a fixed object can be a key for 
 run a cmd on another machine in python - use pexpect. for same machine use subprocess.
 
 ------------------------------------------------------------------------------------------------------
+List cheat sheet:
+list.extend(L)
+Extend the list by appending all the items in the given list; equivalent to a[len(a):] = L.
+
+list.insert(i, x)
+Insert an item at a given position. The first argument is the index of the element before which to insert, so a.insert(0, x) inserts at the front of the list, and a.insert(len(a), x) is equivalent to a.append(x).
+
+list.pop([i])
+Remove the item at the given position in the list,
+
+
+----------------------------------------------------------------------------------------------------
 
 Difference between Compiled and Interpreted Language:
 
