@@ -28,19 +28,20 @@ def level_order_traversal(root):
             queue.append(temp.right)
 
 def is_bst(root):
-    if not root:
-        return True
+    def helper(root, mini, maxi):
+        if not root:
+            return True
 
-    if root.left:
-        if root.value <= root.left.value:
+        if mini >= root.val:
             return False
 
-    if root.right:
-        if root.value > root.right.value:
+        if maxi <= root.val:
             return False
 
-    l= is_bst(root.left)
-    return l and is_bst(root.right)
+        l = helper(root.left, mini, root.val)
+        return l and helper(root.right, root.val, maxi)
+        
+    return helper(root, float('-inf'), float('inf') )
 
 
 root=make_tree()
