@@ -1,39 +1,25 @@
-def parent(a, i):
-    return (i-1)/2
-
 def left(a, i):
     return(2*i+1)
 
 def right(a, i):
     return (2*i+2)
 
-def swap(a,b):
-    return b,a
-
-def min_heapify(a, end=None):
-    for i in range(end/2):
-        left_child = left(a, i)
-        right_child = right(a, i)
-        if a[left_child] < a[i] and left_child < end:
-            if a[right_child] < a[left_child]:
-                a[i], a[right_child] = a[right_child], a[i]
-            else:
-                a[i], a[left_child] = a[left_child], a[i]
-        if a[right_child] < a[i] and right_child < end:
-            a[i], a[right_child] = a[right_child], a[i]
-    return a
-
 def max_heapify(a, end=None):
-    for i in range(end/2):
-        left_child = left(a, i)
-        right_child = right(a, i)
-        if a[left_child] > a[i] and left_child < end:
-            if a[right_child] > a[left_child]:
+    i=int(end/2)
+    while i>=0:
+        left_child = left(i)
+        right_child = right(i)
+        if left_child < end and a[left_child] > a[i] :
+            if right_child < end and a[right_child] > a[left_child]:
                 a[i], a[right_child] = a[right_child], a[i]
             else:
                 a[i], a[left_child] = a[left_child], a[i]
-        if a[right_child] > a[i] and right_child < end:
+
+        elif right_child < end and a[right_child] > a[i]:
             a[i], a[right_child] = a[right_child], a[i]
+
+        i=i-1
+
     return a
 
 def heap_sort(a):
