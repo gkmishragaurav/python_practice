@@ -34,6 +34,11 @@ pattern = '^-?\d+(,\d+)*(\.\d+(e\d+)?)?$'
 string=['3.14529', '-255.34', '128', '1.9e10', '123,340.00', '720p']
 print [st for st in string if re.match(pattern, st)]
 
+# regex for ip address.
+pattern = '^((?:(?:2[0-5][0-5]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}' \
+         '(?:2[0-5][0-5]|1[0-9][0-9]|[1-9][0-9]|[0-9]))$'
+string='12.34.65.255'
+
 #Extracting Data From Log Entries
 #Skip	W/dalvikvm( 1553): threadid=1: uncaught exception		To be completed
 # Skip	E/( 1553): FATAL EXCEPTION: main		To be completed
