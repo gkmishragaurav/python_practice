@@ -1,3 +1,8 @@
+# Given an array, print the Next Smaller Element (NSE) for every element. 
+# The Smaller smaller Element for an element x is the first smaller element 
+# on the right side of x in array. Elements for which no smaller element exist (on right side), 
+# consider next smaller element as -1. 
+
 def NextSmallerElement(a):
     stack=[]
     i=0
