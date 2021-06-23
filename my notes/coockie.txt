@@ -1,0 +1,21 @@
+what is coockie?
+A cookie is a small piece of information that is stored in a text file on user's (client) hard drive by the web server. This piece of information is then sent back to the server each time the browser requests a page from the server. shopping cart, ad
+
+What is the Content of Cookie?
+The cookie consists of mainly three things
+	The name of the server the cookie was sent from
+	Cookies Lifetime
+	A value. This is usually a randomly generated unique number
+	
+Usually, there are two types of cookies written on user machines
+
+Session Cookies: These cookies are active till the browser that triggers the cookie is open. When we close the browser this session cookie gets deleted
+Persistent Cookies: These cookies are written permanently on the user machine and it lasts for months or years
+
+How to test Cookies?
+	Disabling cookies: Disable all cookies and attempt to use the site's major functions
+	Corrupting cookies: Manually edit the cookie in notepad and change the parameters with some random values
+	Cookies encryption: Sensitive information like passwords and usernames should be encrypted before it is sent to our computer
+	Cookie testing with multiple browsers: Check your website page is writing the cookies properly on a different browser as expected
+	Checking the deletion from your web application page
+	No overuse of cookies: If the application under test is a public website, there should not be overuse of cookies
