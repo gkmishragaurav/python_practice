@@ -123,3 +123,35 @@ Your computer (or whatever network device you're using) accepts the IP address f
 Typically, a DHCP server renews your lease automatically, without you (or even a network administrator) having to do anything. However, if that IP address's lease expires, you'll be assigned a new IP address using the same DHCP protocols.
 
 Here's the best part: You wouldn't even be aware of it unless you happened to check your IP address. Your Internet usage would continue as before. DHCP takes place rather instantly, and entirely behind the scenes. We, as everyday, ordinary computer users, never have to think twice about it. We just get to enjoy this amazing and instantaneous technology that brings the Internet to our fingertips when we open our browsers. I guess you could say DHCP stands for "darn handy computer process"...or something like that.
+
+--------------------------------------------------------------------------------------------------
+
+what is certificate?
+SSL certificates are what enable websites to move from HTTP to HTTPS, which is more secure. An SSL certificate is a data file hosted in a website's origin server. 
+
+SSL, more commonly called TLS, is a protocol for encrypting Internet traffic and verifying server identity. Any website with an HTTPS web address uses SSL/TLS. 
+
+What information does an SSL certificate contain?
+	SSL certificates include:
+
+	The domain name that the certificate was issued for
+	Which person, organization, or device it was issued to
+	Which certificate authority issued it
+	The certificate authority's digital signature
+	Associated subdomains
+	Issue date of the certificate
+	Expiration date of the certificate
+	The public key (the private key is kept secret)
+	
+How HTTPS works?
+Hypertext transfer protocol secure (HTTPS) is the secure version of HTTP, which is the primary protocol used to send data between a web browser and a website. HTTPS is encrypted in order to increase security of data transfer. 
+
+HTTPS uses an encryption protocol to encrypt communications. The protocol is called Transport Layer Security (TLS), although formerly it was known as Secure Sockets Layer (SSL). This protocol secures communications by using what’s known as an asymmetric public key infrastructure. This type of security system uses two different keys to encrypt communications between two parties:
+
+The private key - this key is controlled by the owner of a website and it’s kept, as the reader may have speculated, private. This key lives on a web server and is used to decrypt information encrypted by the public key.
+The public key - this key is available to everyone who wants to interact with the server in a way that’s secure. Information that’s encrypted by the public key can only be decrypted by the private key.
+
+Notes:
+	at first connection to secure website, a SSL certificate is downloaded. this has a public key.
+	now on any data sent by browser to server will be encrypted by this public key.
+	this encrypted data can be decrypted by a private key only which is stored on server.
