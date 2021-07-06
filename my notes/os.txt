@@ -208,4 +208,19 @@ ls -lrt | grep '^d'
 Q. How do you check if a particular process  is listening on a perticular port on remote host ?
 telnet host port ---- if connected then process is listening on that port.
 
+Q. understanding top cmd output:
+
+PID – PID of the process(4522)
+USER – The user that is the owner of the process (root)
+PR – priority of the process (15)
+NI – The “NICE” value of the process (0)
+VIRT – virtual memory used by the process (132m)
+RES – physical memory used from the process (14m)
+SHR – shared memory of the process (3204)
+S – indicates the status of the process: S=sleep R=running Z=zombie (S)
+%CPU – This is the percentage of CPU used by this process (0.3)
+%MEM – This is the percentage of RAM used by the process (0.7)
+TIME+ –This is the total time of activity of this process (0:17.75)
+COMMAND – And this is the name of the process (bb_monitor.pl)
+
 
