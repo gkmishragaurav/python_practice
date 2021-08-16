@@ -1,0 +1,216 @@
+sql/database:
+
+What are ACID properties?
+
+ACID properties stands for Atomicity, Consistency, Isolation, Durability. ACID properties are followed by DBMS in transaction management. In order to ensure that the transaction is correct, the following things must be taken care:
+
+Atomicity :- This ensures that a transaction in done in atomic parts. Either it is completed or not. There is not partial state. However, a transaction may consist of sub-transactions, but for a transaction to achieve atomicty all the sub-transactions must be completed successfully. If any of them fails, rollback happens.
+
+Consistency - Imagine an amount Rs.500 to be transferred from one account to another. The steps followed are :
+Amount of Rs 500 will be deducted from account A. 
+Amount of Rs. 500 will be added to account B.
+           If after step 1, the transaction is stopped due to some reasons. The database will be in-consistent, or it no longer reflects the real state of the world. So the transaction must be not lead the database to in-consistent state. The consistency here requires that the sum of A and B is unchanged after the transaction is completed.
+
+Isolation - In an system multiple transactions may execute concurrently but each transaction must be unaware of other transaction executing concurrently. This is achieved by conflict serializabiliity.
+
+Durability - After a transaction completes, the changes it has made to the database persist, evern if there are system failures.
+In real world system , 
+
+Atomicity is ensured by recovery systems. 
+Consistency is ensured by application programmer who codes the transaction. This may be facilitated by automatic testing of integrity constraints.
+Isolation is ensured by database component called concurreny-control system.
+Durability is ensured by guarantee that either the updates carried out by the transaction have been written to disk before the transaction completes or by ensuring that the information about he updates carried out by the transaction and written to disk is sufficient to enable the databaes to reconstruct the updates when the database system is restarted after the failure
+------------------------
+1. Write an SQL query to find names of employee start with ‘A’?
+
+SELECT * FROM Employees WHERE EmpName like 'A%' 
+
+2. Delete duplicate data from table only first data remains constant.
+
+DELETE M1 
+From managers M1, managers M2 
+Where M2.Name = M1.Name AND M1.Id>M2.Id; 
+
+3. Second Highest Salary in MySQL
+
+SELECT MAX(salary) FROM Employee WHERE Salary NOT IN ( SELECT Max(Salary) FROM Employee);
+SELECT MAX(Salary) From Employee WHERE Salary < ( SELECT Max(Salary) FROM Employee);
+
+Q. problems with distributed database?
+A - 1. performance 2. accessibility 3. data consistency 
+
+sqllite and python: This will make a local database with name 'example.db'
+
+import sqlite3
+conn = sqlite3.connect('example.db')
+c = conn.cursor()
+
+# Create table
+c.execute('''CREATE TABLE stocks
+             (date text, trans text, symbol text, qty real, price real)''')
+
+# Insert a row of data
+c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+
+# Save (commit) the changes
+conn.commit()
+
+# We can also close the connection if we are done with it.
+# Just be sure any changes have been committed or they will be lost.
+conn.close()
+
+# For getting data - Do this instead
+t = ('RHAT',)
+c.execute('SELECT * FROM stocks WHERE symbol=?', t)
+print(c.fetchone())
+
+# Larger example that inserts many records at a time
+purchases = [('2006-03-28', 'BUY', 'IBM', 1000, 45.00),
+             ('2006-04-05', 'BUY', 'MSFT', 1000, 72.00),
+             ('2006-04-06', 'SELL', 'IBM', 500, 53.00),
+            ]
+c.executemany('INSERT INTO stocks VALUES (?,?,?,?,?)', purchases)
+
+Q. What is a Primary Key?
+The PRIMARY KEY constraint uniquely identifies each row in a table. It must contain UNIQUE values and has an implicit NOT NULL constraint.
+A table in SQL is strictly restricted to have one and only one primary key, which is comprised of single or multiple fields (columns).
+
+CREATE TABLE Students ( 	 /* Create table with a single field as primary key */
+    ID INT NOT NULL
+    Name VARCHAR(255)
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE Students ( 	 /* Create table with multiple fields as primary key */
+    ID INT NOT NULL
+    LastName VARCHAR(255)
+    FirstName VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_Student
+    PRIMARY KEY (ID, FirstName)
+);
+
+Q.What is a foreign key?
+A foreign key is one table which can be related to the primary key of another table. 
+Relationship needs to be created between two tables by referencing foreign key with the primary key of another table.
+when foreign key defind b/w two tables atleast 1 attribute must be common in bwn them.
+
+CREATE TABLE Students ( 	 /* Create table with foreign key - Way 1 */
+    ID INT NOT NULL
+    Name VARCHAR(255)
+    LibraryID INT
+    PRIMARY KEY (ID)
+    FOREIGN KEY (Library_ID) REFERENCES Library(LibraryID)
+);
+
+CREATE TABLE Students ( 	 /* Create table with foreign key - Way 2 */
+    ID INT NOT NULL PRIMARY KEY
+    Name VARCHAR(255)
+    LibraryID INT FOREIGN KEY (Library_ID) REFERENCES Library(LibraryID)
+);
+
+Q What is a Join? List its different types.
+The SQL Join clause is used to combine records (rows) from two or more tables in a SQL database based on a related column between the two.
+
+There are four different types of JOINs in SQL:
+
+(INNER) JOIN: Retrieves records that have matching values in both tables involved in the join. This is the widely used join for queries.
+ex 1:
+SELECT *
+FROM Table_A
+JOIN Table_B;
+
+ex 2:
+SELECT *
+FROM Table_A
+INNER JOIN Table_B;
+
+LEFT (OUTER) JOIN: Retrieves all the records/rows from the left and the matched records/rows from the right table.
+SELECT *
+FROM Table_A A
+LEFT JOIN Table_B B
+ON A.col = B.col;
+
+RIGHT (OUTER) JOIN: Retrieves all the records/rows from the right and the matched records/rows from the left table.
+SELECT *
+FROM Table_A A
+RIGHT JOIN Table_B B
+ON A.col = B.col;
+
+FULL (OUTER) JOIN: Retrieves all the records where there is a match in either the left or right table.
+SELECT *
+FROM Table_A A
+FULL JOIN Table_B B
+ON A.col = B.col;
+
+JOIN Three Tables
+The following SQL statement selects all orders with customer and shipper information:
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+
+Q. What is an Index? Explain its different types.
+A database index is a data structure that provides quick lookup of data in a column or columns of a table. It enhances the speed of operations accessing data from a database table at the cost of additional writes and memory to maintain the index data structure.
+
+CREATE INDEX index_name 	 /* Create Index */
+ON table_name (column_1, column_2);
+
+DROP INDEX index_name; 	 /* Drop Index */
+
+Q. What is Data Integrity?
+Data Integrity is the assurance of accuracy and consistency of data over its entire life-cycle, and is a critical aspect to the design, implementation and usage of any system which stores, processes, or retrieves data. It also defines integrity constraints to enforce business rules on the data when it is entered into an application or a database.
+
+Q. 
+
+WHERE clause in SQL is used to filter records that are necessary, based on specific conditions.
+
+ORDER BY clause in SQL is used to sort the records based on some field(s) in ascending (ASC) or descending order (DESC).
+SELECT *
+FROM myDB.students
+WHERE graduation_year = 2019
+ORDER BY studentID DESC;
+
+GROUP BY clause in SQL is used to group records with identical data and can be used in conjuction with some aggregation functions to produce summarized results from the database.
+
+HAVING clause in SQL is used to filter records in combination with the GROUP BY clause. It is different from WHERE, since WHERE clause cannot filter aggregated records.
+SELECT COUNT(studentId), country
+FROM myDB.students
+WHERE country != "INDIA"
+GROUP BY country
+HAVING COUNT(studentID) > 5;
+
+
+Q. What is Normalization?
+Normalization represents the way of organizing structured data in the database efficiently. It includes creation of tables, establishing relationships between them, and defining rules for those relationships. Inconsistency and redundancy can be kept in check based on these rules, hence, adding flexibility to the database.
+
+What is a database table partitioning?
+Partitioning is the database process where very large tables are divided into multiple smaller parts. By splitting a large table into smaller, individual tables, queries that access only a fraction of the data can run faster because there is less data to scan. The main of goal of partitioning is to aid in maintenance of large tables and to reduce the overall response time to read and load data for particular SQL operations.
+
+Vertical Partitioning on SQL Server tables
+Vertical table partitioning is mostly used to increase SQL Server performance especially in cases where a query retrieves all columns from a table that contains a number of very wide text or BLOB columns. In this case to reduce access times the BLOB columns can be split to its own table. Another example is to restrict access to sensitive data e.g. passwords, salary information etc.
+
+Horizontal Partitioning on SQL Server tables
+Horizontal partitioning divides a table into multiple tables that contain the same number of columns, but fewer rows
+
+Q. What is Sharding?
+Sharding is a database architecture pattern related to horizontal partitioning — the practice of separating one table’s rows into multiple different tables, known as partitions. Each partition has the same schema and columns, but also entirely different rows. Likewise, the data held in each is unique and independent of the data held in other partitions.
+
+Sharding involves breaking up one’s data into two or more smaller chunks, called logical shards. The logical shards are then distributed across separate database nodes, referred to as physical shards, which can hold multiple logical shards. Despite this, the data held within all the shards collectively represent an entire logical dataset.
+
+Drawbacks of Sharding:
+The first difficulty that people encounter with sharding is the sheer complexity of properly implementing a sharded database architecture. If done incorrectly, there’s a significant risk that the sharding process can lead to lost data or corrupted tables.
+One problem that users sometimes encounter after having sharded a database is that the shards eventually become unbalanced.
+
+
+
+
+indexing advantages - internals disk level explainations
+paetitioning ans 
+
+
+sharding db 
+joins query
+aggregate functions Scalar functions
+sql cumulative sum
+hirarchy query
+ 
