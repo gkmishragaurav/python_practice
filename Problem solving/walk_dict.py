@@ -195,8 +195,16 @@ def walk_list(lst, k,v):
 key = []
 value = []
 
+# data is given in a dict
 if isinstance(l, list):
   walk_list(l, key, value)
 elif isinstance(l, dict):
   walk_dict(l,key,value)
+print("key={0},\n value={1}".format(key, value))
+
+# when data is given as url
+url="https://projects.propublica.org/nonprofits/api/v2/search.json?order=revenue&sort_order=desc"
+import requests, json
+output = requests.get(url)
+walk_dict(output.json(),key,value)
 print("key={0},\n value={1}".format(key, value))
