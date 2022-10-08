@@ -1,5 +1,5 @@
 # Write a function that takes a non-empty array and an integer representing a target sum. 
-# That finction should find all triplets in the array that sum up to the target sum.
+# That function should find all triplets in the array that sum up to the target sum.
 
 def threeSum(a):
     a.sort()
