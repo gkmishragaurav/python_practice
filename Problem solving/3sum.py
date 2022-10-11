@@ -1,28 +1,26 @@
-# Write a function that takes a non-empty array and an integer representing a target sum. 
+# Write a function that takes a non-empty array and an integer representing a target sum.
 # That function should find all triplets in the array that sum up to the target sum.
 
-def threeSum(a):
-    a.sort()
-    i=0
-    s=[]
-    while i <= len(a)-2:
-        j=i+1
-        k=len(a)-1
-        while k>j:
-            temp=a[i]+a[j]+a[k]
-            print(temp)
-            if temp == 0:
-                if (a[i], a[j], a[k]) not in s:
-                    s.append((a[i], a[j], a[k]))
-                j=j+1
-                k=k-1
-            elif temp > 0:
-                k=k-1
-            else:
-                j=j+1
-        i=i+1
-
-    return s
-
 a=[-1,0,1,2,-1,-4]
-print(threeSum(a))
+a.sort()
+
+def three_sum(a, right, target):
+  if len(a)<3:
+    return None
+  for i in range(len(a)-2):
+    temp = two_sum(a, i+1, right, target-a[i])
+    if temp:
+      print a[i], temp
+
+
+def two_sum(a, left, right, target):
+  while right > left:
+    temp = a[left] + a[right]
+    if temp == target:
+      return a[left], a[right]
+    elif temp > target:
+      right = right - 1
+    else:
+      left = left + 1
+
+three_sum(a, len(a)-1, 0)
