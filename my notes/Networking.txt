@@ -56,6 +56,14 @@ This is how I would explain it:
     Once the page is loaded, the browser sends further async requests as needed.
 
 Q. ping works on which porotocol - ICMP
+    used by network router other devices for communication and error information.
+    or to update other routers, hosts or network devices.
+
+    Basically ICM msg is sent in certain conditions
+    - if packet is too large for recipient to process, the recipient will drop the msg and send a ICMP msg back to the source.
+    - when shortest path need to find, this msg is used to find that
+
+    traceroute use ICMP to find 
 
 Q. What are sockets?
 Sockets are the main component that allows us to take advantage of the operating system's capabilities to interact with the network. 
