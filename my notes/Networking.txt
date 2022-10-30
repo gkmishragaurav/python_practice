@@ -150,9 +150,25 @@ What information does an SSL certificate contain?
 	Issue date of the certificate
 	Expiration date of the certificate
 	The public key (the private key is kept secret)
-	
+
+Why we need https?
+- privacy, integrity and identification
+	- privacy - as no one can evesdrop on your msgs.
+	- integrity - a man in middle attack can be avoided.
+	- identification - This SSL certificate is valid and has been issued by a legitimate Certificate Authority. You are good to go.
+
+Two encryptions used in ssl:
+	symmetric key algorithm - there is only one key to encrypt and decrypt a message.
+	asymmetric key algorithm - One key is public, the other one is private. They are paired and work together.Share your public key with anyone. Send it in plain text. use my private key to read the message.
+
 How HTTPS works?
 Hypertext transfer protocol secure (HTTPS) is the secure version of HTTP, which is the primary protocol used to send data between a web browser and a website. HTTPS is encrypted in order to increase security of data transfer. 
+
+    - certficate exchange - handshake
+	- check Compugter's certificate to make sure they are legit.
+	- generate a 'pre-master key' so we can both use it later when we generate a unique key.
+	- encrypt that pre-master key with Compugter's public key and then send it to him.
+	- use my private key to decrypt the pre-master key.
 
 HTTPS uses an encryption protocol to encrypt communications. The protocol is called Transport Layer Security (TLS), although formerly it was known as Secure Sockets Layer (SSL). This protocol secures communications by using what’s known as an asymmetric public key infrastructure. This type of security system uses two different keys to encrypt communications between two parties:
 
