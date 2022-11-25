@@ -1,5 +1,23 @@
 from functools import wraps
 
+# time function using decorator
+
+import time
+def deco(func):
+    def wrapped_func():
+        t1 = time.time()
+        func()
+        t2 = time.time()
+        print(t2-t1)
+
+    return wrapped_func
+
+@deco
+def func():
+    time.sleep(5)
+
+func()
+
 
 def decorator(fn):
     """A function that *is* a decorator. 
