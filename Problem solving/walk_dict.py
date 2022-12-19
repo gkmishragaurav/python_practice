@@ -1,6 +1,7 @@
 # problem statement:
 # Given a variable input- could be either a dict or a list of dict
 # we need to print all keys as list and all values as another list.
+# sample data can be downloaded from here ----- https://opensource.adobe.com/Spry/samples/data_region/JSONDataSetSample.html
 
 # l = [{
 #         'plan_code': 'b',
