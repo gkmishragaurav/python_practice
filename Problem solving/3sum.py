@@ -1,4 +1,9 @@
 # Write a function that takes a non-empty array and an integer representing a target sum.
+# Testcases
+# [1,-1,0] -1
+# [3,7,1,2,8,4,5] 10
+# [3,7,1,2,8,4,5] 21
+# [-1,2,1,-4,5,-3] -8
 
 a=[-1,0,1,2,-1,-4]
 a.sort()
