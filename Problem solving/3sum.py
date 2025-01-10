@@ -1,26 +1,40 @@
 # Write a function that takes a non-empty array and an integer representing a target sum.
-# That function should find all triplets in the array that sum up to the target sum.
 
 a=[-1,0,1,2,-1,-4]
 a.sort()
+t=20
 
-def three_sum(a, right, target):
-  if len(a)<3:
-    return None
-  for i in range(len(a)-2):
-    temp = two_sum(a, i+1, right, target-a[i])
-    if temp:
-      print a[i], temp
+def find_sum_of_two(nums, target, f, l):
+    while l > f:
+        s = nums[l] + nums[f]
+        if s > target:
+            l = l - 1
+        elif s < target:
+            f = f + 1
+        else:
+            return nums[l], nums[f]
+
+    return False
 
 
-def two_sum(a, left, right, target):
-  while right > left:
-    temp = a[left] + a[right]
-    if temp == target:
-      return a[left], a[right]
-    elif temp > target:
-      right = right - 1
-    else:
-      left = left + 1
+def find_sum_of_three(nums, target):
+    nums.sort()
+    f = 0
+    l = len(nums) - 1
+    while f <= l - 2:
+        s1 = find_sum_of_two(nums, target-nums[f], f+1, l)
+        if s1:
+          s = nums[f]+sum(s1)
+          if s < target:
+              f = f + 1
+          elif s > target:
+              l = l - 1
+          else:
+              return True
+        else:
+          f = f + 1
 
-three_sum(a, len(a)-1, 0)
+    # Replace this placeholder return statement with your code
+    return False
+
+print(find_sum_of_three(a, t))
