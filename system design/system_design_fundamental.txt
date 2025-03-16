@@ -1,0 +1,33 @@
+System Design interview
+	Design of large-scale distributed systems
+		-
+	The architecture of large-scale web applications
+		N-Tier applications
+		CDNs
+		Caching
+		HTTP & REST
+	Fundamentals of distributed system
+		Consensus
+		Partitioning
+		Replication
+		Durability
+	Fundamental concepts in System Design interview
+		Server-sent events (SSEs)
+		WebSockets
+		HTTP long-polling
+		AJAX polling/HTTP short-polling
+		Heartbeat
+		PACELC theorem
+
+Fundamentals of distributed system
+	Data durability and consistency
+		We must understand the differences and impacts of storage solution failure and corruption rates in read-write processes.
+
+	Replication
+		Replication is the key to unlocking data durability and consistency. It deals with backing up data but also with repeating processes at scale.
+
+	Partitioning
+		Also called sharding; partitions divide data across different nodes within our system. As replication distributes data across nodes, partitioning distributes processes across nodes, reducing the reliance on pure replication.
+
+	Consensus
+		One of our nodes is in Seattle, another is in Beijing, and another is in London. There is a system request at 7:05 a.m. Pacific Daylight Time. Given the travel time of data packets, can this be recorded and properly synchronized in the remote nodes, and can it be concurred? This is a simple problem of consensus—all the nodes need to agree, which will prevent faulty processes from running and ensure consistency and replication of data and processes across the system.	
