@@ -1,0 +1,68 @@
+monitor server
+
+Let’s sum up what we want our monitoring system to do for us:
+
+Monitor critical local processes on a server for crashes.
+Monitor any anomalies in the use of CPU/memory/disk/network bandwidth by a process on a server.
+Monitor overall server health, such as CPU, memory, disk, network bandwidth, average load, and so on.
+Monitor hardware component faults on a server, such as memory failures, failing or slowing disk, and so on.
+Monitor the server’s ability to reach out-of-server critical services, such as network file systems and so on.
+Monitor all network switches, load balancers, and any other specialized hardware inside a data center.
+Monitor power consumption at the server, rack, and data center levels.
+Monitor any power events on the servers, racks, and data center.
+Monitor routing information and DNS for external clients.
+Monitor network links and paths’ latency inside and across the data centers.
+Monitor network status at the peering points.
+Monitor overall service health that might span multiple data centers—for example, a CDN and its performance.
+
+Why do you need a dedicated monitoring service?
+	Centralized visibility across the entire system.
+	Detecting correlations and patterns that individual logs would miss.
+	Proactive alerts and faster troubleshooting.
+
+Building blocks we will use
+	Blob storage: We’ll use blob storage to store our information about metrics.
+
+High-Level Flow Summary:
+	This system is designed to collect, store, query, and act on time-series data for monitoring purposes. Here's the data flow at a glance:
+	Applications/Services/Servers
+	        ↓ fetch data
+	Data Collector Service
+	        ↓ push data
+	Time Series Database
+	        ↔ query
+	Querying Service
+	        ↔
+	Rules & Action DB
+	        ↔
+	Blob Store
+
+Storage
+	We’ll use time-series databases to save the data locally on the server where our monitoring service is running. Then, we’ll integrate it with a separate storage node. We’ll use blob storage to store our metrics.
+
+	We need to store metrics and know which action to perform if a metric has reached a particular value. For example, if CPU usage exceeds 90%, we generate an alert to the end user so the alert receiver can take the necessary steps, such as allocating more resources to scale. For this purpose, we need another storage area that will contain the rules and actions. Let’s call it a rules database. Upon any violation of the rules, we can take appropriate action.
+
+Data collector
+	We need a monitoring system to update us about our several data centers. We can stay updated if the information about our processes reaches us, which is possible through logging. We’ll choose a pull strategy. Then, we’ll extract our relevant metrics from the logs of the application. As discussed in our logging design, we used a distributed messaging queue. The message in the queue has the service name, ID, and a short description of the log. This will help us identify the metric and its information for a specific service. Exposing the relevant metrics to the data collector is necessary for monitoring any service so that our data collector can get the metrics from the service and store them into the time-series database.
+
+Service discoverer
+	The data collector is responsible for fetching metrics from the services it monitors. This way, the monitoring system doesn’t need to keep a track of services. Instead, it can find them using discoverer service. We’ll save the relative information of the services we have to monitor. We’ll use a service discovery solution and integrate with several platforms and tools, including EC2, Kubernetes, and Consul. This will allow us to discover which services we have to monitor. Similar dynamic discovery can be used for newly commissioned hardware.
+
+Dashboard
+	We can set dashboards by using the collected metrics to display the required information—for example, the number of requests in the current week.
+	Pros
+		- The design of our monitoring service ensures the smooth working of the operations and keeps an eye on signs of impending problems.
+		- Our design avoids overloading the network traffic by fetching the data itself.
+		- The monitoring service provides higher availability.
+
+	Cons
+		- The system seems scalable, but managing more servers to monitor can be a problem. For example, we have a dedicated server responsible for running the monitoring service. It can be a single point of failure (SPOF). To cater to SPOF, we can have a failover server for our monitoring system. Then, we also need to maintain consistency between actual and failover servers. However, such a design will also hit a scalability ceiling as the number of servers further increase.
+		- Monitoring collects an enormous amount of data 24/7, and keeping it forever might not be feasible. We need a policy and mechanisms to delete unwanted data periodically to efficiently utilize the resources.
+
+
+Improving our design
+	We want to improve our design so that our system can scale better and decide what data to keep and what to delete. Let’s see how the push-based approach works. In a push-based approach, the application pushes its data to the monitoring system.
+	We used a pull-based strategy to avoid network congestion. This also allows the applications to be free of the aspect that they have to send the relevant monitoring data of to the system. Instead, the monitoring system fetches or pulls the data itself. To cater to scaling needs, we need to apply a push-based approach too. We’ll use a hybrid approach by combining our pull-based strategy with the push-based strategy.
+	We’ll keep using a pull-based strategy for several servers within a data center. We’ll also assign several monitoring servers for hundreds or thousands of servers within a data center—let’s say one server monitoring 5,000 servers. We’ll call them secondary monitoring servers.
+	Now, we’ll apply the push-based strategy. The secondary monitoring systems will push their data to a primary data center server. The primary data center server will push its data to a global monitoring service responsible for checking all the data centers spread globally.
+	We’ll use blob storage to store our excessive data, apply elastic search, and view our relevant stats using a visualizer. As our servers or data centers increase, we’ll add more monitoring systems. The design for this is given below.
